@@ -56,4 +56,4 @@ team_info = {
 #Takes user team number, attribute, and prints it
 user_team = int(input("enter an frc team: "))
 user_attribute = input("enter an attribute: ")
-print(teamInfo[user_team][user_attribute])
+print(team_info[user_team][user_attribute])
