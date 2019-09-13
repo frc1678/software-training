@@ -1,4 +1,5 @@
 #Attributes: Weight, length, width, color, wheels. Given team number print attribute name
+# The dictionary Robots stores all of the attributes with the key of the frc team number.
 Robots = {
     1678:[8,3,'Matte Black','Big Wheels'],
     511:[43,34,'Blue','Small Wheels'],
@@ -2001,7 +2002,10 @@ Robots = {
     319:[86,48,'White','Exceptionally big wheels'],
     863:[92,5,'Black','Medium Wheels'],
     }
+#this is the loop that processes the user input
 while True:
+#The try and except block essentially makes sure that the user input is within the dictionary, and is an integer.
+#If it satisfies both of those conditions it breaks the while true loop, otherwise it prompts the user to re-enter their team name
     uinput = input("enter team number: ")
     try:
         uinput = int(uinput)
@@ -2009,13 +2013,15 @@ while True:
     if type(uinput) == int and uinput in Robots:
         break
     else: print("Try a different team number")
+#this line searches the Robots dictionary with the user input and prints it
 print(Robots.get(uinput))
-
 """
 from random import randint, choice
-from time import sleep
+#these two lists store the different types of attributes that can exist within the wheels and color attributes
 wheels = ["Big Wheels","Medium Wheels","Small Wheels","Very Big Wheels","Exceptionally big wheels"]
 color = ["Pink","Blue","Green","Black","White","Red","Orange"]
+#this loop uses the iterator x and the print statement to make 1999 randomized entries for frc robots, which can be easily copied into the dictionary
+#I could update this code to use a database file and the SQLite package to store the attributes of each team.
 for x in range(1,2000):
 print("    " + str(x) + ":["+ str(randint(1,100)) + "," + str(randint(1,50)) + ",'" + choice(color) + "','" + choice(wheels)+"']" + ",")
 """
