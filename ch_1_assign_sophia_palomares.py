@@ -1,9 +1,9 @@
 def team_info():
-	teams = input("What team would you like to look up? options: 1678, 1682, 1690, 1700, 2907, 3132 ")
+	teams = input("What team would you like to look up? options: 1678, 1682, 1690, 1700, 2907, 3132, or Exit ")
 	#1678
 	if(teams == "1678"):
 		print("You chose team 1678, or Citrus Circuits")
-		info_question_1678 = input("Would you like to know about the team ")
+		info_question_1678 = input("Would you like to know about the team? Your options are rookie year, location , and competed in 2019. ")
 		if(info_question_1678 == "rookie year"):
 			print(rookie[1678])
 			team_info()
@@ -37,12 +37,12 @@ def team_info():
 			print(awards_1678)
 			team_info()
 		else:
-			print("I'm sorry I don't know what you asked. Your options are: rookie year, location, competed in 2019, competitions in 2019, and awards in 2019. Please copy them exactly")
+			print("I'm sorry I don't know what you asked. Your options are: rookie year, location, competed in 2019, and awards in 2019. Please copy them exactly")
 			team_info()
 	#1682
 	elif(teams == "1682"):
 		print("You chose team 1682, or Eye Bots")
-		info_question_1682 = input("Would you like to know about the team ")
+		info_question_1682 = input("Would you like to know about the team? Your options are rookie year, location , and competed in 2019. ")
 		if(info_question_1682 == "rookie year"):
 			print(rookie[1682])
 			team_info()
@@ -71,11 +71,11 @@ def team_info():
 		elif(info_question_1682 == "awards in 2019"):
 			print(awards_1682)
 		else:
-			print("I'm sorry I don't know what you asked. Your options are: rookie year, location, competed in 2019, competitions in 2019, and awards in 2019. Please copy them exactly")
+			print("I'm sorry I don't know what you asked. Your options are: rookie year, location, competed in 2019, and awards in 2019. Please copy them exactly")
 	#1690
 	elif(teams == "1690"):
 		print("You chose team 1690, or Orbit")
-		info_question_1690 = input("Would you like to know about the team ")
+		info_question_1690 = input("Would you like to know about the team? Your options are rookie year, location , and competed in 2019. ")
 		if(info_question_1690 == "rookie year"):
 			print(rookie[1690])
 			team_info()
@@ -109,12 +109,12 @@ def team_info():
 			print(awards_1690)
 			team_info()
 		else:
-			print("I'm sorry I don't know what you asked. Your options are: rookie year, location, competed in 2019, competitions in 2019, and awards in 2019. Please copy them exactly")
+			print("I'm sorry I don't know what you asked. Your options are: rookie year, location, competed in 2019, and awards in 2019. Please copy them exactly")
 			team_info()
 	#1700
 	elif(teams == "1700"):
 		print("You chose team 1700, or Gatorbotics")
-		info_question_1700 = input("Would you like to know about the team ")
+		info_question_1700 = input("Would you like to know about the team? Your options are rookie year, location , and competed in 2019. ")
 		if(info_question_2907 == "rookie year"):
 			print(rookie[1700])
 			team_info()
@@ -148,12 +148,12 @@ def team_info():
 			print(awards_1700)
 			team_info()
 		else:
-			print("I'm sorry I don't know what you asked. Your options are: rookie year, location, competed in 2019, competitions in 2019, and awards in 2019. Please copy them exactly")
+			print("I'm sorry I don't know what you asked. Your options are: rookie year, location, competed in 2019, and awards in 2019. Please copy them exactly")
 			team_info()
 	#2907
 	elif(teams == "2907"):
 		print("You chose team 2907, or Lion Robotics")
-		info_question_2907 = input("Would you like to know about the team ")
+		info_question_2907 = input("Would you like to know about the team? Your options are rookie year, location , and competed in 2019. ")
 		if(info_question_2907 == "rookie year"):
 			print(rookie[2907])
 			team_info()
@@ -184,11 +184,11 @@ def team_info():
 		elif(info_question_2907 == "awards in 2019"):
 			print(awards_2907)
 		else:
-			print("I'm sorry I don't know what you asked. Your options are: rookie year, location, competed in 2019, competitions in 2019, and awards in 2019. Please copy them exactly")
+			print("I'm sorry I don't know what you asked. Your options are: rookie year, location, competed in 2019 and awards in 2019. Please copy them exactly")
 	#3132
 	elif(teams == "3132"):
 		print("You chose team 3132, or Thunder Down Under")
-		info_question_3132 = input("Would you like to know about the team ")
+		info_question_3132 = input("Would you like to know about the team? Your options are rookie year, location , and competed in 2019. ")
 		if(info_question_3132 == "rookie year"):
 			print(rookie[3132])
 			team_info()
@@ -220,10 +220,16 @@ def team_info():
 				team_info()
 		elif(info_question_3132 == "awards in 2019"):
 			print(awards_3132)
+			team_info()
 		else:
-			print("I'm sorry I don't know what you asked. Your options are: rookie year, location, competed in 2019, competitions in 2019, and awards in 2019. Please copy them exactly")
-	
+			print("I'm sorry I don't know what you asked. Your options are: rookie year, location, competed in 2019, and awards in 2019. Please copy them exactly")
+	#End Program
+	elif(teams == "Exit"):
+		print("You chose to exit this program")
 
+	else:
+		print("I'm sorry I don't know what team you asked. You can look up teams 1678, 1682, 1690, 1700, 2907, 3132 or you can enter Exit and leave the program.")
+		team_info()
 
 #General Info
 team_numbers =[
