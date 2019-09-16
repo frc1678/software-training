@@ -45,4 +45,4 @@ teams = {
 }
 team_num = input("Team number: ")
 attribute = input("Attribute: ")
-print(teams[team_num][attribute]) #prints value for key corresponding to attribute within the value for key corresponding to team number
+print(teams[team_num][attribute]) 
