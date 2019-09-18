@@ -10,7 +10,7 @@ teams = { #Stores all the teams with string form of team number as key
         "comp_locations": [
             "Center Line, MI, USA",
             "Troy, MI, USA",
-        ]
+        ],
         "2019_awards": [
             "Imagery Award in honor of Jack Kamen",
         ],
@@ -28,7 +28,7 @@ teams = { #Stores all the teams with string form of team number as key
             "Chicago, IL, USA",
             "Huntsville, AL, USA",
             "Detriot, MI, USA",
-        ]
+        ],
         "2019_awards": [
             "Industrial Design Award sponsored by General Motors",
             "Regional Finalists",
@@ -36,7 +36,7 @@ teams = { #Stores all the teams with string form of team number as key
         ],
     },
     "253": {
-            "location": "Millbrae, California, USA",.
+            "location": "Millbrae, California, USA",
             "rookie_year": 1999,
             "competed_2019": True,
             "2019_comps": [
@@ -48,7 +48,7 @@ teams = { #Stores all the teams with string form of team number as key
             "San Fransisco, CA, USA",
             "Seaside, CA, USA",
             "Houston, TX, USA",
-        ]
+        ],
             "2019_awards": [
                 "Team Spirit Award sponsored by FCA Foundation",
             ],
@@ -64,7 +64,7 @@ teams = { #Stores all the teams with string form of team number as key
             "comp_locations": [
             "Myrtle Beach, SC, USA",
             "Huntsville, AL, USA",
-        ]
+        ],
             "2019_awards": [],
     },
     "554": {
@@ -72,17 +72,17 @@ teams = { #Stores all the teams with string form of team number as key
             "rookie_year": 2001,
             "competed_2019": True,
             "2019_comps": [
-                "Miami Valley Regional 2019": "Fairborn, OH, USA",
+                "Miami Valley Regional 2019",
             ],
             "comp_locations": [
             "Fairborn, OH, USA",
-        ]
+        ],
             "2019_awards": [],
     }
-
 }
 
-valid_requests = {
+#Attributes that can be input as keys, their discription as values
+valid_requests = { 
     "location": "Team's location",
     "rookie_year": "Team's rookie year",
     "competed_2019": "Seeing if team competed in 2019",
@@ -90,4 +90,27 @@ valid_requests = {
     "comp_locations": "The location of the 2019 competitions",
     "2019_awards": "Awards won during the 2019 season",
 }
+
+
+print("Valid teams:")
+print(" ".join(teams.keys())) #Print teams seperated by spaces onto one line 
+requested_team_number = ""
+
+while requested_team_number == "": #loop until valid input
+    requested_team_number = input("Team Number: ")
+    if requested_team_number not in teams:
+        print(f"Team number {requested_team_number} not stored.")
+        requested_team_number = ""
+
+print("Valid Requests:")
+for attribute in valid_requests: #loop through keys in valid_attributes
+    print(f"{attribute} for {valid_requests[attribute]}") #prints name/function
+requested_attribute = ""
+while requested_attribute == "": #loop until valid input
+    #Case insensitive input, spaces replaced w/underscore
+    requested_attribute = input("Attribute: ").lower().replace(" ", "_")
+
+    if requested_attribute not in valid_requests:
+        print(f"Attribute {requested_attribute} not recognized.")
+        requested_attribute = ""
 
