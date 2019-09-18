@@ -99,12 +99,12 @@ requested_team_number = ""
 while requested_team_number == "": #loop until valid input
     requested_team_number = input("Team Number: ")
     if requested_team_number not in teams:
-        print(f"Team number {requested_team_number} not stored.")
+        print(f"Team number '{requested_team_number}' not stored.")
         requested_team_number = ""
 
 print("Valid Requests:")
 for attribute in valid_requests: #loop through keys in valid_attributes
-    print(f"{attribute} for {valid_requests[attribute]}") #prints name/function
+    print(f"'{attribute}' for {valid_requests[attribute]}") #prints name/function
 requested_attribute = ""
 while requested_attribute == "": #loop until valid input
     #Case insensitive input, spaces replaced w/underscore
@@ -114,3 +114,10 @@ while requested_attribute == "": #loop until valid input
         print(f"Attribute {requested_attribute} not recognized.")
         requested_attribute = ""
 
+requested_attribute_value = teams[requested_team_number][requested_attribute]
+print(f"Team {requested_team_number}'s {requested_attribute}:")
+if isinstance(requested_attribute_value, list):
+    for value in requested_attribute_value:
+        print(value)
+else:
+    print(requested_attribute_value)
