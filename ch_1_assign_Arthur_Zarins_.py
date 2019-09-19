@@ -2,8 +2,8 @@
 teams = {
 	'1678': {'Last Year': 2019,
             'Location': "Davis CA",
-            'Rookie Year': 2005, 
-            'Events': 'Sac Regional, Central Valley Regional'
+            'Rookie Year': 2005,
+            'Events': 'Sac Regional, Central Valley Regional, AeroSpace Valley Regional, Carver division, Einstein field, RCC Qianjiang International Robotics Invitational, Chezy Champs'
             },
 	'2551': {'Last Year': 2019, 
             'Location': "Novato CA", 
@@ -12,10 +12,10 @@ teams = {
     '3421': {'Last Year': 2013, 
             'Location': "Marysville MI", 
             'Rookie Year': 2010, 
-            'Events': 'MY Regional'},
+            'Events': 'MI FRC state championship'},
     '2942': {'Last Year': 2018, 
             'Location': "Seattle, WA", 
-            'Rookie Year': 2009, 
+            'Rookie Year': 2009,
             'Events': ''}
 }
 #reference = "is"
@@ -32,8 +32,8 @@ def teamStats(teamName, attribute):
         reference = "is"
     print("Team " + teamName + "'s " + attributeDisplay + " " + reference + " " + teams[teamName][attribute])
 
-#The big test:
+#The big test, comprised of 3 questions:
 teamStats('1678', 'Location')
 teamStats('1678', 'Events')
-#1 event: the grammer works!
+#Just one event: demonstration of proper grammer
 teamStats('3421', 'Events')
