@@ -22,7 +22,7 @@ teams = {
 def teamStats(teamName, attribute):
     #New variable refernce will handle grammer related to pluralities
     reference = "is"
-    stringTest = teams[teamName][attribute].split()
+    stringTest = teams[teamName][attribute].split(",")
     attributeDisplay = attribute
     if attribute == "Events" and len(stringTest) > 2:
         reference = "are"
