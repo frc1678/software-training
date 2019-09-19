@@ -1,5 +1,5 @@
 teams = { 
-	'1678': {
+	'1678':{
 		'location': 'Davis, CA, USA', 
 		'rookie year': 2005, 
 		'2019 compete': True , 
@@ -106,7 +106,7 @@ teams = {
 			'Regional Engineering Inspiration Award', 
 			'Safety Award','Division Winner']
 		},
-	'3476:' {
+	'3476':{
 		'location': 'Irvine, CA, USA', 
 		'rookie year': 2011, 
 		'2019 compete': True , 
