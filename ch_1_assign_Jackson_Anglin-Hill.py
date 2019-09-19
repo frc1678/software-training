@@ -32,10 +32,9 @@ teams = {
 'competed in 2019 competitions': 'Yes',
 'names of 2019 competitions': 'Midwest Regional, Rocket City Regional and Darwin Division',
 'location of 2019 competitions': 'Detroit, MI, USA and Huntsville, AL 35801, USA',
-'2019 season award': 'Industrial Design Award, Regional Finalists and Excellence in Engineering Award'
-}
+'2019 season award': 'Industrial Design Award, Regional Finalists and Excellence in Engineering Award'}
 }
 print("You must enter options exactly as they are displayed. If they are entered incorrectly, you will not receive any information.")
 team_number = input("Please enter team number. You can enter '1, 554, 253, 342, or 16': ")
 team_attribute = input("Please enter team attribute. You can enter 'location, rookie year, competed in 2019 competitions, names of 2019 competitions, location of 2019 competitions, or 2019 season award': ")
-print(teams[team_number][team_attribute])
+print(teams[team_number][team_attribute]) 
