@@ -37,4 +37,4 @@ team_dict = {
 	'8_2019_awards' : False },
 
 }
-print(team_dict['8_dict']['8_competition_names'])
+print(team_dict)
