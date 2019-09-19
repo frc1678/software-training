@@ -43,13 +43,13 @@ teams = {
 			'Sacramento Regional', 
 			'Newton Division', 
 			'Einstein Field'
-	], 
+		], 
 		'location of 2019 competitions': [
 			'Fresno, CA, USA', 
 			'Davis, CA, USA', 
 			'Houston, TX, USA', 
 			'Houston, TX, USA'
-			], 
+		], 
 		'2019 awards': [
 			'Regional Winner', 
 			'Autonomous Award', 
@@ -57,8 +57,7 @@ teams = {
 			'Quality Award', 
 			'Division Winner', 
 			'Industrial Design Award', 
-			'Houston Champs Winner'
-			]
+			'Houston Champs Winner']
 	},
 
 	'254': {
@@ -70,21 +69,21 @@ teams = {
 			'Silicon Valley Regional', 
 			'Turing Division', 
 			'Einstein Field', 
-			'Chezy Champs']
-	, 'location of 2019 competitions': [
-		'San Francisco, CA, USA', 
-		'San Jose, CA, USA', 
-		'Houston, TX, USA', 
-		'Houston, TX, USA', 
-		'San Jose, CA, USA'], 
-	'2019 awards': [
-		'Regional Winner', 
-		'Innovation in Control Award', 
-		'Regional Winner', 
-		'Excellence in Engineering Award', 
-		'Division Winner', 
-		'Industrial Design Award', 
-		'Houston Champs Finalist']
+			'Chezy Champs'], 
+		'location of 2019 competitions': [
+			'San Francisco, CA, USA', 
+			'San Jose, CA, USA', 
+			'Houston, TX, USA', 
+			'Houston, TX, USA', 
+			'San Jose, CA, USA'], 
+		'2019 awards': [
+			'Regional Winner', 
+			'Innovation in Control Award', 
+			'Regional Winner', 
+			'Excellence in Engineering Award', 
+			'Division Winner', 
+			'Industrial Design Award', 
+			'Houston Champs Finalist']
 	},
 
 	'3132': {
@@ -96,7 +95,7 @@ teams = {
 			'South Pacific Regional',
 		 	'Carver Division', 
 		 	'Einstein Field'],
-		 'location of 2019 competitions': [
+		'location of 2019 competitions': [
 		 	'Sydney Olympic Park, NSW, Australia', 
 			'Sydney Olympic Park, NSW, Australia',
 			'Houston, TX, USA', 
