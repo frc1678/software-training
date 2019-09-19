@@ -37,3 +37,7 @@ teamStats('1678', 'Location')
 teamStats('1678', 'Events')
 #Just one event: demonstration of proper grammer
 teamStats('3421', 'Events')
+x = input('attribute')
+y = input('teamName')
+print('x is ' + x + " and y is " + y)
+teamStats(y, x)
