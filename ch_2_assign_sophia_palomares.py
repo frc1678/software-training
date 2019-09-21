@@ -18,7 +18,8 @@ def main_function():
 		list_team()
 		main_function()
 	elif(user_question_1 == "Exit"):
-		break
+		exit_program()
+
 	else:
 		print("Input is unknown. Please input Add Team, Remove Team, List of Teams, Search for Team, or Exit.")
 		main_function()
@@ -48,7 +49,6 @@ def add_team():
 
 def search_team():
 	user_search = int(input("What team do you want to search? "))
-	#how do I fix this
 	print("Team Name:")
 	print(teams[user_search]["name"])
 	print("Programming Language:")
@@ -64,5 +64,18 @@ def search_team():
 
 def list_team():
 	print(teams.keys())
+
+def exit_program():
+	print("You are choosing to exit the program")
+	user_exit = input("Are you sure you want to leave? ")
+	if(user_exit == "Yes"):
+		"You are now leaving the program"
+		break
+	elif(user_exit == "No"):
+		"You chose to stay in the program"
+		main_function()
+	else:
+		"Input is unknown. Please input Yes or No"
+		exit_program()
 
 main_function()
