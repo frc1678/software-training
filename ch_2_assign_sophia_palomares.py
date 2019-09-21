@@ -17,8 +17,10 @@ def main_function():
 	elif(user_question_1 == "List of Teams"):
 		list_team()
 		main_function()
+	elif(user_question_1 == "Exit"):
+		break
 	else:
-		print("Input is unknown. Please input Add Team, Remove Team, List of Teams, or Search for Team.")
+		print("Input is unknown. Please input Add Team, Remove Team, List of Teams, Search for Team, or Exit.")
 		main_function()
 def remove_teams():
 	key = int(input("What team do you want to remove? "))
