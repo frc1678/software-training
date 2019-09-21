@@ -21,8 +21,8 @@ def main_function():
 		print("Input is unknown. Please input Add Team, Remove Team, List of Teams, or Search for Team.")
 		main_function()
 def remove_teams():
-	key = input("What team do you want to remove? ")
-	teams.pop(key, value)
+	key = int(input("What team do you want to remove? "))
+	teams.pop(key)
 
 def add_team():
 	temp_team_dictionary = {}
@@ -45,10 +45,20 @@ def add_team():
 	teams[team_number_input] = temp_team_dictionary
 
 def search_team():
-	team_search = input("What team do you want to search? ")
+	user_search = int(input("What team do you want to search? "))
 	#how do I fix this
-	search = team_search.items()
-	print(teams[search])
+	print("Team Name:")
+	print(teams[user_search]["name"])
+	print("Programming Language:")
+	print(teams[user_search]["programming language"])
+	print("Robot's Width:")
+	print(teams[user_search]["width"])
+	print("Robot's Length:")
+	print(teams[user_search]["length"])
+	print("Y/N Camera Vision System:")
+	print(teams[user_search]["camera vision system"])
+	print("Number of Drivetrain Motors:")
+	print(teams[user_search]["drivetrain motors"])
 
 def list_team():
 	print(teams.keys())
