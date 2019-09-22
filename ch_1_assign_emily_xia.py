@@ -88,3 +88,6 @@ teams_dictionary={
 			"Davis_CA"],
 		"Competition_Awards":[
 			"None"]}}
+team_number=int(input("What is the number of the desired team?"))
+team_attribute=str(input("What is the desired attribute?"))
+print(teams_dictionary[team_number][team_attribute])
