@@ -11,15 +11,15 @@ while True:
         robot_width = float(input("What is the robot's width? "))
         robot_length = float(input("What is the robot's length? "))
         robot_vision = input("Does the robot have camera vision? ")
-        if robot_vision == "yes" or "Yes" or "YES":
+        if robot_vision.lower() == "yes":
             robot_vision = True
-        elif robot_vision == "no" or "No" or "NO":
+        elif robot_vision.lower() == "no":
             robot_vision == False
         robot_motors = int(input("How many drivetrain motors does the robot have? "))
         attributes = {"Name": team_name, "Programming Language": team_prog_lang, 
         "Width": robot_width, "Length": robot_length, "Camera Vision": robot_vision, 
         "Drivetrain Motors": robot_motors}
-        new_team = {team_num: attributes}
+        new_team = {team_num: attributes} 
         teams.update(new_team)
 
 
@@ -40,7 +40,9 @@ while True:
 
     if command == "view team's information":
         view_team_num = int(input("What team's information would you like to view? "))
-        print(teams.get(view_team_num))
+        view_team_attribute = str(input("""What attribute would you like to view (Name, 
+        Programming Language, Width, Length, Camera Vision, Drivetrain Motors? """))
+        print(teams[view_team_num][view_team_attribute])
 
 
     if command == "modify team's information":
@@ -70,9 +72,9 @@ while True:
         
         if new_robot_vision == "none":
             new_robot_vision = teams[chng_team_num]["Camera Vision"]
-        elif new_robot_vision == "yes" or "Yes" or "YES":
+        elif new_robot_vision.lower() == "yes":
             new_robot_vision = True
-        elif new_robot_vision == "no" or "No" or "NO":
+        elif new_robot_vision.lower() == "no":
             new_robot_vision == False
         new_robot_motors = input("How many drivetrain motors does the new robot have? ")
         
