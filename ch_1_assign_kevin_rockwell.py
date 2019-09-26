@@ -1,5 +1,5 @@
 teams = { #Stores all the teams with string form of team number as key
-    "1": {
+    1: {
         "location": "Pontiac, Michigan, USA",
         "rookie_year": 1997,
         "competed_2019": True,
@@ -15,7 +15,7 @@ teams = { #Stores all the teams with string form of team number as key
             "Imagery Award in honor of Jack Kamen",
         ],
     },
-    "16": {
+    16: {
         "location": "Mountain Home, Arkansas, USA",
         "rookie_year": 1996,
         "competed_2019": True,
@@ -35,7 +35,7 @@ teams = { #Stores all the teams with string form of team number as key
             "Excellence in Engineering Award sponsored by Delphi",
         ],
     },
-    "253": {
+    253: {
             "location": "Millbrae, California, USA",
             "rookie_year": 1999,
             "competed_2019": True,
@@ -53,7 +53,7 @@ teams = { #Stores all the teams with string form of team number as key
                 "Team Spirit Award sponsored by FCA Foundation",
             ],
     },
-	"342": {
+	342: {
         "location": "North Charleston, South Carolina, USA",
             "rookie_year": 2000,
             "competed_2019": True,
@@ -67,7 +67,7 @@ teams = { #Stores all the teams with string form of team number as key
         ],
             "2019_awards": [],
     },
-    "554": {
+    554: {
         "location": "Ft. Thomas, Kentucky, USA",
             "rookie_year": 2001,
             "competed_2019": True,
@@ -93,14 +93,22 @@ valid_requests = {
 
 
 print("Valid teams:")
-print(" ".join(teams.keys())) #Print teams seperated by spaces onto one line 
+print(" ".join(map(str, teams.keys()))) #Print teams seperated by spaces onto one line 
 requested_team_number = ""
 
 while requested_team_number == "": #loop until valid input
     requested_team_number = input("Team Number: ")
-    if requested_team_number not in teams:
-        print(f"Team number '{requested_team_number}' not stored.")
+    if requested_team_number.isdigit(): #Tests if input is only digits
+        if int(requested_team_number) in teams:
+            team_number = int(requested_team_number)
+        else:
+            print(f"Team number '{requested_team_number}' not stored.")
+            requested_team_number = ""
+            
+    else:
+        print(f"Invalid team number '{requested_team_number}'")
         requested_team_number = ""
+
 
 print("Valid Requests:")
 for attribute in valid_requests: #loop through keys in valid_attributes
@@ -114,7 +122,7 @@ while requested_attribute == "": #loop until valid input
         print(f"Attribute {requested_attribute} not recognized.")
         requested_attribute = ""
 
-requested_attribute_value = teams[requested_team_number][requested_attribute]
+requested_attribute_value = teams[team_number][requested_attribute]
 print(f"Team {requested_team_number}'s {requested_attribute}:")
 if isinstance(requested_attribute_value, list):
     for value in requested_attribute_value:
