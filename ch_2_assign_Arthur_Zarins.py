@@ -1,4 +1,6 @@
 functions = False
+# There are 2 code snippets: the first has functions, the second does not.
+#Both work, and you can choose which one to run, by setting functions to "True" or "False".
 if(functions == True):
     # Reminder for self: to run python programs in Visual Studio code, use Cntrl + Fn + F5
     teams = {}
@@ -73,7 +75,6 @@ if(functions == True):
             # States the stats for the team, specifically the attributes
             a1 = input("What is the team number?\n      ")
             teamStats(a1)
-
 
 
 else:
