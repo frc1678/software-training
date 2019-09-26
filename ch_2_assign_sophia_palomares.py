@@ -22,6 +22,7 @@ def main_function():
 	else:
 		print("Input is unknown. Please input Add Team, Remove Team, List of Teams, Search for Team, or Exit.")
 		main_function()
+
 def remove_teams():
 	key = int(input("What team do you want to remove? "))
 	teams.pop(key)
@@ -43,23 +44,33 @@ def add_team():
 	temp_team_dictionary["camera vision system"] = cam_vision
 	temp_team_dictionary["drivetrain motors"] = drive_motors
 
-	team_number_input = int(input("Add a team number"))
+	team_number_input = int(input("Add a team number "))
 	teams[team_number_input] = temp_team_dictionary
 
 def search_team():
 	user_search = int(input("What team do you want to search? "))
-	print("Team Name:")
-	print(teams[user_search]["name"])
-	print("Programming Language:")
-	print(teams[user_search]["programming language"])
-	print("Robot's Width:")
-	print(teams[user_search]["width"])
-	print("Robot's Length:")
-	print(teams[user_search]["length"])
-	print("Y/N Camera Vision System:")
-	print(teams[user_search]["camera vision system"])
-	print("Number of Drivetrain Motors:")
-	print(teams[user_search]["drivetrain motors"])
+	user_search_specific = input("What would you like to look up about a team? options: Team Name, Programming Language, Robot Width, Camera Vision System, Drivetrain Motors. ")
+	if(user_search_specific == "Team Name"):
+		print("Team Name:")
+		print(teams[user_search]["name"])
+	elif(user_search_specific == "Programming Language"):
+		print("Programming Language:")
+		print(teams[user_search]["programming language"])
+	elif(user_search_specific == "Robot Width"):
+		print("Robot's Width:")
+		print(teams[user_search]["width"])
+	elif(user_search_specific == "Robot Length"):
+		print("Robot's Length:")
+		print(teams[user_search]["length"])
+	elif(user_search_specific == "Camera Vision System"):
+		print("Y/N Camera Vision System:")
+		print(teams[user_search]["camera vision system"])
+	elif(user_search_specific == "Drivetrain Motors"):
+		print("Number of Drivetrain Motors:")
+		print(teams[user_search]["drivetrain motors"])
+	else:
+		print("Unknown Input")
+		search_team()
 
 def list_team():
 	print(teams.keys())
