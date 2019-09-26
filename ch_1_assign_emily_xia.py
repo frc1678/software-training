@@ -88,6 +88,14 @@ teams_dictionary={
 			"Davis_CA"],
 		"Competition_Awards":[
 			"None"]}}
-team_number=int(input("What is the number of the desired team?"))
-team_attribute=str(input("What is the desired attribute?"))
+team_number = int(input("Out of 1678, 3132, 1902, 5458, and 6174, what is the number of the desired team?"))
+team_attribute = str(input(
+	"""Out of:
+	Location, 
+	Rookie_year, 
+	2019_Competition_Status, 
+	Names_of_Competitions, 
+	Competition_Locations, 
+	Competition_Awards 
+	what is the desired attribute?"""))
 print(teams_dictionary[team_number][team_attribute])
