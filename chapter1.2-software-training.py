@@ -1,6 +1,5 @@
 robotics_teams = {
-    'team_1111': {
-        'location':
+    'team_1111': {'location':
 	    'Edgewater Maryland USA',
 	    'rookie year':2003,
 	    'competed in 2019':True,
