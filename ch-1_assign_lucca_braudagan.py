@@ -1,93 +1,93 @@
 teams={
-	"1678":{
+	1678:{
 		"team_name":"Citrus Circuits",
 		"location":"Davis, CA", 
 		"rookie_year":2005, 
-		"competed_in_2019_seaseon":True, 
+		"competed_in_2019_season":True, 
 		"2019_competition_names":[
-			"Central_Valley_Regional",
-			"Sacramento_Regional",
-			"Aerospace_Valley_Regional",
-			"Carver_Division",
-			"Einstein_Field",
-			"RCC_Qianjiang_International_Robotics_Invitational",
-			"Chezy_Champs"],
+			"Central Valley Regional",
+			"Sacramento Regional",
+			"Aerospace Valley Regional",
+			"Carver Division",
+			"Einstein Field",
+			"RCC Qianjiang International Robotics Invitational",
+			"Chezy Champs"],
 		"2019_competition_locations":[
-			"Fresno_CA",
-			"Davis_CA",
-			"Lancaster_CA",
-			"Houston_TX",
-			"Houston_TX_Again"
-			"Hangzhou_Zhejiang_China",
-			"San_Jose"],
+			"Fresno, CA",
+			"Davis, CA",
+			"Lancaster, CA",
+			"Houston, TX",
+			"Houston, TX, Again"
+			"Hangzhou, Zhejiang, China",
+			"San Jose, CA"],
 		"2019_season_awards":[
-			"Regional_Chairman's_Award_At_Central_Valley_Regional",
-			"Regional_Winners_At_Central_Valley_Regional",
-			"FIRST_Dean's_List_Finalist_Award",
-			"Regional_Winners_At_Sacramento_Regional",
-			"Industrial_Design_Award_Sponsored_By_General_Motors",
-			"Regional_Winners_At_Aerospace_Valley_Regional",
-			"Excellence_In_Engineering_Award_Sponsered_By_Delphi",
-			"Championship_Subdivision_Winner_In_Carver_Divison",
-			"Entrepreneurship_Award_Sponsored_By_Kleiner_Perkins_Caufield_And_Byers"]
+			"Regional Chairman's Award At Central Valley Regional",
+			"Regional Winners At Central Valley Regional",
+			"FIRST Dean's List Finalist Award",
+			"Regional Winners At Sacramento Regional",
+			"Industrial Design Award Sponsored By General Motors",
+			"Regional Winners At Aerospace Valley Regional",
+			"Excellence In Engineering Award Sponsered By Delphi",
+			"Championship Subdivision Winner In Carver Divison",
+			"Entrepreneurship Award Sponsored By Kleiner Perkins Caufield And Byers"]
 	},
-	"4322":{
+	4322:{
 		"team_name":"Clockwork Oranges",
 		"location":"Orange, CA",
 		"rookie_year":2012,
-		"competed_in_2019_seaseon":True,
+		"competed_in_2019_season":True,
 		"2019_competition_names":[
-			"San_Diego_Regional_Presented_By_Qualcomm",
-			"Las_Vegas_Regional",
-			"Einstein_Field",
-			"Battleship_Blast_Monday",
-			"Beach_Blitz"],
+			"San Diego Regional Presented By Qualcomm",
+			"Las Vegas Regional",
+			"Einstein Field",
+			"Battleship Blast Monday",
+			"Beach Blitz"],
 		"2019_competition_locations":[
-			"Del_Mar_CA",
-			"Las_Vegas_NV",
-			"Houston_TX",
-			"San_Pedro_CA",
-			"Huntington_Beach_CA"],
+			"Del Mar, CA",
+			"Las Vegas, NV",
+			"Houston, TX",
+			"San Pedro, CA",
+			"Huntington Beach, CA"],
 		"2019_season_awards":[
-			"FIRST_Dean's_List_Finalist_Award",
-			"FIRST_Dean's_List_Award"]
+			"FIRST Dean's List Finalist Award",
+			"FIRST Dean's List Award"]
 	},
-	"5458":{
+	5458:{
 		"team_name":"Digital Minds",
 		"location":"Woodland, CA",
 		"rookie_year":2015,
-		"competed_in_2019_seaseon":True,
+		"competed_in_2019_season":True,
 		"2019_competition_names":[
-			"Central_Valley_Regional",
-			"Sacramento_Regional"],
+			"Central Valley Regional",
+			"Sacramento Regional"],
 		"2019_competition_locations":[
-			"Fresno_CA",
-			"Davis_CA"],
+			"Fresno, CA",
+			"Davis, CA"],
 		"2019_season_awards":"None"
 	},
-	"1":{
+	1:{
 		"team_name":"The Juggernauts",
 		"location":"Pontiac, MI",
 		"rookie_year":1997,
-		"competed_in_2019_seaseon":True,
+		"competed_in_2019_season":True,
 		"2019_competition_names":[
-			"FIM_District_Center_Line_Event",
-			"FIM_District_Troy_Event"],
+			"FIM District Center Line Event",
+			"FIM District Troy Event"],
 		"2019_competition_locations":[
-			"Center_Line_MI",
-			"Troy_MI"],
-		"2019_season_awards":"Imagery_Award_In_Honor_Of_Jack_Kamen"
+			"Center Line, MI",
+			"Troy, MI"],
+		"2019_season_awards":"Imagery Award In Honor Of Jack Kamen"
 	},
-	"7229":{
+	7229:{
 		"team_name":"Electronic Eagles",
 		"location":"Sacramento, CA",
 		"rookie_year":2018,
-		"competed_in_2019_seaseon":True,
-		"2019_competition_names":"Sacramento_Regional",
-		"2019_competition_locations":"Davis_CA",
+		"competed_in_2019_season":True,
+		"2019_competition_names":"Sacramento Regional",
+		"2019_competition_locations":"Davis, CA",
 		"2019_season_awards":"None"
 	}
 }
-team_number=input("Team:")
-team_information=input("Category:")
+team_number=int(input("Team Number (options are '1', '1678', '4322', '5458', '7229'):"))
+team_information=input("Category (options are 'team_name', 'location', 'rookie_year', 'competed_in_2019_season','2019_competition_names', '2019_competition_locations', '2019_season_awards':")
 print(teams[team_number][team_information])
