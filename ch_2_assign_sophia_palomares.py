@@ -1,5 +1,4 @@
 teams = {}
-#make sure this is under 1 function
 
 def main_function():
 	user_question_1 = input("What would you like to do? ")
@@ -70,7 +69,6 @@ def exit_program():
 	user_exit = input("Are you sure you want to leave? ")
 	if(user_exit == "Yes"):
 		"You are now leaving the program"
-		break
 	elif(user_exit == "No"):
 		"You chose to stay in the program"
 		main_function()
