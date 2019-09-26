@@ -1,19 +1,19 @@
 #Reminder for self: to run python programs in Visual Studio code, use Cntrl + Fn + F5
 teams = {
-	'1678': {'Last Year': 2019,
+	1678: {'Last Year': 2019,
             'Location': "Davis CA",
             'Rookie Year': 2005,
-            'Events': 'Sac Regional, Central Valley Regional, AeroSpace Valley Regional, Carver division, Einstein field, RCC Qianjiang International Robotics Invitational, Chezy Champs'
+            'Events': "Sac Regional, Central Valley Regional, AeroSpace Valley Regional, Carver division, Einstein field, RCC Qianjiang International Robotics Invitational, Chezy Champs"
             },
-	'2551': {'Last Year': 2019, 
+	2551: {'Last Year': 2019, 
             'Location': "Novato CA", 
             'Rookie Year': 2008, 'Events': 
             'Sac Regional, SF Regional, Galileo divison'},
-    '3421': {'Last Year': 2013, 
+    3421: {'Last Year': 2013, 
             'Location': "Marysville MI", 
             'Rookie Year': 2010, 
             'Events': 'MI FRC state championship'},
-    '2942': {'Last Year': 2018, 
+    2942: {'Last Year': 2018, 
             'Location': "Seattle, WA", 
             'Rookie Year': 2009,
             'Events': ''}
@@ -22,7 +22,7 @@ teams = {
 def teamStats(teamName, attribute):
     #New variable refernce will handle grammer related to pluralities
     reference = "is"
-    stringTest = teams[teamName][attribute].split(",")
+    stringTest = str(teams[teamName][attribute]).split(",")
     attributeDisplay = attribute
     if attribute == "Events" and len(stringTest) > 2:
         reference = "are"
@@ -30,14 +30,14 @@ def teamStats(teamName, attribute):
         if attribute == "Events":
             attributeDisplay = "only Event"
         reference = "is"
-    print("Team " + teamName + "'s " + attributeDisplay + " " + reference + " " + teams[teamName][attribute])
-
+    print("Team " + str(teamName) + "'s " + str(attributeDisplay) + " " + str(reference) + " " + str(teams[teamName][attribute]))
 #The big test, comprised of 3 questions:
-teamStats('1678', 'Location')
-teamStats('1678', 'Events')
+teamStats(1678, 'Location')
+teamStats(1678, 'Events')
 #Just one event: demonstration of proper grammer
-teamStats('3421', 'Events')
-x = input('attribute')
-y = input('teamName')
-print('x is ' + x + " and y is " + y)
-teamStats(y, x)
+teamStats(3421, 'Events')
+while True:
+    x = input('attribute')
+    y = input('teamName')
+    print('attribute is ' + x + " and teamname is " + y)
+    teamStats(int(y), x)
