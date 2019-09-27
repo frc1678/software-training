@@ -48,5 +48,5 @@ Robot_TeamB = {1678: {'Location': 'Davis, CA, USA', 'Rookie': '2005', 'Participa
 	5555: {'Show Location': 'Warren, Michigan', 'Rookie Year': '2015', 'Participate?': 'Yes', 
 	'Competitions': ['FIM District Center Line Event','FIM District Marysville Event'], 'Competitions Location': ['Center Line, MI, USA', 'Marysville, MI, USA'],
 	'Awards': 'District Event Winner'}}
-
+# Prints out the input variables above and the answers for specific information are shown once the questions are answered
 print(Robot_TeamB[Robot_Team][Robot_Stat])
