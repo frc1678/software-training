@@ -1,5 +1,5 @@
 teams = { 
-	'1678':{
+	1678:{
 		'location': 'Davis, CA, USA', 
 		'rookie year': 2005, 
 		'2019 compete': True , 
@@ -34,7 +34,7 @@ teams = {
 			]
 	},
 
-	'1323': {
+	1323: {
 		'location': 'Madera, CA, USA', 
 		'rookie year': 2004, 
 		'2019 compete': True , 
@@ -60,7 +60,7 @@ teams = {
 			'Houston Champs Winner']
 	},
 
-	'254': {
+	254: {
 		'location': 'San Jose, CA, USA', 
 		'rookie year': 1999, 
 		'2019 compete': True , 
@@ -86,7 +86,7 @@ teams = {
 			'Houston Champs Finalist']
 	},
 
-	'3132': {
+	3132: {
 		'location': 'Sydney, New South Wales, Australia', 
 		'rookie year': 2010, 
 		'2019 compete': True , 
@@ -106,7 +106,7 @@ teams = {
 			'Regional Engineering Inspiration Award', 
 			'Safety Award','Division Winner']
 		},
-	'3476':{
+	3476:{
 		'location': 'Irvine, CA, USA', 
 		'rookie year': 2011, 
 		'2019 compete': True , 
@@ -131,6 +131,6 @@ teams = {
 			'Quality Award']
 	}
 }
-team_num = input("Team number: ")
+team_num = int(input("Team number: "))
 attribute = input("Attribute: ")
 print(teams[team_num][attribute]) 
