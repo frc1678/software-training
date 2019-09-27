@@ -6,6 +6,7 @@ teams = { #Stores all the teams with string form of team number as key
         "2019_comps": {
             "FIM District Center Line Event 2019": "Center Line, MI, USA",
             "FIM District Troy Event 2019": "Troy, MI, USA",
+            },
         },
     16: {
         "location": "Mountain Home, Arkansas, USA",
@@ -96,11 +97,16 @@ while requested_attribute == "": #loop until valid input
     if requested_attribute not in valid_requests:
         print(f"Attribute {requested_attribute} not recognized.")
         requested_attribute = ""
-
-requested_attribute_value = teams[team_number][requested_attribute]
+if requested_attribute != "comp_locations": 
+    requested_attribute_value = teams[team_number][requested_attribute]
+else:
+    requested_attribute_value = teams[team_number]["2019_comps"]
 print(f"Team {requested_team_number}'s {requested_attribute}:")
 if isinstance(requested_attribute_value, list):
     for value in requested_attribute_value:
         print(value)
+elif isinstance(requested_attribute_value, dict):
+    for event in requested_attribute_value:
+        print(f"{event} - {requested_attribute_value[event]}")
 else:
     print(requested_attribute_value)
