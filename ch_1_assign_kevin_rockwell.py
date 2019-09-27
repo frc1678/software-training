@@ -3,32 +3,19 @@ teams = { #Stores all the teams with string form of team number as key
         "location": "Pontiac, Michigan, USA",
         "rookie_year": 1997,
         "competed_2019": True,
-        "2019_comps": [
-            "FIM District Center Line Event 2019",
-            "FIM District Troy Event 2019",
-        ],
-        "comp_locations": [
-            "Center Line, MI, USA",
-            "Troy, MI, USA",
-        ],
-        "2019_awards": [
-            "Imagery Award in honor of Jack Kamen",
-        ],
-    },
+        "2019_comps": {
+            "FIM District Center Line Event 2019": "Center Line, MI, USA",
+            "FIM District Troy Event 2019": "Troy, MI, USA",
+        },
     16: {
         "location": "Mountain Home, Arkansas, USA",
         "rookie_year": 1996,
         "competed_2019": True,
-        "2019_comps": [
-            "Midwest Regional",
-            "Rocket City Regional 2019",
-            "Darwin Division 2019",
-        ],
-        "comp_locations": [
-            "Chicago, IL, USA",
-            "Huntsville, AL, USA",
-            "Detriot, MI, USA",
-        ],
+        "2019_comps": {
+            "Midwest Regional": "Chicago, IL, USA",
+            "Rocket City Regional 2019": "Huntsville, AL, USA",
+            "Darwin Division 2019": "Detriot, MI, USA",
+        },
         "2019_awards": [
             "Industrial Design Award sponsored by General Motors",
             "Regional Finalists",
@@ -39,16 +26,11 @@ teams = { #Stores all the teams with string form of team number as key
             "location": "Millbrae, California, USA",
             "rookie_year": 1999,
             "competed_2019": True,
-            "2019_comps": [
-                "San Fransisco Regional",
-                "Monterey Bay Regional",
-                "Newton Divison",
-            ],
-            "comp_locations": [
-            "San Fransisco, CA, USA",
-            "Seaside, CA, USA",
-            "Houston, TX, USA",
-        ],
+            "2019_comps": {
+                "San Fransisco Regional": "San Fransisco, CA, USA",
+                "Monterey Bay Regional": "Seaside, CA, USA",
+                "Newton Divison": "Houston, TX, USA"
+            },
             "2019_awards": [
                 "Team Spirit Award sponsored by FCA Foundation",
             ],
@@ -57,26 +39,19 @@ teams = { #Stores all the teams with string form of team number as key
         "location": "North Charleston, South Carolina, USA",
             "rookie_year": 2000,
             "competed_2019": True,
-            "2019_comps": [
-                "Palmetto Regional 2019",
-                "Rocket City Regional 2019",
-            ],
-            "comp_locations": [
-            "Myrtle Beach, SC, USA",
-            "Huntsville, AL, USA",
-        ],
+            "2019_comps": {
+                "Palmetto Regional 2019": "Myrtle Beach, SC, USA",
+                "Rocket City Regional 2019": "Huntsville, AL, USA",
+            },
             "2019_awards": [],
     },
     554: {
         "location": "Ft. Thomas, Kentucky, USA",
             "rookie_year": 2001,
             "competed_2019": True,
-            "2019_comps": [
-                "Miami Valley Regional 2019",
-            ],
-            "comp_locations": [
-            "Fairborn, OH, USA",
-        ],
+            "2019_comps": {
+                "Miami Valley Regional 2019": "Fairborn, OH, USA",
+            },
             "2019_awards": [],
     }
 }
