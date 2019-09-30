@@ -1,23 +1,59 @@
 all_team_dict = {}
+team_dict = {}
 def add_team():
 	input_num = input("Please enter a team number to add/update or 0 to exit.\n(If the team already exists, the information will be updated.)\n==>")
 	if input_num == '0':
+		print("Exiting...")
 		return
-	input_name = input("Please enter the team name.\n==>")
-	input_prog_lang = input("Please enter the programming language.\n==>")
-	input_w = input("Please enter the width.\n==>")
-	input_l = input ("Please enter the length.\n==>")
-	input_cam_vision = input("Does it have a camera vision system? Please answer 'yes' or 'no'.\n==>")
-	input_motors = input("Please enter the number of drivetrain motors.\n==>")
+	elif (input_num.isdigit()):
+		team_dict["number"] = input_num
+	else: 
+		print("Invalid input.")
+		return
 
-	team_dict = {}
-	team_dict ["number"] = input_num
-	team_dict ["name"] = input_name
-	team_dict ["prog_lang"] = input_prog_lang
-	team_dict ["w"] = input_w
-	team_dict ["l"] = input_l
-	team_dict ["cam_vision"] = input_cam_vision
-	team_dict ["motors"] = input_motors
+	input_name = input("Please enter the team name.\n==>")
+	if isinstance(input_name, str):
+		team_dict["name"] = input_name
+	else: 
+		print("Invalid input.")
+		return 
+
+	input_prog_lang = input("Please enter the programming language.\n==>")
+	if isinstance(input_name, str):
+		team_dict["prog_lang"] = input_prog_lang
+	else:
+		print("Invalid input.")
+		return
+
+	input_w = input("Please enter the width.\n==>")
+	if (input_w.isdigit()):
+		team_dict["w"] = input_w
+	else:
+		print("Invalid input.")
+		return 
+
+	input_l = input ("Please enter the length.\n==>")
+	if (input_l.isdigit()):
+		team_dict["l"] = input_l
+	else:
+		print("Invalid input.")
+		return 
+
+	input_cam_vision = input("Does it have a camera vision system? Please answer 'true' or 'false'.\n==>")
+	if input_cam_vision == 'true':
+		team_dict["cam_vision"] = input_cam_vision
+	elif input_cam_vision == 'false':
+		team_dict["cam_vision"] = input_cam_vision
+	else: 
+		print("Invalid input.")
+		return
+
+	input_motors = input("Please enter the number of drivetrain motors.\n==>")
+	if (input_motors.isdigit()):
+		team_dict["motors"] = input_motors
+	else:
+		print("Invalid input.")
+		return
 
 	all_team_dict.update( {input_num : team_dict} )
 	print("Successfully added team " + input_num + "!") 
