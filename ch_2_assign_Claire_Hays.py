@@ -1,7 +1,7 @@
 teams = {}
 while True:
     command = input("""Enter the command (add a team, remove a team, search for a team, list all teams, 
-    view team's information, modify team's information, view all teams and information, or quit): """)
+view team's information, modify team's information, view all teams and information, or quit): """)
     
 
     if command == "add a team":
@@ -30,8 +30,18 @@ while True:
 
 
     if command == "search for a team":
-        team_search = int(input("What team number would you like to search for? "))
-        print(teams.get(team_search))
+        team_search = input("What team would you like to search for? ")
+        if team_search.isnumeric() == True:
+            print(teams.get(int(team_search)))
+        else:
+            names = []
+            for team_num, team_attributes in teams.items():
+                names.append(team_attributes["Name"])
+            if team_search in names:
+                print("The team you searched for was found in the database.")
+            else:
+                print("The team you searched for was not in the database.")
+                   
 
 
     if command == "list all teams":
