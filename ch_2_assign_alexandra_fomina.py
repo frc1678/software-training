@@ -51,8 +51,6 @@ while True:
             print(teams[1678])
         else:
             print("This team doesn't have any information")
-    if command == "quit":
-     	break
     if command == "edit":
         new_name = input("What is the team name? ")
         new_lang = input("What is their programming language? ")
@@ -66,4 +64,5 @@ while True:
                     teams[key] = new_name
         replace_new_info('teams', 't_number')
         print(t_number)
- 
+    if command == "quit":
+        break
