@@ -51,7 +51,7 @@ def modify_team(team_name_modify):
 		new_width = input("What is the Robot's updated width? ")
 		teams[team_name_modify]["width"] = new_width
 	elif(team_attribute_modify == "Robot Length"):
-		new_length = input("What is the robot;s updated length?")
+		new_length = input("What is the robot's updated length?")
 		teams[team_name_modify]["length"] = new_length
 	elif(team_attribute_modify == "Camera Vision System"):
 		new_cam_vis_system = input("Does the team have a camera vision system? ")
@@ -73,7 +73,7 @@ def add_team():
 	width = int(input("What is your team's robot's width? "))
 	length = int(input("Wnat is your team's robot's length? "))
 	cam_vision = input("Does your team's robot's have a camera vision system? ")
-	drive_motors = int(input("How many dritrain motors does your team have? "))
+	drive_motors = int(input("How many drivetrain motors does your team have? "))
 
 	temp_team_dictionary["name"] = name
 	temp_team_dictionary["programming language"] = p_language
@@ -86,7 +86,6 @@ def add_team():
 	teams[team_number_input] = temp_team_dictionary
 
 	main_function()
-
 
 def search_team_name_number():
 	user_search = (input("What team do you want to search? "))
