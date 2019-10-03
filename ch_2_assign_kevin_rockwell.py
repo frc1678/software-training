@@ -82,7 +82,8 @@ while True:
         team_num = get_team_num()
         if team_num == "": #User canceled add operation
             continue #Go back into main menu loop
-        
+        elif team_num in teams.keys():
+            print(f"Team Number {team_num} already in ")
         temp_team = get_team_data()
         
         while True: #Confirm before saving
