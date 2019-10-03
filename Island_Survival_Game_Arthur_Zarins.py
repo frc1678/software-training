@@ -1,18 +1,20 @@
 import random
 squares = {}
-size = 3
+size = 7
 xPos = size // 2
 yPos = size // 2
 for x in range(size):
     for y in range(size):
-        #Add a square
+        # Add a square
         squares.update({str(x) + "-" + str(y): True})
-#print(squares)
+# print(squares)
+
+
 def printBoard():
     for y in range(size):
         line = ""
         for x in range(size):
-            #Add a square
+            # Add a square
             boolo = squares[str(x) + "-" + str(y)]
             if boolo == True:
                 if y == yPos and x == xPos:
@@ -22,9 +24,10 @@ def printBoard():
             else:
                 line = line + "  "
         print(line)
+
     # else:
-        #Off-board
-#End of function
+        # Off-board
+# End of function
 game = True
 while game == True:
     printBoard()
@@ -51,26 +54,35 @@ while game == True:
                 legalMove = True
         else:
             print("Invalid move")
-        #Return to last pos if unaccepted
+        # Return to last pos if unaccepted
         if legalMove == False:
             xPos = oX
             yPos = oY
-        #end
-    #Remove terrain
+        # end
+    # Remove terrain
     RX = 0
     RY = 0
-    while (RX == xPos and RY == yPos) or squares[str(RX) + "-" + str(RY)] == False:
-        #We want to remove a new part of the Island, and not kill the player
+    while (RX == xPos and RY == yPos) or squares[str(str(RX) + "-" + str(RY))] == False:
+        # We want to remove a new part of the Island, and not kill the player
         RX = random.randint(0, size)
         RY = random.randint(0, size)
-        if RX > 9:
-            RX = 9
-        if RY > 9:
-            RY = 9 
+        if RX >= size:
+            RX = size - 1
+        if RY >= size:
+            RY = size - 1
     if RX == xPos and RY == yPos:
         print()
     else:
         squares.update({str(RX) + "-" + str(RY): False})
-        if squares[str(xPos) + "-" + str(xPos)] == False:
-            print ("GAME OVER")
+        good = 0
+        for x in range(size):
+            for y in range(size):
+                # Add to good square count
+                if squares[str(xPos) + "-" + str(yPos)] == True:
+                    good = good + 1
+        if squares[str(xPos) + "-" + str(yPos)] == False:
+            print("GAME OVER")
+            game = False
+        if good < 1:
+            print("You win!")
             game = False
