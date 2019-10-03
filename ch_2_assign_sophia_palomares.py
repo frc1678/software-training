@@ -3,8 +3,8 @@ teams = {}
 #List of Function Operations:
 #name_number functions: make team names and number interchangeable for specified functions
 #remove_team: removes a team
-#modify_team: modifies an attribute for a team
-#search_team: searches for an attribute for a team
+#modify_team: modifies an attribute of a team
+#search_team: searches for an attribute of a team
 #add_team: adds a team to the main teams dictionary
 #list_team: lists the team #, or keys in the teams dictionary
 #exit_program: leaves the program
