@@ -13,11 +13,11 @@ teams = {}
 def remove_team_name_number():
 	user_remove = (input("What team do you want to remove? "))
 	for x in teams:
-		if (teams[x]["name"] == user_remove):
+		if teams[x]["name"] == user_remove:
 			team_name_remove = x
 			remove_team(team_name_remove)
-		elif (user_remove.isnumeric()):
-			if (int(user_remove) == x):
+		elif user_remove.isnumeric():
+			if int(user_remove) == x:
 				team_name_remove = x
 				remove_team(team_name_remove)
 
@@ -27,13 +27,13 @@ def remove_team(team_name_remove):
 	main_function()
 
 def modify_team_name_number():
-	user_modify = (input("What team do you want to modify? "))
+	user_modify = input("What team do you want to modify? ")
 	for x in teams:
-		if (teams[x]["name"] == user_modify):
+		if teams[x]["name"] == user_modify:
 			team_name_modify = x
 			modify_team(team_name_modify)
-		elif (user_modify.isnumeric()):
-			if (int(user_modify) == x):
+		elif user_modify.isnumeric():
+			if int(user_modify) == x:
 				team_name_modify = x
 				modify_team(team_name_modify)
 
@@ -41,25 +41,25 @@ def modify_team(team_name_modify):
 	print("Options")
 	print("Team Name, Programming Language, Robot Width, Robot Length, Camera Vision System, Drivetrain Motors, Team Number")
 	team_attribute_modify = input("What would you like to modify about the team? ")
-	if(team_attribute_modify == "Team Name"):
+	if team_attribute_modify == "Team Name":
 		new_name = input("What is the new team name? ")
 		teams[team_name_modify]["name"] = new_name
-	elif(team_attribute_modify == "Programming Language"):
+	elif team_attribute_modify == "Programming Language":
 		new_p_language = input("What is the team's new programming language? ")
 		teams[team_name_modify]["programming language"] = new_p_language
-	elif(team_attribute_modify == "Robot Width"):
+	elif team_attribute_modify == "Robot Width":
 		new_width = input("What is the Robot's updated width? ")
 		teams[team_name_modify]["width"] = new_width
-	elif(team_attribute_modify == "Robot Length"):
+	elif team_attribute_modify == "Robot Length":
 		new_length = input("What is the robot's updated length?")
 		teams[team_name_modify]["length"] = new_length
-	elif(team_attribute_modify == "Camera Vision System"):
+	elif team_attribute_modify == "Camera Vision System":
 		new_cam_vis_system = input("Does the team have a camera vision system? ")
 		teams[team_name_modify]["camera vision system"] = new_cam_vis_system
-	elif(team_attribute_modify == "Drivetrain Motors"):
+	elif team_attribute_modify == "Drivetrain Motors":
 		new_drive_motors = input("What is the team's updated drivetrain motors? ")
 		teams[team_name_modify]["drivetrain motors"] = new_drive_motors
-	elif(team_attribute_modify == "Team Number"):
+	elif team_attribute_modify == "Team Number":
 		new_team_number = int(input("What is the team's new team number? "))
 		teams[new_team_number] = teams.pop(team_name_modify)
 	
@@ -90,39 +90,24 @@ def add_team():
 def search_team_name_number():
 	user_search = (input("What team do you want to search? "))
 	for x in teams:
-		if (teams[x]["name"] == user_search):
+		if teams[x]["name"] == user_search:
 			team_name_search = x
 			search_team(team_name_search)
-		elif (user_search.isnumeric()):
-			if (int(user_search) == x):
+		elif user_search.isnumeric():
+			if int(user_search) == x:
 				team_name_search = x
 				search_team(team_name_search)
 
 def search_team(team_name_search):
+	search_aspects = ["name", "programming language", "width", "length", "camera vision system", "drivetrain motors", "team number"]
 	print("Options:")
-	print("Team Name, Programming Language, Robot Width, Robot Length, Camera Vision System, Drivetrain Motors, Team Number")
+	print(search_aspects)
 	user_search_specific = input("What would you like to look up about a team? ")
-	if(user_search_specific == "Team Name"):
-		print("Team Name:")
-		print(teams[team_name_search]["name"])
-	elif(user_search_specific == "Programming Language"):
-		print("Programming Language:")
-		print(teams[team_name_search]["programming language"])
-	elif(user_search_specific == "Robot Width"):
-		print("Robot's Width:")
-		print(teams[team_name_search]["width"])
-	elif(user_search_specific == "Robot Length"):
-		print("Robot's Length:")
-		print(teams[team_name_search]["length"])
-	elif(user_search_specific == "Camera Vision System"):
-		print("Camera Vision System:")
-		print(teams[team_name_search]["camera vision system"])
-	elif(user_search_specific == "Drivetrain Motors"):
-		print("Number of Drivetrain Motors:")
-		print(teams[team_name_search]["drivetrain motors"])
-	elif(user_search_specific == "Team Number"):
-		print("Team Number:")
-		print(teams[team_name_search])
+	for search_aspect in search_aspects:
+		if user_search_specific == search_aspect:
+			print(user_search_specific)
+			print(teams[team_name_search][user_search_specific])
+			break
 	else:
 		print("Unknown Input")
 		search_team(team_name_search)
@@ -137,10 +122,10 @@ def list_team():
 def exit_program():
 	print("You are choosing to exit the program")
 	user_exit = input("Are you sure you want to leave? ")
-	if(user_exit == "Yes"):
+	if user_exit == "Yes":
 		"You are now leaving the program"
 		return None
-	elif(user_exit == "No"):
+	elif user_exit == "No":
 		"You chose to stay in the program"
 		main_function()
 	else:
@@ -151,17 +136,17 @@ def main_function():
 	print("Options:")
 	print("Add Team, Remove Team, Modify Team, List of Teams, Search for Team, Exit")
 	user_question_1 = input("What would you like to do? ")
-	if(user_question_1 == "Add Team"):
+	if user_question_1 == "Add Team":
 		add_team()
-	elif(user_question_1 == "Modify Team"):
+	elif user_question_1 == "Modify Team":
 		modify_team_name_number()
-	elif(user_question_1 == "Remove Team"):
+	elif user_question_1 == "Remove Team":
 		remove_team_name_number()
-	elif(user_question_1 == "Search for Team"):
+	elif user_question_1 == "Search for Team":
 		search_team_name_number()
-	elif(user_question_1 == "List of Teams"):
+	elif user_question_1 == "List of Teams":
 		list_team()
-	elif(user_question_1 == "Exit"):
+	elif user_question_1 == "Exit":
 		exit_program()
 	else:
 		print("Input is unknown.")
