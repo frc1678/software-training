@@ -1,4 +1,5 @@
 teams = {}
+team_aspects = ["name", "programming language", "width", "length", "camera vision system", "drivetrain motors", "team number"]
 
 #List of Function Operations:
 #name_number functions: make team names and number interchangeable for specified functions
@@ -38,9 +39,18 @@ def modify_team_name_number():
 				modify_team(team_name_modify)
 
 def modify_team(team_name_modify):
-	print("Options")
-	print("Team Name, Programming Language, Robot Width, Robot Length, Camera Vision System, Drivetrain Motors, Team Number")
+	print("Options:")
+	print(team_aspects)
 	team_attribute_modify = input("What would you like to modify about the team? ")
+	#how do i make this work? will this work?
+	'''for team_aspect in team_aspects:
+		if team_attribute_modify == team_aspect:
+			new_attribute = input("What is the team's updated attribute? ")
+			teams[team_name_modify][team_aspect] = new_attribute
+			break
+		else:
+			print("Input Unknown")
+			modify_team(team_name_modify)'''
 	if team_attribute_modify == "Team Name":
 		new_name = input("What is the new team name? ")
 		teams[team_name_modify]["name"] = new_name
@@ -99,12 +109,11 @@ def search_team_name_number():
 				search_team(team_name_search)
 
 def search_team(team_name_search):
-	search_aspects = ["name", "programming language", "width", "length", "camera vision system", "drivetrain motors", "team number"]
 	print("Options:")
-	print(search_aspects)
+	print(team_aspects)
 	user_search_specific = input("What would you like to look up about a team? ")
-	for search_aspect in search_aspects:
-		if user_search_specific == search_aspect:
+	for team_aspect in team_aspects:
+		if user_search_specific == team_aspect:
 			print(user_search_specific)
 			print(teams[team_name_search][user_search_specific])
 			break
