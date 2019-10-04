@@ -44,16 +44,17 @@ while True:
 			if search_teams == category["team_name"]:
 				print("This is an existing team in the dictionary.")
 				found_team = True
-				continue
-			elif int(search_teams) == team:
+				break
+			elif search_teams[0].isdigit() and int(search_teams) == team:
 				print("This is an existing team in the dictionary.")
 				found_team = True
-				continue
+				break
 		if found_team != True:
 			print("This is not an existing team.")
 
 	elif initial_user_request == "list":
-		print(teams)
+		for team in teams.keys():
+			print(team)
 		print("These are the current teams in the dictionary.")
 
 	else:
