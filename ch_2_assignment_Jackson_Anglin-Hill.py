@@ -94,10 +94,11 @@ while on:
 
     while request == 'Search for team':
         requested_team = input("Which team would you like to confirm is in our database?: ")
-        if requested_team in teams or requested_team in teams.values():
+        if requested_team in teams:
             print("Requested team is in database. You can view its information using command 'View team information' and entering the team number again.")
-        else:
-            print('Team not found. Please search for another team.')
+        for team in teams.values():
+            if team['Name'] == requested_team:
+                print("Requested team is in database. You can view its information using command 'View team information' and entering the team number again.")
         uncontinue = input("Would you like to search for another team? Enter 'Yes' 'No': ")
         if uncontinue == 'No':
             request = 'Done'
