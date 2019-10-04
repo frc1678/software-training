@@ -26,8 +26,13 @@ while user_menu_selection != 0:
 	if user_menu_selection == '0':
 		break
 	if user_menu_selection == '1':
-		team_number = int(input('Please enter team number:\n'))
-		teams.update({team_number:{}})
+		team_number = input('Please enter team number:\n')
+		if team_number.isnumeric():
+			teams.update({team_number:{}})
+		else:
+			print('please enter a number')
+			
+			continue
 
 		user_input = '1'
 		while True: 
@@ -71,7 +76,6 @@ while user_menu_selection != 0:
 	if user_menu_selection == '2':	
 		team_name = input('delete which team? \n')
 		if team_name.isnumeric():
-			team_name = int(team_name)
 			if team_name in teams.keys():
 				print(teams.keys())
 				teams.pop(team_name)
@@ -82,46 +86,19 @@ while user_menu_selection != 0:
 			print('please enter an integer \n')
 
 	if user_menu_selection == '3':
-		team_search = str(input('what team would you like to search? \n'))
+		team_search = input('what team would you like to search? \n')
+		#team_search_validation = False
 		for team_number, team_name in teams.items():
-			if team_search.isnumeric():
-				if int(team_search) == team_number:
-					print(teams[team_number])
-			elif team_search == team_name['team_name']:
-				print(teams[team_number])
-			else:
-				print('not ok')	
+			if team_search == team_number:
+				for sub_team_name, sub_team_value in team_name.items():
+					print(sub_team_name + ' = ' + sub_team_value)
+		for team_number, team_name in teams.items():
+			if team_search == team_name['team_name']:
+				for sub_team_number, sub_team_name in team_name.items():
+					print(str(sub_team_number) + ' = ' + str(sub_team_name))
+			
 	if user_menu_selection == '4':
 		for key, value in teams.items():
 			print (key)
 			for subkey, subvalue in value.items():
 				print('  '+ subkey + ' = ' + subvalue)
-
-
-
-		"""if team_search in teams.keys():
-			print("Present, ") 
-			print("value =", teams[key]) 
-		else: 
-			print("Not present") """
-
-		
-	#entering team number and updating the teams dict
-
-		   
-
-
-		"""elif want_to_change['type'] == 'int':
-			val_change = input('what is the new integer value for ' + want_to_change['property'] + '\n')
-		elif want_to_change['type'] == 'bool':
-			val_change = input('''please enter 'true' or 'false' ''' + want_to_change['property'] + '\n')"""
-
-		"""if want_to_change['type'] == 'bool':
-			val_change = input('''type "true" or "false" if they have a ''' + want_to_change['property']+'\n')
-			val_change = bool(val_change)
-		
-		if want_to_change['type'] == 'int':
-			val_change = input('please enter new number value of ' + want_to_change['property']+'\n')
-			val_change = int(val_change)"""
-
-		
