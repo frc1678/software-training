@@ -2,7 +2,6 @@ on = True
 #teams is a dictionary with teams numbers as the keys and their information as the definitions.
 teams = {}
 #team_names is a list containing the names of the teams.
-team_names = []
 allowed_actions = [
     'Add team',
     'Remove team',
@@ -16,30 +15,40 @@ while on:
     request = input('What would you like to do? Please enter exactly as shown: ')
     while request == 'Add team':
         requested_team = input('Input team number: ')
-        requested_team_name = input('Input team name: ')
-        team_info = input('Enter team information: ')
-        teams[int(requested_team)] = team_info
-        team_names.append(requested_team_name)
+        if requested_team in teams:
+            print('This team is already in the system. Please add a different team, confirm you have entered the team number correctly, or edit the information already existing in this team.')
+        else:
+            name = input('What is the team name?: ')
+            program = input('What programming language do they use?: ')
+            width = input('What is the width of the robot?: ')
+            length = input('What is the length of the robot?: ')
+            camera = input('Do they have a camera system?: ')
+            drivetrain = input('How many drivetrain motors do they have?: ')
+            teams[requested_team] = {}
+            teams[requested_team]['Name'] = name
+            teams[requested_team]['Program'] = program
+            teams[requested_team]['Width'] = width
+            teams[requested_team]['Length'] = length
+            teams[requested_team]['Camera'] = camera
+            teams[requested_team]['Drivetrain#'] = drivetrain
         uncontinue = input("Would you like to add another team? Enter 'Yes' 'No': ")
+#Returns to main menu
         if uncontinue == 'No':
             request = 'Done'
 
     while request == 'Remove team':
         print(teams.keys())
-        print(team_names)
-        requested_team = int(input('Input team number: '))
-        requested_team_name = str(input('Enter team name: '))
+        requested_team = input('Input team number: ')
         if requested_team in teams:
             teams.pop(requested_team)
-            team_names.remove(requested_team_name)
         else:
             print('Team not found. Try another team or make sure you entered the team number correctly.')
         uncontinue = input("Would you like to remove another team? Enter 'Yes' 'No': ")
         if uncontinue == 'No':
             request = 'Done'
-        
+
     while request == 'View team information':
-        requested_team = int(input('Input team number: '))
+        requested_team = input('Input team number: ')
         if requested_team in teams:
             print(teams[requested_team])
         else:
@@ -50,31 +59,45 @@ while on:
 
     while request == 'Modify team information':
         print(teams.keys())
-        requested_team = int(input("What team's information would you like to edit? Enter the team number, not name: "))
+        requested_team = input("What team's information would you like to edit?: ")
         if requested_team in teams:
-            team_info = input(teams[requested_team] + 'Edit here. You will have to copy all the information shown above and make changes while typing, or untyped information will be lost: ')
-            teams.pop(requested_team)
-            teams[requested_team] = team_info
+            change = input("What would you like to change for this team? Enter 'Name' 'Program' 'Width' 'Length' 'Camera' 'Drivetrain#': ")
+            if change == 'Name':
+                name = input('What is the team name?: ')
+                teams[requested_team].pop('Name')
+                teams[requested_team]['Name'] = name
+            if change == 'Program':
+                program = input('What program is the team using?: ')
+                teams[requested_team].pop('Program')
+                teams[requested_team]['Program'] = program
+            if change == 'Width':
+                width = input('What width is the robot?: ')
+                teams[requested_team].pop('Width')
+                teams[requested_team]['Width'] = width
+            if change == 'Length':
+                length = input('What length is the robot?: ')
+                teams[requested_team].pop('Length')
+                teams[requested_team]['Length'] = length
+            if change == 'Camera':
+                camera = input('Does the robot have a camera system?: ')
+                teams[requested_team].pop('Camera')
+                teams[requested_team]['Camera'] = camera
+            if change == 'Drivetrain#':
+                drivetrain = input('How many drivetrains is the robot using?: ')
+                teams[requested_team].pop('Drivetrain#')
+                teams[requested_team]['Drivetrain#'] = drivetrain
         elif requested_team not in teams:
-        	print('Team not found. Try another team or make sure you entered the team number correctly.')
+            print('Team not found. Try another team or make sure you entered the team number correctly.')
         uncontinue = input("Would you like to modify another team? Enter 'Yes' 'No': ")
         if uncontinue == 'No':
             request = 'Done'
 
     while request == 'Search for team':
-        wanted_action = input("Would you like to search by team number or name? Enter 'number' or 'name': ")
-        if wanted_action == 'number':
-            requested_team = int(input("Which team would you like to confirm is in our database?: "))
-            if requested_team in teams:
-                print("Requested team is in database. You can view its information using command 'View team information' and entering the team number again.")
-            else:
-                print('Team not found. Please search for another team.')
-        if wanted_action == 'name':
-            requested_team = input("Which team would you like to confirm is in our database?: ")
-            if requested_team in team_names:
-                print("Requested team is in database. You can view its information using command 'View team information' and entering the team number again.")
-            else:
-                print('Team not found. Please search for another team.')
+        requested_team = input("Which team would you like to confirm is in our database?: ")
+        if requested_team in teams or requested_team in teams.values():
+            print("Requested team is in database. You can view its information using command 'View team information' and entering the team number again.")
+        else:
+            print('Team not found. Please search for another team.')
         uncontinue = input("Would you like to search for another team? Enter 'Yes' 'No': ")
         if uncontinue == 'No':
             request = 'Done'
