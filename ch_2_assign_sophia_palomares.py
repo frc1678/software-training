@@ -1,7 +1,6 @@
 teams = {}
 team_aspects = ["name", "programming language", "width", "length", "camera vision system", "drivetrain motors", "team number"]
 
-
 #List of Function Operations:
 #name_number functions: make team names and number interchangeable for specified functions
 #remove_team: removes a team
@@ -48,19 +47,7 @@ def modify_team(team_name_modify):
 		print("Input Unknown")
 		modify_team(team_name_modify)
 
-	validation_modify_team(team_name_modify)
 	main_function()
-#fix this!!!
-def validation_modify_team(team_name_modify):
-	for digit_answers in team_digit_answers:
-		if digit_answers[0].isdigit():
-			digit_answers = int(digit_answers)
-			team_name_modify[digit_answer] = digit_answers
-		else:
-			print("Input wasn't a number, please enter number")
-			print(digit_answers)
-			digit_answer = int(input("Please enter the new answer "))
-			team_name_modify[digit_answers] = digit_answer
 
 def add_team():
 	temp_team_dictionary = {}
@@ -90,17 +77,25 @@ def add_team():
 		team_number_input = int(input("Add a team number "))
 		teams[team_number_input] = temp_team_dictionary
 
-	validation_add_team(team_number_input)
+	validation(team_number_input)
 	main_function()
 
-def validation_add_team(team_number_input):
+def validation(team_number_input):
 	for data_field in ["width", "length", "drivetrain motors"]:
 		if teams[team_number_input][data_field].isdigit():
 			teams[team_number_input][data_field] = int(teams[team_number_input][data_field])
 		else:
-			print("Input wasn't a number, please enter number")
+			print("Input wasn't a number, please enter number for")
 			print(data_field)
 			teams[team_number_input][data_field] = int(input("Please enter the new answer "))
+	for data_field in ["name", "programming language", "camera vision system"]:
+		if teams[team_number_input][data_field].isdigit() == False:
+			teams[team_number_input][data_field] = str(teams[team_number_input][data_field])
+		else:
+			print("Input was a number, please enter a word for")
+			print(data_field)
+			teams[team_number_input][data_field] = str(input("Please enter the new answer "))
+
 
 def search_team_name_number():
 	user_search = input("What team do you want to search? ")
