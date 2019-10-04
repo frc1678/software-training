@@ -68,27 +68,42 @@ while user_menu_selection != 0:
 				
 			print(teams)
 
-	if user_menu_selection == '2':
-		team_type_selection = str(input('would you like to search by team name or number? \n'))
-		if team_type_selection == 'number':			
-			team_name = int(input('delete which team? \n'))
-			#if team_name in teams.values():
-			print(teams.keys())
-			teams.pop(team_name)
-			print(teams.keys())
+	if user_menu_selection == '2':	
+		team_name = input('delete which team? \n')
+		if team_name.isnumeric():
+			team_name = int(team_name)
+			if team_name in teams.keys():
+				print(teams.keys())
+				teams.pop(team_name)
+				print(teams.keys())
+			else:
+				print('team ' + team_name +' does not exist')
 		else:
-			print('team ' + team_name +' does not exist')
-		if team_type_selection == 'name':
-			team_name = str(input('delete which team? \n'))
-			print(teams.values())
+			print('please enter an integer \n')
 
 	if user_menu_selection == '3':
 		team_search = str(input('what team would you like to search? \n'))
-		if team_search in teams.keys():
+		for team_number, team_name in teams.items():
+			if team_search.isnumeric():
+				if int(team_search) == team_number:
+					print(teams[team_number])
+			elif team_search == team_name['team_name']:
+				print(teams[team_number])
+			else:
+				print('not ok')	
+	if user_menu_selection == '4':
+		for key, value in teams.items():
+			print (key)
+			for subkey, subvalue in value.items():
+				print('  '+ subkey + ' = ' + subvalue)
+
+
+
+		"""if team_search in teams.keys():
 			print("Present, ") 
 			print("value =", teams[key]) 
 		else: 
-			print("Not present") 
+			print("Not present") """
 
 		
 	#entering team number and updating the teams dict
