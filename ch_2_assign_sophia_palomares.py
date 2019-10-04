@@ -50,7 +50,7 @@ def modify_team(team_name_modify):
 
 	validation_modify_team(team_name_modify)
 	main_function()
-
+#fix this!!!
 def validation_modify_team(team_name_modify):
 	for digit_answers in team_digit_answers:
 		if digit_answers[0].isdigit():
@@ -100,8 +100,7 @@ def validation_add_team(team_number_input):
 		else:
 			print("Input wasn't a number, please enter number")
 			print(data_field)
-			data_field = int(input("Please enter the new answer "))
-			teams[team_number_input][data_field] = data_fields
+			teams[team_number_input][data_field] = int(input("Please enter the new answer "))
 
 def search_team_name_number():
 	user_search = input("What team do you want to search? ")
