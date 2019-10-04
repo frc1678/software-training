@@ -3,7 +3,7 @@ teams = {}
 def get_team_num():
     print("Enter team number or 'c' to cancel")
     while True:
-        team_num = input("Team Number: ")
+        team_num = input("Team Number: ").lower().rstrip()
         if team_num.isdigit():
             return int(team_num)
         elif team_num.lower() == "c":
@@ -13,13 +13,13 @@ def get_team_num():
 
 def get_vision():
     while True: #Limit Vision to True or False 
-        vision = input("Team Has Vision System [True/False]: ").lower()
+        vision = input("Team Has Vision System [True/False]: ").lower().rstrip()
         if vision == "t" or vision == "true":
             return True
         elif vision == "f" or vision == "false":
             return False
         elif vision == "":
-            return ""
+            return "Unknown"
         else:
             print(f"Invalid Value {vision}, expected True or False")
 
@@ -29,7 +29,7 @@ def get_drivetrain_motors():
         if motors.isdigit():
             return int(motors)
         elif motors == "":
-            return ""
+            return "Unknown"
         else:
             print(f"Invalid Motor Number {motors}")
 
@@ -39,7 +39,7 @@ def get_input(prompt):
     if response != "":
         return response
     else:
-        return None
+        return "Unknown"
 
 def print_team(team_num, team):
     print(f"Team {team_num} - {team['name']}\n") #Print Number - Name
@@ -52,7 +52,7 @@ def print_team(team_num, team):
 def get_team_data():
     temp_team = {} #Store unentered values as blank string 
     print("Input team data, enter blank line to skip data point")
-    #Store Unknowns as None using get_input
+    #Store Unknowns as "Unknown" using get_input
     temp_team["name"] = get_input("Team name:\n")
     temp_team["lang"] = get_input("Programming Language: ") 
 
@@ -87,7 +87,7 @@ while True:
         temp_team = get_team_data()
         
         while True: #Confirm before saving
-            save = input(f"Save team {team_num}? [Y/n]").lower() 
+            save = input(f"Save team {team_num}? [Y/n]").lower()
             if save == "y" or save == "":
                 teams[team_num] = temp_team
                 break
@@ -105,12 +105,32 @@ while True:
             continue
         print(f"Modifying team {team_num}")
         while True: #Confirm before saving
-            save = input(f"Edit team {team_num}? [Y/n]").lower() 
-            if save == "y" or save == "":
-                teams[team_num] = get_team_data()
+            print("""
+                Select Attribute to Modify, or 'e' to return to main menu:
+                (n)ame
+                (p)rogramming language
+                (w)idth
+                (l)ength
+                (v)ision
+                (m)otor numbers in drietrain
+                """)
+            to_modify = input("Selection: ")
+            if to_modify == "n":
+                teams[team_num]["name"] = get_input("Enter Name: ")
+            elif to_modify == "p":
+                teams[team_num]["lang"] = get_input("Enter Language: ")
+            elif to_modify == "w":
+                teams[team_num]["width"] = get_input("Enter Width: ")
+            elif to_modify == "l":
+                teams[team_num]["length"] = get_input("Enter Length: ")
+            elif to_modify == "v":
+                teams[team_num]["vision"] = get_vision()
+            elif to_modify == "m":
+                teams[team_num]["motors"] = get_drivetrain_motors()
+            elif to_modify == "e":
                 break
-            elif save == "n":
-                break
+            else:
+                print("Invalid Action")
 
     elif selection == "r": #remove team
         team_num = get_team_num()
