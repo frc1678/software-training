@@ -12,14 +12,12 @@ team_aspects = ["name", "programming language", "width", "length", "camera visio
 #main_function: The "main menu" for the other operations
 
 def remove_team_name_number():
-	user_remove = (input("What team do you want to remove? "))
-	for x in teams:
-		if teams[x]["name"] == user_remove:
-			team_name_remove = x
+	user_remove = input("What team do you want to remove? ")
+	for team_name_remove in teams:
+		if teams[team_name_remove]["name"] == user_remove:
 			remove_team(team_name_remove)
 		elif user_remove.isnumeric():
-			if int(user_remove) == x:
-				team_name_remove = x
+			if int(user_remove) == team_name_remove:
 				remove_team(team_name_remove)
 
 def remove_team(team_name_remove):
@@ -29,50 +27,26 @@ def remove_team(team_name_remove):
 
 def modify_team_name_number():
 	user_modify = input("What team do you want to modify? ")
-	for x in teams:
-		if teams[x]["name"] == user_modify:
-			team_name_modify = x
+	for team_name_modify in teams:
+		if teams[team_name_modify]["name"] == user_modify:
 			modify_team(team_name_modify)
 		elif user_modify.isnumeric():
-			if int(user_modify) == x:
-				team_name_modify = x
+			if int(user_modify) == team_name_modify:
 				modify_team(team_name_modify)
 
 def modify_team(team_name_modify):
 	print("Options:")
 	print(team_aspects)
 	team_attribute_modify = input("What would you like to modify about the team? ")
-	#how do i make this work? will this work?
-	'''for team_aspect in team_aspects:
+	for team_aspect in team_aspects:
 		if team_attribute_modify == team_aspect:
 			new_attribute = input("What is the team's updated attribute? ")
 			teams[team_name_modify][team_aspect] = new_attribute
 			break
-		else:
-			print("Input Unknown")
-			modify_team(team_name_modify)'''
-	if team_attribute_modify == "Team Name":
-		new_name = input("What is the new team name? ")
-		teams[team_name_modify]["name"] = new_name
-	elif team_attribute_modify == "Programming Language":
-		new_p_language = input("What is the team's new programming language? ")
-		teams[team_name_modify]["programming language"] = new_p_language
-	elif team_attribute_modify == "Robot Width":
-		new_width = input("What is the Robot's updated width? ")
-		teams[team_name_modify]["width"] = new_width
-	elif team_attribute_modify == "Robot Length":
-		new_length = input("What is the robot's updated length?")
-		teams[team_name_modify]["length"] = new_length
-	elif team_attribute_modify == "Camera Vision System":
-		new_cam_vis_system = input("Does the team have a camera vision system? ")
-		teams[team_name_modify]["camera vision system"] = new_cam_vis_system
-	elif team_attribute_modify == "Drivetrain Motors":
-		new_drive_motors = input("What is the team's updated drivetrain motors? ")
-		teams[team_name_modify]["drivetrain motors"] = new_drive_motors
-	elif team_attribute_modify == "Team Number":
-		new_team_number = int(input("What is the team's new team number? "))
-		teams[new_team_number] = teams.pop(team_name_modify)
-	
+	else:
+		print("Input Unknown")
+		modify_team(team_name_modify)
+
 	main_function()
 
 def add_team():
@@ -98,14 +72,12 @@ def add_team():
 	main_function()
 
 def search_team_name_number():
-	user_search = (input("What team do you want to search? "))
-	for x in teams:
-		if teams[x]["name"] == user_search:
-			team_name_search = x
+	user_search = input("What team do you want to search? ")
+	for team_name_search in teams:
+		if teams[team_name_search]["name"] == user_search:
 			search_team(team_name_search)
 		elif user_search.isnumeric():
-			if int(user_search) == x:
-				team_name_search = x
+			if int(user_search) == team_name_search:
 				search_team(team_name_search)
 
 def search_team(team_name_search):
@@ -130,32 +102,32 @@ def list_team():
 
 def exit_program():
 	print("You are choosing to exit the program")
-	user_exit = input("Are you sure you want to leave? ")
-	if user_exit == "Yes":
+	user_exit = input("Are you sure you want to leave? (yes/no) ")
+	if user_exit == "yes":
 		"You are now leaving the program"
-		return None
-	elif user_exit == "No":
+		return
+	elif user_exit == "no":
 		"You chose to stay in the program"
 		main_function()
 	else:
-		print("Input is unknown. Please input Yes or No")
+		print("Input is unknown. Please input yes or no")
 		exit_program()
 
 def main_function():
 	print("Options:")
-	print("Add Team, Remove Team, Modify Team, List of Teams, Search for Team, Exit")
+	print("add team, remove team, modify team, list of teams, search for team, exit")
 	user_question_1 = input("What would you like to do? ")
-	if user_question_1 == "Add Team":
+	if user_question_1 == "add team":
 		add_team()
-	elif user_question_1 == "Modify Team":
+	elif user_question_1 == "modify team":
 		modify_team_name_number()
-	elif user_question_1 == "Remove Team":
+	elif user_question_1 == "remove team":
 		remove_team_name_number()
-	elif user_question_1 == "Search for Team":
+	elif user_question_1 == "search for team":
 		search_team_name_number()
-	elif user_question_1 == "List of Teams":
+	elif user_question_1 == "list of teams":
 		list_team()
-	elif user_question_1 == "Exit":
+	elif user_question_1 == "exit":
 		exit_program()
 	else:
 		print("Input is unknown.")
