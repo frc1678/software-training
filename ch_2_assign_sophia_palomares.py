@@ -9,6 +9,7 @@ team_aspects = ["name", "programming language", "width", "length", "camera visio
 #add_team: adds a team to the main teams dictionary
 #list_team: lists the team #, or keys in the teams dictionary
 #exit_program: leaves the program
+#validate: validates input for add team function
 #main_function: The "main menu" for the other operations
 
 def remove_team_name_number():
