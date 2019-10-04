@@ -1,6 +1,7 @@
 teams = {}
 team_aspects = ["name", "programming language", "width", "length", "camera vision system", "drivetrain motors", "team number"]
 
+
 #List of Function Operations:
 #name_number functions: make team names and number interchangeable for specified functions
 #remove_team: removes a team
@@ -47,17 +48,29 @@ def modify_team(team_name_modify):
 		print("Input Unknown")
 		modify_team(team_name_modify)
 
+	validation_modify_team(team_name_modify)
 	main_function()
+
+def validation_modify_team(team_name_modify):
+	for digit_answers in team_digit_answers:
+		if digit_answers[0].isdigit():
+			digit_answers = int(digit_answers)
+			team_name_modify[digit_answer] = digit_answers
+		else:
+			print("Input wasn't a number, please enter number")
+			print(digit_answers)
+			digit_answer = int(input("Please enter the new answer "))
+			team_name_modify[digit_answers] = digit_answer
 
 def add_team():
 	temp_team_dictionary = {}
 
 	name = input("What is the name of your team? ")
 	p_language = input("What is your team's programming language? ")
-	width = int(input("What is your team's robot's width? "))
-	length = int(input("Wnat is your team's robot's length? "))
+	width = input("What is your team's robot's width? ")
+	length = input("Wnat is your team's robot's length? ")
 	cam_vision = input("Does your team's robot's have a camera vision system? ")
-	drive_motors = int(input("How many drivetrain motors does your team have? "))
+	drive_motors = input("How many drivetrain motors does your team have? ")
 
 	temp_team_dictionary["name"] = name
 	temp_team_dictionary["programming language"] = p_language
@@ -66,10 +79,29 @@ def add_team():
 	temp_team_dictionary["camera vision system"] = cam_vision
 	temp_team_dictionary["drivetrain motors"] = drive_motors
 
-	team_number_input = int(input("Add a team number "))
-	teams[team_number_input] = temp_team_dictionary
+	team_number_input = input("Add a team number ")
+	
+	if team_number_input[0].isdigit():
+		team_number_input = int(team_number_input)
+		teams[team_number_input] = temp_team_dictionary
+	
+	else:
+		print("Input wasn't a number, please enter a team number")
+		team_number_input = int(input("Add a team number "))
+		teams[team_number_input] = temp_team_dictionary
 
+	validation_add_team(team_number_input)
 	main_function()
+
+def validation_add_team(team_number_input):
+	for data_field in ["width", "length", "drivetrain motors"]:
+		if teams[team_number_input][data_field].isdigit():
+			teams[team_number_input][data_field] = int(teams[team_number_input][data_field])
+		else:
+			print("Input wasn't a number, please enter number")
+			print(data_field)
+			data_field = int(input("Please enter the new answer "))
+			teams[team_number_input][data_field] = data_fields
 
 def search_team_name_number():
 	user_search = input("What team do you want to search? ")
@@ -102,15 +134,15 @@ def list_team():
 
 def exit_program():
 	print("You are choosing to exit the program")
-	user_exit = input("Are you sure you want to leave? (yes/no) ")
-	if user_exit == "yes":
+	user_exit = input("Are you sure you want to leave? (y/n) ")
+	if user_exit == "y":
 		"You are now leaving the program"
 		return
-	elif user_exit == "no":
+	elif user_exit == "n":
 		"You chose to stay in the program"
 		main_function()
 	else:
-		print("Input is unknown. Please input yes or no")
+		print("Input is unknown. Please input y or n")
 		exit_program()
 
 def main_function():
