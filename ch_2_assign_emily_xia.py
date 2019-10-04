@@ -19,12 +19,12 @@ while True:
 	elif user_action == "1":
 	#adding a team	
 		number = input("What is your team number? \n")
-		name = str(input("What is the name of your team? \n"))
-		programming_language = str(input("What is the programming language of your team? \n"))
-		width = int(input("What is the width of your robot? \n"))
-		length = int(input("What is the length of your robot? \n"))
-		camera_vision_system = bool(input("True or False, your robot has a camera vision system? \n"))
-		number_of_motors = int(input("How many motors does your robot have? \n"))
+		name = input("What is the name of your team? \n")
+		programming_language = input("What is the programming language of your team? \n")
+		width = input("What is the width of your robot? \n")
+		length = input("What is the length of your robot? \n")
+		camera_vision_system = input("True or False, your robot has a camera vision system? \n")
+		number_of_motors = input("How many motors does your robot have? \n")
 		added_team_information = {
 			"number": number,
 			"name": name,
