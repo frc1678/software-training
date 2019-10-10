@@ -1,7 +1,7 @@
 def add_team():
 	temp_team_dictionary = {}
 
-	team_number= int(input("What is your team's team number? "))
+	team_number = int(input("What is your team's team number? "))
 	
 	temp_team_dictionary["team_name"] = input("What is your team's name? ")
 	temp_team_dictionary["robot_name"] = input("What is your robot's name? ")
