@@ -81,6 +81,7 @@ team_aspects = ["rookie year", "location", "compete in 2019", "competitions and 
 #modify_team: modifies an attribute of a team
 #search_team: searches for an attribute of a team
 #add_team: adds a team to the main teams dictionary
+#comp_local: makes a seperate dictionary for the competitions and locations for a team
 #list_team: lists the team #, or keys in the teams dictionary
 #exit_program: leaves the program
 #validate: validates input for add team function
@@ -104,17 +105,28 @@ def modify_team():
             teams[user_modify][team_aspect] = new_attribute
             break
         elif team_attribute_modify == team_aspects[3]:
-            comp_local()
+            teams[user_modify]["competitions and locations"] = comp_local()
             teams[user_modify]["compete in 2019"] = True
             break
         elif team_attribute_modify == team_aspects[2]:
             new_compete = input("Did the team compete in 2019? (y/n) ")
             if new_compete == "y":
                 teams[user_modify][team_aspect[2]] = True
+                comp_local_modify = input("Would you like to add competitions? (y/n) ")
+                while True:
+                    if comp_local_modify == "y":
+                       teams[user_modify]["competitions and locations"] = comp_local()
+                       break
+                    elif comp_local_modify == "n":
+                        teams[user_modify]["competitions and locations"] = "None"
+                        break
+                    else:
+                        print("Unknown input, please input y or n")
+                break
             elif new_compete == "n":
                 teams[user_modify]["compete in 2019"] = False
                 teams[user_modify][team_aspects[3]] = "None"
-
+                break
     else:
         print("Input Unknown")
         modify_team()
@@ -159,8 +171,8 @@ def comp_local(comp_local_dict={}):
 
     while True:
         if comp_local_input == "y":
-            comp = input("What competitions did your team compete in? ")
-            comp_location = input("Where were those competitions? ")
+            comp = input("What competition did your team compete in? ")
+            comp_location = input("Where was that competition? ")
             comp_local_dict[comp] = comp_location
             return comp_local(comp_local_dict)
         
