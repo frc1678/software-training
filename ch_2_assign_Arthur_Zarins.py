@@ -1,7 +1,13 @@
 import ch_1_assign_Arthur_Zarins_
 # Reminder for self: to run python programs in Visual Studio code, use Cntrl + Fn + F5
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        pass
 def add(team):
-    if isinstance(team, int) == True:
+    if is_number(team) == True:
         ch_1_assign_Arthur_Zarins_.teams.update({str(team): {"name": "",
                                       "language": "",
                                       "width": "",
@@ -52,8 +58,7 @@ def runContinuous():
             # Adds a new team to the database
             a1 = input(
                 "What is the team number? This is how the team will be referred to. WARNING: DUPLICATE TEAM NAME OVERWRITES OLD DATA\n    ")
-            if isinstance(a1, int) == True:
-                add(str(a1))
+            add(str(a1))
         elif function == "update":
             # Updates a team attribute
             a1 = input("What is the team number?\n    ")
