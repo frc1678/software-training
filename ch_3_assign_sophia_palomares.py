@@ -76,16 +76,16 @@ teams = {
 
 team_aspects = ["rookie year", "location", "compete in 2019", "competitions and locations", "awards", "team number"]
 
-#List of Function Operations:
-#remove_team: removes a team
-#modify_team: modifies an attribute of a team
-#search_team: searches for an attribute of a team
-#add_team: adds a team to the main teams dictionary
-#comp_local: makes a seperate dictionary for the competitions and locations for a team
-#list_team: lists the team #, or keys in the teams dictionary
-#exit_program: leaves the program
-#validate: validates input for add team function
-#main_function: The "main menu" for the other operations
+"""List of Function Operations:
+remove_team: removes a team
+modify_team: modifies an attribute of a team
+search_team: searches for an attribute of a team
+add_team: adds a team to the main teams dictionary
+comp_local: makes a seperate dictionary for the competitions and locations for a team
+list_team: lists the team #, or keys in the teams dictionary
+exit_program: leaves the program
+validate: validates input for add team function
+main_function: The "main menu" for the other operations"""
 
 
 def remove_team():
