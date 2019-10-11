@@ -87,7 +87,6 @@ exit_program: leaves the program
 validate: validates input for add team function
 main_function: The "main menu" for the other operations"""
 
-
 def remove_team():
     user_remove = int(input("What team do you want to remove? "))
     teams.pop(user_remove)
