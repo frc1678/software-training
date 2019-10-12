@@ -88,43 +88,45 @@ validate: validates input for add team function
 main_function: The "main menu" for the other operations"""
 
 def remove_team():
-    user_remove = int(input("What team do you want to remove? "))
-    teams.pop(user_remove)
+    user_remove = input("What team? ")
+    user_input = ensure_team(user_remove)
+    teams.pop(user_input)
 
     main_function()
 
 def modify_team():
-    user_modify = int(input("What team do you want to modify? "))
+    user_modify = input("What team do you want to modify? ")
+    user_input = ensure_team(user_modify)
     print("Options:")
     print(team_aspects)
     team_attribute_modify = input("What would you like to modify about the team? ")
     for team_aspect in team_aspects:
         if team_attribute_modify == team_aspect:
             new_attribute = input("What is the team's updated attribute? ")
-            teams[user_modify][team_aspect] = new_attribute
+            teams[user_input][team_aspect] = new_attribute
             break
         elif team_attribute_modify == team_aspects[3]:
-            teams[user_modify]["competitions and locations"] = comp_local()
-            teams[user_modify]["compete in 2019"] = True
+            teams[user_input]["competitions and locations"] = comp_local()
+            teams[user_input]["compete in 2019"] = True
             break
         elif team_attribute_modify == team_aspects[2]:
             new_compete = input("Did the team compete in 2019? (y/n) ")
             if new_compete == "y":
-                teams[user_modify][team_aspect[2]] = True
+                teams[user_input][team_aspect[2]] = True
                 comp_local_modify = input("Would you like to add competitions? (y/n) ")
                 while True:
                     if comp_local_modify == "y":
-                       teams[user_modify]["competitions and locations"] = comp_local()
+                       teams[user_input]["competitions and locations"] = comp_local()
                        break
                     elif comp_local_modify == "n":
-                        teams[user_modify]["competitions and locations"] = "None"
+                        teams[user_input]["competitions and locations"] = "None"
                         break
                     else:
                         print("Unknown input, please input y or n")
                 break
             elif new_compete == "n":
-                teams[user_modify]["compete in 2019"] = False
-                teams[user_modify][team_aspects[3]] = "None"
+                teams[user_input]["compete in 2019"] = False
+                teams[user_input][team_aspects[3]] = "None"
                 break
     else:
         print("Input Unknown")
@@ -167,17 +169,14 @@ def add_team():
 
 def comp_local(comp_local_dict={}):
     comp_local_input = input("Would you like to add a competition and location? (y/n) ")
-
     while True:
         if comp_local_input == "y":
             comp = input("What competition did your team compete in? ")
             comp_location = input("Where was that competition? ")
             comp_local_dict[comp] = comp_location
             return comp_local(comp_local_dict)
-        
         elif comp_local_input == "n":
-            return comp_local_dict
-        
+            return comp_local_dict 
         else:
             print("Unknown input. Please input y or n")
 
@@ -198,20 +197,46 @@ def validation(team_number_input):
             teams[team_number_input][data_field] = str(input("Please enter the new answer "))
 
 def search_team():
-    user_search = int(input("What team do you want to search? "))
+    user_search = input("What team? ")
+    user_input = ensure_team(user_search)
     print("Options:")
     print(team_aspects)
     user_search_specific = input("What would you like to look up about a team? ")
     for team_aspect in team_aspects:
         if user_search_specific == team_aspect:
             print(user_search_specific)
-            print(teams[user_search][user_search_specific])
+            print(teams[user_input][user_search_specific])
             break
     else:
         print("Unknown Input")
         search_team()
 
     main_function()
+
+def ensure_team(user_input):
+    if user_input.isdigit():
+        user_input = int(user_input)
+        for team in teams.keys():
+            if user_input == team:
+                return user_input
+        else:
+            print("Input wasn't a team number, please enter a team number")
+            print("Options")
+            print(teams.keys())
+            user_input = int(input("Enter team number "))
+            return user_input
+    elif user_input.isdigit() == False:
+        print("Input wasn't a number, please enter a number")
+        user_input = int(input("Enter team number "))
+        for team in teams.keys():
+            if user_input == team:
+                return user_input
+        else:
+            print("Input wasn't a team number, please enter a team number")
+            print("Options")
+            print(teams.keys())
+            user_input = int(input("Enter team number "))
+            return user_input
 
 def list_team():
     print(teams.keys())
