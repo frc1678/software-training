@@ -84,6 +84,7 @@ add_team: adds a team to the main teams dictionary
 comp_local: makes a seperate dictionary for the competitions and locations for a team
 list_team: lists the team #, or keys in the teams dictionary
 exit_program: leaves the program
+ensure_team: ensures all team inputs are actual teams in the dictionary
 validate: validates input for add team function
 main_function: The "main menu" for the other operations"""
 
