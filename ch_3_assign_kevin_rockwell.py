@@ -9,7 +9,7 @@ def input_or_cancel(prompt):
 
 def get_positive_int():
     while True:
-        i = input_or_cancel("Please enter a positive integer or 'q' to cancel: ")
+        i = input_or_cancel("Enter a positive integer or 'q' to cancel: ")
         if i is not None:
             if i.isdigit():
                 return int(i)
@@ -23,14 +23,36 @@ def get_bool():
         i = input_or_cancel("Please enter (y)es or (n)o: ")
         if i is not None:
             i = i.lower()
-            if i in ["t", "true", "1", "y", "yes"]:
+            if i in ["t", "true", "1", "y", "yes"]: # Accept more truthy values
                 return True
-            elif i in ["f", "false", "0", "n", "no"]:
+            elif i in ["f", "false", "0", "n", "no"]: # Same but for falsey
                 return False
             else:
                 print(f"Invalid input {i}")
                 continue
         return i # User canceled
+
+def get_comps():
+    new_comps = {}
+    while True:
+        if comps == {}:
+            print("Add competition?")
+        else:
+            print("Add another competition?")
+        if not get_bool(): #User does not want to add more competitions
+            return comps
+
+        name = input_or_cancel("Input Competition Name or 'q' to cancel:\n")
+        if name is None:
+            continue
+        elif name in new_comps:
+            print(f"Competition {name} already in list")
+            continue
+
+        location = input_or_cancel("Input Location or 'q' to cancel:\n")
+        if location is None:
+            continue
+        comps[name] = location
 
 attributes = [
     "location", 
@@ -64,7 +86,19 @@ while True:
         elif team_num is None:
             continue #User canceled, so exit add team and return to main menu
         temp_team = {}
+        temp_team["location"] = input_or_cancel("Input team location or" 
+            + "'q' if unknown: ") # None for unknowns 
+        print("Enter team rookie year")
+        temp_team["rookie_year"] = get_positive_int()
+        print("Enter if team competed in 2019")
+        temp_team["competed_2019"] = get_bool()
+        temp_team["2019_comps"] = get_comps()
+        temp_team["2019_awards"] = input_or_cancel("Enter 2019 awards or"
+            + "'q' if unknown")
 
+        print(f"Save team {team_num}")
+        if get_bool():
+            teams[team_num] = temp_team
 
     elif selection == "v": #View team
         pass        
