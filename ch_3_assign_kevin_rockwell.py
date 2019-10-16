@@ -9,7 +9,7 @@ def input_or_cancel(prompt):
 
 def get_positive_int():
     while True:
-        i = input_or_cancel("Please enter a positive integer or 'q' to cancel")
+        i = input_or_cancel("Please enter a positive integer or 'q' to cancel: ")
         if i is not None:
             if i.isdigit():
                 return int(i)
@@ -17,6 +17,20 @@ def get_positive_int():
                 print(f"Invalid input {i}")
                 continue
         return i # user canceled, so return none
+
+def get_bool():
+    while True:
+        i = input_or_cancel("Please enter (t)rue or (f)alse: ")
+        if i is not None:
+            i = i.lower()
+            if i in ["t", "true", "1", "y", "yes"]:
+                return True
+            elif i in ["f", "false", "0", "n", "no"]:
+                return False
+            else:
+                print(f"Invalid input {i}")
+                continue
+            return i # User canceled
 
 while True:
     #Main Menu
@@ -38,7 +52,10 @@ while True:
         if team_num in teams:
             print(f"Team Number {team_num} already in teams")
             continue
-        
+        elif team_num is None:
+            continue #User canceled, so exit add team and return to main menu
+        temp_team = {}
+
 
     elif selection == "v": #View team
         pass        
