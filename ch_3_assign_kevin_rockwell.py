@@ -1,15 +1,15 @@
 from ch_1_assign_kevin_rockwell import teams
 
 def input_or_cancel(prompt):
-    i = input(prompt + ):
+    i = input(prompt)
     if i == "q":
         return None
     else:
         return i
 
-def get_int():
+def get_positive_int():
     while True:
-        i = input_or_cancel("Please enter an integer or 'q' to cancel"):
+        i = input_or_cancel("Please enter a positive integer or 'q' to cancel")
         if i is not None:
             if i.isdigit():
                 return int(i)
@@ -33,7 +33,12 @@ while True:
     selection = ""
     selection = input("Action: ")
     if selection == "a": #Add team
-        pass
+        print("Enter team Number:")
+        team_num = get_positive_int()
+        if team_num in teams:
+            print(f"Team Number {team_num} already in teams")
+            continue
+        
 
     elif selection == "v": #View team
         pass        
