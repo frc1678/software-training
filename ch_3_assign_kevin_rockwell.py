@@ -120,7 +120,11 @@ while True:
             del teams[team_num]
 
     elif selection == "s": #search for teams
-        pass
+        print("Enter the start of or complete team number to search for:")
+        search_team = get_positive_int()
+        for t in teams:
+            if str(t).startswith(str(search_team)):
+                print(t)
 
     elif selection == "l": #list teams
         if len(teams.keys()) < 1:
