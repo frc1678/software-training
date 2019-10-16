@@ -97,7 +97,7 @@ while True:
 	#add a team
 		team_number = defining_team_number()
 		if number_validation() == True:
-			team_number = int(team_number)
+			team_number == int(team_number)
 			if team_number_validation() == False: 
 				team_name = input("What is the name of your team? \n")
 				programming_language = input("What is the programming language of your team? \n")
@@ -115,7 +115,7 @@ while True:
 					"number_of_motors": number_of_motors}
 				team_dictionary.update({team_number:added_team_information})
 				user_action = get_user_action()
-			if team_number_validation() == True: 
+			elif team_number_validation() == True: 
 				print("The team you want to add is already in the dictionary")
 				user_action = get_user_action()
 		elif number_validation() == False:
@@ -125,7 +125,7 @@ while True:
 	#modify a team
 		team_number = defining_team_number()
 		if number_validation() == True:
-			team_number = int(team_number)
+			team_number == int(team_number)
 			if team_number_validation() == True:
 				modify_attribute = input("What is the attribute that you want to modify?\n")
 				if modify_attribute in team_dictionary[team_number]:
@@ -146,7 +146,7 @@ while True:
 	#view a team
 		team_number = defining_team_number()
 		if number_validation() == True:
-			team_number = int(team_number)
+			team_number == int(team_number)
 			if team_number_validation() == True:
 				print(team_dictionary[team_number])
 				user_action = get_user_action()
@@ -160,6 +160,7 @@ while True:
 	#remove a team
 		team_name = defining_team_number()
 		if number_validation() == True:
+			team_number == int(team_number)
 			if team_number_validation() == True:
 				team_dictionary.pop(team_number)
 				user_action = get_user_action()
@@ -172,13 +173,16 @@ while True:
 	elif user_action == 5:
 	#search a team
 		team_number = defining_team_number()
-		if number_validation() == 
-		if team_number_validation() == True:
-			print(team_dictionary[team_number])
-			user_action = get_user_action()
-		elif team_number_validation() == False:
-			not_available()
-			user_action = get_user_action()
+		if number_validation() == True:
+			team_number == int(team_number)
+			if team_number_validation() == True:
+				print(team_dictionary[team_number])
+				user_action = get_user_action()
+			elif team_number_validation() == False:
+				not_available()
+				user_action = get_user_action()
+		elif number_validation() == False:
+			print("Your input is not an integer, please ensure that you input an integer")
 	elif user_action == 6:
 	#list all teams
 		for team_number, team_attributes in team_dictionary.items():
