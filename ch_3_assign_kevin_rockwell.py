@@ -107,7 +107,17 @@ while True:
         pass
 
     elif selection == "r": #remove team
-        pass
+        print("Input team number:")
+        team_num = get_positive_int()
+        if team_num is None:
+            continue
+        elif team_num not in teams:
+            print(f"Team Number {team_num} not stored.")
+            continue
+
+        print(f"Delete team {team_num}?")
+        if get_bool():
+            del teams[team_num]
 
     elif selection == "s": #search for teams
         pass
