@@ -20,7 +20,7 @@ def get_positive_int():
 
 def get_bool():
     while True:
-        i = input_or_cancel("Please enter (t)rue or (f)alse: ")
+        i = input_or_cancel("Please enter (y)es or (n)o: ")
         if i is not None:
             i = i.lower()
             if i in ["t", "true", "1", "y", "yes"]:
@@ -30,7 +30,16 @@ def get_bool():
             else:
                 print(f"Invalid input {i}")
                 continue
-            return i # User canceled
+        return i # User canceled
+
+attributes = [
+    "location", 
+    "rookie_year", 
+    "competed_2019", 
+    "2019_comps", 
+    "comp_locations",
+    "2019_awards",
+    ]
 
 while True:
     #Main Menu
