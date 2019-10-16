@@ -101,7 +101,7 @@ while True:
             teams[team_num] = temp_team
 
     elif selection == "v": #View team
-        pass        
+        pass     
 
     elif selection == "m": #modify team
         pass
@@ -142,7 +142,9 @@ while True:
             print(" ".join(temp_ls))
 
     elif selection == "e": #exit program
-        pass
+        print("Confirm Exit:")
+        if get_bool():
+            break
 
     else:
         print(f"Invalid Action: {selection}\n")
