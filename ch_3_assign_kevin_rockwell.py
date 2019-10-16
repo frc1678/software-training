@@ -123,7 +123,19 @@ while True:
         pass
 
     elif selection == "l": #list teams
-        pass
+        if len(teams.keys()) < 1:
+            print("No stored teams")
+            continue
+        print("Stored Teams:")
+        temp_ls = [] #used to store numbers temporarily to print nicer
+        for team in teams.keys():
+            if len(temp_ls) < 4: #print 4 numbers per line
+                temp_ls.append(str(team))
+            else:
+                print(" ".join(temp_ls)) 
+                temp_ls = [str(team)]
+        else:
+            print(" ".join(temp_ls))
 
     elif selection == "e": #exit program
         pass
