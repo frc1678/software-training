@@ -2,7 +2,7 @@ team_dictionary={
 	1678:{
 		"Location":"Davis_CA",
 		"Rookie_year":2005, 
-		"2019_Competition_Status":True, 
+		"Competition_Status_2019":True, 
 		"Names_of_Competions":{
 			"Central_Valley_Regional":"Fresno_CA", 
 			"Sacramento_Regional":"Davis_CA", 
@@ -23,7 +23,7 @@ team_dictionary={
 	3132:{
 		"Location":"Sydney_Australia",
 		"Rookie_year":2010,
-		"2019_Competition_Status":True,
+		"Competition_Status_2019":True,
 		"Names_of_Competions":{
 			"Southern_Cross_Regional":"Sydeny_Olympic_Park",
 			"South_Pacific_Regional":"Sydeny_Olympic_Park",
@@ -37,7 +37,7 @@ team_dictionary={
 	1902:{
 		"Location":"Orlando_FL",
 		"Rookie_year":2006, 
-		"2019_Competition_Status":True, 
+		"Competition_Status-2019":True, 
 		"Names_of_Competions":{
 			"Palmetto_Regional":"Myrtle_Beach", 
 			"Orlando_Regional":"Orlando_FL", 
@@ -51,7 +51,7 @@ team_dictionary={
 	5458:{
 		"Location":"Woodland_CA",
 		"Rookie_year":2015,
-		"2019_Competition_Status":True,
+		"Competition_Status_2019":True,
 		"Names_of_Competions":{
 			"Central_Valley_Regional":"Fresno_CA",
 			"Sacramento_Regional":"Davis_CA"},
@@ -60,7 +60,7 @@ team_dictionary={
 	6174:{
 		"Location":"Winters_CA",
 		"Rookie_year":2016,
-		"2019_Competition_Status":True,
+		"Competition_Status_2019":True,
 		"Names_of_Competions":{
 			"Sacramento_Regional":"Davis_CA"},
 		"Competition_Awards":[
@@ -85,8 +85,8 @@ def not_available():
 	print("I'm sorry the information you are looking for is not available")
 def number_validation():
 	return team_number.isdigit()
-def team_number_validation():
-	return team_number in team_dictionary
+def team_number_validation(team):
+	return team in team_dictionary
 
 user_action = get_user_action()
 while True:
@@ -97,25 +97,22 @@ while True:
 	#add a team
 		team_number = defining_team_number()
 		if number_validation() == True:
-			team_number == int(team_number)
-			if team_number_validation() == False: 
-				team_name = input("What is the name of your team? \n")
-				programming_language = input("What is the programming language of your team? \n")
-				width = input("What is the width of your robot? \n")
-				length = input("What is the length of your robot? \n")
-				camera_vision_system = input("True or False, your robot has a camera vision system? \n")
-				number_of_motors = input("How many motors does your robot have? \n")
+			team_number = int(team_number)
+			if team_number_validation(team_number) == False: 
+				Location = input("What is the location of your team? \n")
+				Rookie_year = input("What is the rookie year of your team? \n")
+				Competition_Status_2019 = input("What is the 2019 competition status of your team? \n")
+				Names_of_Competions = input("What are the names of the competitions of your team? \n")
+				Competition_Awards = input("What are the names of the competition awards of your team? \n")
 				added_team_information = {
-					"number":team_number, 
-					"name":team_name,
-					"programming_language": programming_language,
-					"width": width,
-					"length": length, 
-					"camera_vision_system": camera_vision_system, 
-					"number_of_motors": number_of_motors}
+					"Location":Location,
+					"Rookie_year":Rookie_year,
+					"Competition_Status_2019": Competition_Status_2019,
+					"Names_of_Competitions": Names_of_Competitions,
+					"Competition_Awards": Competition_Awards}
 				team_dictionary.update({team_number:added_team_information})
 				user_action = get_user_action()
-			elif team_number_validation() == True: 
+			elif team_number_validation(team_number) == True: 
 				print("The team you want to add is already in the dictionary")
 				user_action = get_user_action()
 		elif number_validation() == False:
@@ -125,8 +122,8 @@ while True:
 	#modify a team
 		team_number = defining_team_number()
 		if number_validation() == True:
-			team_number == int(team_number)
-			if team_number_validation() == True:
+			team_number = int(team_number)
+			if team_number_validation(team_number) == True:
 				modify_attribute = input("What is the attribute that you want to modify?\n")
 				if modify_attribute in team_dictionary[team_number]:
 					new_attribute = input("What do you want the new " +modify_attribute+ "to be?\n")
@@ -136,7 +133,7 @@ while True:
 				elif modify_attribute not in team_dictionary[team_number]:
 					not_available()
 					user_action = get_user_action()
-			elif team_number_validation() == False:
+			elif team_number_validation(team_number) == False:
 				not_available()
 				user_action = get_user_action()
 		elif number_validation() == False: 
@@ -146,11 +143,11 @@ while True:
 	#view a team
 		team_number = defining_team_number()
 		if number_validation() == True:
-			team_number == int(team_number)
-			if team_number_validation() == True:
+			team_number = int(team_number)
+			if team_number_validation(team_number) == True:
 				print(team_dictionary[team_number])
 				user_action = get_user_action()
-			elif team_number_validation() == False:
+			elif team_number_validation(team_number) == False:
 				not_available()
 				user_action = get_user_action()
 		elif number_validation() == False:
@@ -160,11 +157,11 @@ while True:
 	#remove a team
 		team_name = defining_team_number()
 		if number_validation() == True:
-			team_number == int(team_number)
-			if team_number_validation() == True:
+			team_number = int(team_number)
+			if team_number_validation(team_number) == True:
 				team_dictionary.pop(team_number)
 				user_action = get_user_action()
-			elif team_number_validation() == False:
+			elif team_number_validation(team_number) == False:
 				not_available()
 				user_action = get_user_action()
 		elif number_validation() == False:
@@ -174,11 +171,11 @@ while True:
 	#search a team
 		team_number = defining_team_number()
 		if number_validation() == True:
-			team_number == int(team_number)
-			if team_number_validation() == True:
+			team_number = int(team_number)
+			if team_number_validation(team_number) == True:
 				print(team_dictionary[team_number])
 				user_action = get_user_action()
-			elif team_number_validation() == False:
+			elif team_number_validation(team_number) == False:
 				not_available()
 				user_action = get_user_action()
 		elif number_validation() == False:
