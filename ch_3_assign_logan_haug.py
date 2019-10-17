@@ -192,7 +192,7 @@ while True:
                                 user_data.pop(int(user_award)-1)
                             else:
                                 print("please enter a number or 'none'")
-                        user_data == emptyList(userdata)
+                        user_data == emptyList(user_data)
 
 
 
@@ -206,7 +206,7 @@ while True:
                 elif user_attribute == "name":
                     user_team.name = user_data
                 elif user_attribute == "location":
-                    user_team.location == user_data
+                    user_team.location = user_data
                 elif user_attribute == "competitions":
                     user_team.competitions = user_data
                 elif user_attribute == "awards":
@@ -222,8 +222,6 @@ while True:
                     else:
                         print("please enter either true or false")
                 if user_team.isValid():
-                    print(getTeam(ut,teams))
-                    print(user_team)
                     teams.remove(getTeam(ut, teams))
                     teams.append(user_team)
 
