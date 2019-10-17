@@ -1,4 +1,4 @@
-from ch_1_assign_kevin_rockwell import teams
+teams = {}
 
 def input_or_cancel(prompt):
     i = input(prompt)
@@ -33,11 +33,11 @@ def get_bool():
         return i # User canceled
 
 def get_comps():
-    new_comps = {}
+    comps = {}
     while True:
-        if comps == {}:
+        if comps == {}: # No comps have been, so add
             print("Add competition?")
-        else:
+        else: # Comps have been added, so add another comp
             print("Add another competition?")
         if not get_bool(): #User does not want to add more competitions
             return comps
@@ -45,7 +45,7 @@ def get_comps():
         name = input_or_cancel("Input Competition Name or 'q' to cancel:\n")
         if name is None:
             continue
-        elif name in new_comps:
+        elif name in comps:
             print(f"Competition {name} already in list")
             continue
 
@@ -54,12 +54,28 @@ def get_comps():
             continue
         comps[name] = location
 
+def print_team(team, team_num):
+    print(f"Team Number {team_num}")
+    for a in attributes:
+        value = team.get(a)
+        if value is not None:
+            if a == "2019_comps":
+                print(a + ":")
+                if value == {}:
+                    print(f"No stored competitions for {team_num}")
+                    continue
+                for comp, location in value.items():
+                    print(f"{comp} in {location}")
+                continue
+            print(f"{a}: {value}")
+        else:
+            print(f"{a} is unknown for team {team_num}")
+
 attributes = [
     "location", 
     "rookie_year", 
     "competed_2019", 
     "2019_comps", 
-    "comp_locations",
     "2019_awards",
     ]
 
@@ -87,24 +103,77 @@ while True:
             continue #User canceled, so exit add team and return to main menu
         temp_team = {}
         temp_team["location"] = input_or_cancel("Input team location or" 
-            + "'q' if unknown: ") # None for unknowns 
+            + " 'q' if unknown: ") # None for unknowns 
         print("Enter team rookie year")
         temp_team["rookie_year"] = get_positive_int()
         print("Enter if team competed in 2019")
         temp_team["competed_2019"] = get_bool()
         temp_team["2019_comps"] = get_comps()
         temp_team["2019_awards"] = input_or_cancel("Enter 2019 awards or"
-            + "'q' if unknown")
+            + " 'q' if unknown\n")
 
         print(f"Save team {team_num}")
         if get_bool():
             teams[team_num] = temp_team
 
     elif selection == "v": #View team
-        pass     
+        print("Input team number: ")
+        team_num = get_positive_int()
+        if team_num not in teams:
+            print(f"Team Number {team_num} not stored.")
+            continue
+        elif team_num == None:
+            continue
+        print_team(teams[team_num], team_num)
 
     elif selection == "m": #modify team
-        pass
+        print("Input team number:")
+        team_num = get_positive_int()
+        if team_num is None:
+            continue
+        elif team_num not in teams:
+            print(f"Team number {team_num} not stored.")
+            continue
+        print("Current Values:")
+        print_team(teams[team_num], team_num) #Show current values
+        print("""
+            Attribute to change:
+            (l)ocation
+            (r)ookie year
+            (c)ompetitions in 2019
+            (i)f the team competed in 2019
+            (a)wards won in 2019
+            """)
+        while True:
+            i = input_or_cancel("Select attribute or 'q' to cancel: ")
+            if i in ["l", "r", "c", "i", "a", None]:
+                break
+            else:
+                print("Invalid attribute selection.")
+        if i == None:
+            continue
+        if i == "l": # Change location
+            location = input_or_cancel("Enter updated location or 'q' to cancel: ")
+            if location is not None:
+                teams[team_num]["location"] = location
+        elif i == "r": # Change rookie year
+            rookie = input_or_cancel("Enter updated rookie year or 'q' to cancel: ")
+            if rookie is not None:
+                teams[team_num]["rookie_year"] = rookie
+        elif i == "c": # Change 2019 competitions
+            print("Please enter all 2019 competitions. Enter no competitions to cancel")
+            comps = get_comps()
+            if comps != {}:
+                teams[team_num]["2019_comps"] = comps
+        elif i == "i": # Change competed 2019
+            print("Enter if team competed in 2019 or 'q' to cancel")
+            comp_2019 = get_bool()
+            if comp_2019 is not None:
+                teams[team_num]["competed_2019"] = comp_2019
+        elif i == "a":
+            awards = input_or_cancel("Enter 2019 awards or 'q' to cancel")
+            if awards is not None:
+                teams[team_num]["2019_awards"] = awards
 
     elif selection == "r": #remove team
         print("Input team number:")
