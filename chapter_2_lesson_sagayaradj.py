@@ -1,3 +1,33 @@
+# chapter_2_lesson_sagayaradj.py
+def addDictionary():
+	return (
+	robotics_teams = {
+	int(): {
+		'programing language':
+		'',
+		'width':'',
+		'length':'',
+		'camera vision':'',
+		'number of drivetrain motors':'',
+		}})
+# chapter_2_lesson_sagayaradj.py
+def viewDictionary():
+	return (
+	user_team_number_question = int(input('Type which the number of the team you would like to edit'))
+	user_team_section_question = input('Which information from this team would you like to access, programing language, width, length, camera vision, or number of drivetrain motors.')
+	print(robotics_teams[user_team_number_question][user_team_section_question]))
+# chapter_2_lesson_sagayaradj.py
+def removeDictionary():
+	return (
+	robotics_team_number = []
+	user_team_number_question = int(input('Type which the number of the team you would like to remove'))
+	print(robotics_teams[user_team_number_question]))
+# chapter_2_lesson_sagayaradj.py
+def editDictionary():
+	return(
+	user_team_number_question = int(input('Type which the number of the team you would like to edit'))
+	user_team_section_question = input('Which information from this team would you like to edit, programing language, width, length, camera vision, or number of drivetrain motors.')
+	print(robotics_teams[user_team_number_question][user_team_section_question]))
 robotics_teams = {}
 starting_sequence = False
 edited = False
@@ -20,49 +50,31 @@ while starting_sequence == False:
 			if activity_choice == 'add':
 				activity_choice = True;
 				state_variable = 'modify'
-				robotics_teams = {
-					int(): {
-						'programing language':
-						'',
-						'width':'',
-						'length':'',
-						'camera vision':'',
-						'number of drivetrain motors':'',
-
-					}}
+				addDictionary()
 			if activity_choice == 'view':
 				activity_choice  = True;
 				state_variable = 'view'
-				user_team_number_question = int(input('Type which the number of the team you would like to edit'))
-				user_team_section_question = int(input('Which information from this team would you like to access, programing language, width, length, camera vision, or number of drivetrain motors.'))
-				print(robotics_teams[user_team_number_question][user_team_section_question])
+				viewDictionary()
 				if user_team_number != int:
 					print("The input is not valid, please type an interger")
 					while user_team_number != int:
-						user_team_number_question = int(input('Type which the number of the team you would like to edit'))
-						user_team_section_question = int(input('Which information from this team would you like to access, programing language, width, length, camera vision, or number of drivetrain motors.'))
-			print(robotics_teams[user_team_number_question][user_team_section_question])
+						viewDictionary()
 			if activity_choice == 'remove':
-				robotics_team_number = []
-				user_team_number_question = int(input('Type which the number of the team you would like to remove'))
-				print(robotics_teams[user_team_number_question])
+				activity_choice = True;
+				state_variable = 'edit'
+				removeDictionary()
 				if user_team_number != int:
 					print("The input is not valid, please type an interger")
 					while robotics_team_number != int:
-						user_team_number_question = int(input('Type which the number of the team you would like to view'))
-				print(robotics_teams[user_team_number_question])
+						removeDictionary()
 			if activity_choice == 'edit':
 				activity_choice = True;
-				state_variable = 'modify'
-				user_team_number_question = int(input('Type which the number of the team you would like to edit'))
-				user_team_section_question = int(input('Which information from this team would you like to edit, programing language, width, length, camera vision, or number of drivetrain motors.'))
-				print(robotics_teams[user_team_number_question][user_team_section_question])
+				state_variable = 'edit'
+				editDictionary()
 				if user_team_number != int:
-					print("The input is not valid, please type an interger")
+					print("The input is not valid, please tyxpe an interger")
 					while user_team_number != int:
-						user_team_number_question = int(input('Type which the number of the team you would like to edit'))
-						user_team_section_question = int(input('Which information from this team would you like to edit, programing language, width, length, camera vision, or number of drivetrain motors.'))
-				print(robotics_teams[user_team_number_question][user_team_section_question])
+						editDictionary()
 			if activity_choice == 'return to menu':
 				activity_choice = True;
 				state_variable = 'menu'
