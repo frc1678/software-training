@@ -7,17 +7,21 @@ def is_number(s):
     except ValueError:
         pass
 def add(team):
-    if is_number(team) == True:
-        ch_1_assign_Arthur_Zarins_.teams.update({str(team): {"name": "",
-                                      "language": "",
-                                      "width": "",
-                                      "length": "",
-                                      "motors": "",
-                                      "cameraVision": False
-                                      }})
-        print("Team " + str(team) + " added successfully.\n     ")
+    if(str(team) not in ch_1_assign_Arthur_Zarins_.teams):
+        if is_number(team) == True:
+            ch_1_assign_Arthur_Zarins_.teams.update({str(team): {"name": "",
+                                        "language": "",
+                                        "width": "",
+                                        "length": "",
+                                        "motors": "",
+                                        "cameraVision": False
+                                        }})
+            print("Team " + str(team) + " added successfully.\n     ")
+        else:
+            print("Team name must be a number")
     else:
-        print("Team name must be a number")
+        print("This team already exists")
+
 
 def update(team, stat, updateTxt):
     if search(team) == True:
