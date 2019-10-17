@@ -6,7 +6,7 @@ allowed_actions = [
     'Modify team information',
     'Search for team',
     ]
-on = True
+running = True
 def mainMenu():
     print(allowed_actions)
 def addTeam():
@@ -82,7 +82,8 @@ def searchTeam():
         print("Requested team is in database. You can view its information using command 'View team information' and entering the team number again.")
     if requested_team not in teams:
         print('Requested team is not in our database. Make sure you entered it correctly or search for another team.')
-while on:
+
+while running:
     mainMenu()
     request = input('What would you like to do? Please enter exactly as shown: ')
     while request == 'Add team':
