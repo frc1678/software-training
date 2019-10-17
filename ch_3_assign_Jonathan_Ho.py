@@ -1,6 +1,4 @@
-Team_DataA = []
-
-Team_DataB = {'1678': {'Name': 'Citrus Circuits', 'Location': 'Davis, CA, USA', 'Rookie': '2005', 
+Team_Data = {'1678': {'Name': 'Citrus Circuits', 'Location': 'Davis, CA, USA', 'Rookie': '2005', 
 	'Competition Names': [
 		'Central Valley Regional',
 		'Sacramento Regional',
@@ -56,38 +54,47 @@ Team_DataB = {'1678': {'Name': 'Citrus Circuits', 'Location': 'Davis, CA, USA', 
 	],}
 	}
 
+
+
 def list_teams_all(list_of_teams):
-	for Team_DataA in list_of_teams:
-		print(str(Team_DataA) + "\n")
+	for Team_Data in list_of_teams:
+		print(str(Team_Data) + "\n")
 
 def add_team():
 	Player_Add = input("Alright, let's add a some teams to our database! Choose a team or piece of info to place in the database. ")
-	if Player_Add.isalpha and Player_Add != None:
-		Team_DataA.append(Player_Add)
+	if Player_Add.isdigit and Player_Add != None:
+		Team_Data[Player_Add] = {}
 
 def delete_team():
 	Player_Delete = input("As you wish it. Which team would you like to remove from the database? ")
-	if Player_Delete.isalpha and Player_Delete != None:
-		Team_DataA.remove(Player_Delete)
+	if Player_Delete.isdigit and Player_Delete != None:
+		Team_Data.pop(Player_Delete)
 
 def view_info():
-	#view_list = input("Sure! What list would you like to see?")
+	print("Just a head's up. Everything in the database for each team shown here is capitalized, so make sure the letter is uppercase for the second question. :P")
 	view_team = input("Now, which team would you like to view? ")
 	view_data = input("What would you like to know about it? ")
-	print(str(Team_DataB[view_team][view_data]))
+	if view_team in Team_Data and view_data in Team_Data[view_team]:
+		print(Team_Data[view_team][view_data])
+	else:
+		print("Sorry. This isn't in the data files. Try again.")
+
 
 def modify_info():
-	#change_list = input("\n Which list do you need to find your team?")
-	change_team = input("\n What team's data would you like to modify? ")
-	change_data = input("\n What datapoint would you like to change? ")
-	print("This team's current value for " + change_data + " is " + Team_DataB[change_team][change_data])
-	change_datapoint = input("\n So what do you want to change about " + change_data + "? ")
-	Team_DataB[change_team][change_data] = change_datapoint
-	print("Drumroll! The team's new value has been modified to... " + str(change_datapoint) + "!")
+	print("Just a head's up. Everything in the database for each team shown here is capitalized, so make sure the letter is uppercase for the second question. :P")
+	change_team = input("What team's data would you like to modify? ")
+	change_data = input("What datapoint would you like to change? ")
+	if change_team in Team_Data and change_data in Team_Data[change_team]:
+		print("This team's current value for " + change_data + " is " + Team_Data[change_team][change_data])
+		change_datapoint = input("\n So what do you want to change about " + change_data + "? ")
+		Team_Data[change_team][change_data] = change_datapoint
+		print("Drumroll! The team's new value has been modified to... " + str(change_datapoint) + "!")
+	else:
+		print("Sorry. What you want to modify is not in our files. Try again.")
 
 def search():
 	team_search = input("What team would ya like to look for? ")
-	print("Let's see... is " + str(team_search) + " anywhere in our database? " + str(team_search in Team_DataA and team_search in Team_DataB))
+	print("Let's see... is " + str(team_search) + " anywhere in our database? " + str(team_search in Team_Data))
 
 while True:
 	Player_Control = input('''Good morning, afternoon, and evening to all! Welcome to our FIRST Robotics Menu! What would you like to do here? Type in 'add' to add a team to the database, 'remove' to remove it
@@ -105,9 +112,9 @@ while True:
 	elif Player_Control == 'search' or Player_Control == 'Search':
 		search()
 	elif Player_Control == 'see all teams':
-		list_teams_all(Team_DataA)
+		list_teams_all(Team_Data)
 	elif Player_Control == 'quit':
 		print("Gotcha! See ya around!")
 		break;
 	else:
-		print("Sorry! Did you say something else? I don't have that in my files. Please try again! :)")
+		print("Sorry! Did you say something else? Your reply is not valid. Please try again! :)")
