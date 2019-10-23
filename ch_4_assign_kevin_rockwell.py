@@ -16,13 +16,14 @@ class Point_3D(Point):
     def distance(self):
         return hypot(super().distance(), self.z)
 
+
 def get_num():
     while True:
         i = input("Enter a real number: ")
         sign = ""
         if i[0] in ["+", "-"]: # Has a sign as first value
             sign = i[0]
-            i = i[1:]
+            i = i[1:] #Number without the sign
         decimal = False # Used to track if we've had a decimal point
         for c in i:
             if c not in "1234567890":
@@ -56,7 +57,7 @@ if __name__ == "__main__":
     else:
         print("The two points are equally far from the origin")
 
-    if two_d.distance() > Point.distance(three_d):
+    if two_d.distance() > Point.distance(three_d): #Point to only use x and y
         print("The second point is further from origin in x and y")
     elif two_d.distance() < Point.distance(three_d):
         print("The first point is further from origin in x and y")
