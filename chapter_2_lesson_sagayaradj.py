@@ -1,7 +1,7 @@
 # chapter_2_lesson_sagayaradj.py
 def addDictionary():
 	return (
-	robotics_teams = {
+	robotics_teams == {
 	int(): {
 		'programing language':
 		'',
@@ -12,22 +12,19 @@ def addDictionary():
 		}})
 # chapter_2_lesson_sagayaradj.py
 def viewDictionary():
-	return (
-	user_team_number_question = int(input('Type which the number of the team you would like to edit'))
-	user_team_section_question = input('Which information from this team would you like to access, programing language, width, length, camera vision, or number of drivetrain motors.')
-	print(robotics_teams[user_team_number_question][user_team_section_question]))
+	user_team_number_question = int(input('Type which the number of the team you would like to edit')),
+	user_team_section_question = input('Which information from this team would you like to access, programing language, width, length, camera vision, or number of drivetrain motors.'),
+	print(robotics_teams[user_team_number_question][user_team_section_question])
 # chapter_2_lesson_sagayaradj.py
 def removeDictionary():
-	return (
 	robotics_team_number = []
 	user_team_number_question = int(input('Type which the number of the team you would like to remove'))
-	print(robotics_teams[user_team_number_question]))
+	print(robotics_teams[user_team_number_question])
 # chapter_2_lesson_sagayaradj.py
 def editDictionary():
-	return(
 	user_team_number_question = int(input('Type which the number of the team you would like to edit'))
 	user_team_section_question = input('Which information from this team would you like to edit, programing language, width, length, camera vision, or number of drivetrain motors.')
-	print(robotics_teams[user_team_number_question][user_team_section_question]))
+	print(robotics_teams[user_team_number_question][user_team_section_question])
 robotics_teams = {}
 starting_sequence = False
 edited = False
