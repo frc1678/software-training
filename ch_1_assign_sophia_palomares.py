@@ -43,6 +43,9 @@ teams = {
 	},
 }
 
-question1 = int(input("What team would you like to look up? options: 1678, 1682, 1690, 1700, 2907, 3132 "))
-question2 = input("What about the team would you like to know? options: rookie year, location, competitions and locations, awards ")
-print(teams[question1][question2])
+def look_team():
+	question1 = int(input("What team would you like to look up? options: 1678, 1682, 1690, 1700, 2907, 3132 "))
+	question2 = input("What about the team would you like to know? options: rookie year, location, competitions and locations, awards ")
+	print(teams[question1][question2])
+
+look_team()
