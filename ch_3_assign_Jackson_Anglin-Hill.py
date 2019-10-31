@@ -5,6 +5,7 @@ allowed_actions = [
     'View team information',
     'Modify team information',
     'Search for team',
+    'List all teams'
     ]
 running = True
 def mainMenu():
@@ -53,23 +54,23 @@ def modifyTeam():
             location = input('Where is the team located?: ')
             teams[requested_team].pop('Location')
             teams[requested_team]['Location'] = location
-        if change == 'Rookie Year':
+        elif change == 'Rookie Year':
             rookie_year = input('What is their rookie year?: ')
             teams[requested_team].pop('Rookie Year')
             teams[requested_team]['Rookie Year'] = rookie_year
-        if change == 'Competed in 2019 Competitions':
+        elif change == 'Competed in 2019 Competitions':
             competed_in_2019 = input('Did they compete in the 2019 Competitions?: ')
             teams[requested_team].pop('Competed in 2019 Competitions')
             teams[requested_team]['Competed in 2019 Competitions'] = competed_in_2019
-        if change == 'Competition Names':
+        elif change == 'Competition Names':
             competitions = input('What are the names of the competitions they participated in?: ')
             teams[requested_team].pop('Competition Names')
             teams[requested_team]['Competition Names'] = competitions
-        if change == 'Competition Locations':
+        elif change == 'Competition Locations':
             locations_of_competitions = input('Where were the competitions they participated in?: ')
             teams[requested_team].pop('Competition Locations')
             teams[requested_team]['Competition Locations'] = locations_of_competitions
-        if change == 'Awards Won':
+        elif change == 'Awards Won':
             awards_won = input('What awards did they win?: ')
             teams[requested_team].pop('Awards Won')
             teams[requested_team]['Awards Won'] = awards_won
@@ -88,7 +89,7 @@ while running:
     request = input('What would you like to do? Please enter exactly as shown: ')
     while request == 'Add team':
         addTeam()
-        uncontinue = input("Would you like to add another team? Enter 'Yes' 'No': ")
+         uncontinue = input("Would you like to add another team? Enter 'Yes' 'No': ")
         if uncontinue == 'No':
             request = 'No'
         else:
@@ -121,3 +122,5 @@ while running:
             request = 'No'
         else:
             request = 'Search for team' 
+    if request == 'List all teams':
+        print(teams)
