@@ -18,7 +18,7 @@ while starting_sequence == False:
 		if activity_choice == 'no':
 			activity_choice = True;
 			print("Great job. You are now finished")
-			state_variable = 'menu'  
+			state_variable = 'menu' 
 		if activity_choice == 'yes':
 			activity_choice = True;
 			state_variable = 'modify'
