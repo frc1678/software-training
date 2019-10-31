@@ -1,0 +1,38 @@
+import math
+
+class Distanceorigin:
+    def __init__ (self, xx, yy):
+        self.x = xx
+        self.y = yy
+    def distance():
+        #dist from origin is py theorm : w/ 0,0
+        partone = x - 0
+        partwo = y - 0
+        calculate = partone**2 + partwo**2
+        lastpart = math.sqrt(calculate)
+        print("The distance from the origin is: ")
+        print(lastpart)
+class ThreeD:
+    def __init__ (self, tdx, tdy, tdz):
+        self.tx = tdx
+        self.ty = tdy
+        self.tz = tdz
+    def distance():
+        partone = tx**2 + ty**2 + tz**2
+        parttwo = math.sqrt(partone)
+        print("The distance from the origin is: ")
+        print(parttwo)
+ 
+x = int(input("What is the x cordinate? "))
+y = int(input("What is the y cordinate? "))
+a = Distanceorigin.distance()
+tx = int(input("What is the x value of the 3D point? "))
+ty = int(input("What is the y value of the 3D point? "))
+tz = int(input("What is the z value of the 3D point? "))
+b = ThreeD.distance()
+
+if a > b:
+    print("yeeeeeeeeeeeeeee")
+else:
+    print("Welp")
+
