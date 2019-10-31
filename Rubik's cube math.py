@@ -21,6 +21,6 @@ class cube():
                          ** round(((self.size - 2) / 2) ** 2))
         return total
 
-
-myCube = cube(2)
+#Disclaimer: This may return inf (infinity) for 10x10 cubes and up. Sadly, computer calculators are also limited.
+myCube = cube(9)
 print(myCube.combos())
