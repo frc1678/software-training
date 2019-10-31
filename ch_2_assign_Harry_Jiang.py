@@ -44,7 +44,6 @@ while command != 'quit':
     if command == 'update a team':
         print('update a team')
         team_name = input('What team needs an update? ')
-        print(teams[team_name])
         if team_name in teams.keys():
             print("number, programming_language, width, length, vision_system, number_of_drivetrain_motors")
             field = input('What field needs and update: ')
@@ -66,12 +65,10 @@ while command != 'quit':
                 print("field you want to update is invalid")
                 isInputValid = False
 
-
             if isInputValid:
                 teams[team_name][field] = value
                 print("team updated successfully")
                 print(teams[team_name])
-
 
         else:
             print('team does not exist')
