@@ -1,0 +1,2 @@
+Sam = 'sexy'
+print(Sam)
