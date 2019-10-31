@@ -1,5 +1,7 @@
 teams = {}
 team_aspects = ["name", "programming language", "width", "length", "camera vision system", "drivetrain motors", "team number"]
+number_aspects = ["width", "length", "drivetrain motors"]
+word_aspects = ["name", "programming language", "camera vision system"]
 
 #List of Function Operations:
 #name_number functions: make team names and number interchangeable for specified functions
@@ -9,7 +11,7 @@ team_aspects = ["name", "programming language", "width", "length", "camera visio
 #add_team: adds a team to the main teams dictionary
 #list_team: lists the team #, or keys in the teams dictionary
 #exit_program: leaves the program
-#validate: validates input for add team function
+#validation: validates input for add team function
 #main_function: The "main menu" for the other operations
 
 def remove_team_name_number():
@@ -42,6 +44,14 @@ def modify_team(team_name_modify):
 	for team_aspect in team_aspects:
 		if team_attribute_modify == team_aspect:
 			new_attribute = input("What is the team's updated attribute? ")
+			for attribute in number_aspects:
+				if team_attribute_modify == attribute:
+					new_attribute = validation_number(new_attribute)
+					break
+			for attribute in word_aspects:
+				if team_attribute_modify == attribute:
+					new_attribute = validation_word(new_attribute)
+					break
 			teams[team_name_modify][team_aspect] = new_attribute
 			break
 	else:
@@ -54,18 +64,24 @@ def add_team():
 	temp_team_dictionary = {}
 
 	name = input("What is the name of your team? ")
+	val_name = validation_word(name)
 	p_language = input("What is your team's programming language? ")
+	val_p_language = validation_word(p_language)
 	width = input("What is your team's robot's width? ")
+	val_width = validation_number(width)
 	length = input("Wnat is your team's robot's length? ")
+	val_length = validation_number(length)
 	cam_vision = input("Does your team's robot's have a camera vision system? ")
+	val_cam_vision = validation_word(cam_vision)
 	drive_motors = input("How many drivetrain motors does your team have? ")
+	val_drive_motors = validation_number(drive_motors)
 
-	temp_team_dictionary["name"] = name
-	temp_team_dictionary["programming language"] = p_language
-	temp_team_dictionary["width"] = width
-	temp_team_dictionary["length"] = length
-	temp_team_dictionary["camera vision system"] = cam_vision
-	temp_team_dictionary["drivetrain motors"] = drive_motors
+	temp_team_dictionary["name"] = val_name
+	temp_team_dictionary["programming language"] = val_p_language
+	temp_team_dictionary["width"] = val_width
+	temp_team_dictionary["length"] = val_length
+	temp_team_dictionary["camera vision system"] = val_cam_vision
+	temp_team_dictionary["drivetrain motors"] = val_drive_motors
 
 	team_number_input = input("Add a team number ")
 	
@@ -78,25 +94,26 @@ def add_team():
 		team_number_input = int(input("Add a team number "))
 		teams[team_number_input] = temp_team_dictionary
 
-	validation(team_number_input)
 	main_function()
 
-def validation(team_number_input):
-	for data_field in ["width", "length", "drivetrain motors"]:
-		if teams[team_number_input][data_field].isdigit():
-			teams[team_number_input][data_field] = int(teams[team_number_input][data_field])
-		else:
-			print("Input wasn't a number, please enter number for")
-			print(data_field)
-			teams[team_number_input][data_field] = int(input("Please enter the new answer "))
-	for data_field in ["name", "programming language", "camera vision system"]:
-		if teams[team_number_input][data_field].isdigit() == False:
-			teams[team_number_input][data_field] = str(teams[team_number_input][data_field])
-		else:
-			print("Input was a number, please enter a word for")
-			print(data_field)
-			teams[team_number_input][data_field] = str(input("Please enter the new answer "))
+def validation_number(user_input):
+	if user_input.isdigit():
+		user_input = int(user_input)
+		return user_input
+	else:
+		print("User input wasn't a number, please enter a number.")
+		user_new_input = input("Please enter new answer: ")
+		validation_number(user_new_input)
+		return user_new_input
 
+def validation_word(user_input):
+	if user_input.isdigit() == False:
+		return user_input
+	else:
+		print("User input wasn't a word, please enter a word")
+		user_new_input = input("Please enter new answer: ")
+		validation_word(user_new_input)
+		return user_new_input
 
 def search_team_name_number():
 	user_search = input("What team do you want to search? ")
