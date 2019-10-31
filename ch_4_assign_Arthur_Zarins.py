@@ -55,5 +55,5 @@ while True:
     print("The distance from the 2d point to orgin: " +
           str(boringPoint2d.distance()))
     print("The distance from the 3d point to orgin: " + str(coolPoint.distance()))
-
+            
 # We know the last one's bogus because it's value is -1
