@@ -1,53 +1,43 @@
-from math import fabs, sqrt
+from math import sqrt
 from isfloat import isfloat
 class point():
     def __init__(self,x,y):
         self.x = x
         self.y = y
     def origin(self):
-        return round(sqrt((fabs(self.x) ** 2 + fabs(self.y) ** 2)))
+        return round(sqrt((self.x ** 2 + self.y ** 2)))
+    def isValid(self):
+        return isfloat(self.x) and isfloat(self.y)
+    def __str__(self):
+        return str(self.x) + ", " + str(self.y)
 
 class point3d(point):
     def __init__(self,x,y,z):
         super().__init__(x,y)
         self.z = z
-    def findOrigin(self):
-        return sqrt((fabs(self.x) ** 2 + fabs(self.y) ** 2) + (fabs(self.z)**2))
-
+    def origin(self):
+        return super().origin() + (self.z ** 2)
+    def isValid(self):
+        return super().isValid and isfloat(self.z)
+    def __str__(self):
+        return super().__str__() + ", " + str(self.z)
 user_2d = input("Enter two numbers seperated by spaces: ").split(" ")
 user_3d = input("Enter three numbers seperated by spaces: ").split(" ")
-
-
-converted_2d = []
-converted_3d = []
-
-if len(user_2d) != 2 and len(user_3d) != 3:
-    print("Please enter the correct amount of numbers")
-
-for convert in user_2d:
-
-    if not isfloat(convert):
-        break
-    converted_2d.append(float(convert))
-
-
-for convert in user_3d:
-    if not isfloat(convert):
-        break
-    converted_3d.append(float(convert))
-
-
-
-if len(converted_2d) == 2 and len(converted_3d) == 3:
-
-    if point(converted_2d[0], converted_2d[1]).origin() == point3d(converted_3d[0],converted_3d[1],converted_3d[2]).findOrigin():
-        print("The two dimensional coordinate's distance from the origin is equal to the three dimensional coordinate's distance from the origin'")
-
-    elif point(converted_2d[0], converted_2d[1]).origin() > point3d(converted_3d[0],converted_3d[1],converted_3d[2]).findOrigin():
-        print(converted_2d)
-
-    else:
-        print(converted_3d)
-
+if len(user_2d) != 2 or len(user_3d) != 3:
+    print("why are you like this")
 else:
-    print("Please enter only numbers")
+    user_point = point(user_2d[0], user_2d[1])
+    user_point3d = point3d(user_3d[0], user_3d[1], user_3d[2])
+    if not user_point.isValid() or not user_point3d.isValid():
+        print("why are you like this 2")
+    else:
+        user_point = point(float(user_2d[0]), float(user_2d[1]))
+        user_point3d = point3d(float(user_3d[0]), float(user_3d[1]), float(user_3d[2]))
+        if user_point.origin() == user_point3d.origin():
+            print("The two dimensional coordinate's distance from the origin is equal to the three dimensional coordinate's distance from the origin'")
+
+        elif user_point.origin() > user_point3d.origin():
+            print(user_point)
+
+        else:
+            print(user_point3d)
