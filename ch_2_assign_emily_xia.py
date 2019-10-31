@@ -47,7 +47,7 @@ while True:
             modify_attribute = input("What is the attribute that you want to modify? \n")
             if modify_attribute in team_dictionary[modify_team]:
                 new_attribute = input("What do you want the new "+modify_attribute+" to be? \n")
-                team_dictionary.update({modify_team:{modify_attribute:new_attribute}})
+                team_dictionary[modify_team].update({modify_attribute:new_attribute})
                 print(team_dictionary[modify_team])
                 user_action = input("""If you want to continue, press 2. \nIf you want to exit the "modify" function, press 0. \n""")
             elif modify_team not in team_dictionary[modify_team]:
@@ -58,7 +58,7 @@ while True:
             user_action = input("""If you want to continue, press 2. \nIf you want to exit the "modify" function, press 0. \n""")
     elif user_action == "3":
     #viewing a team
-        view_team = int(input("What is the number of the team you want to view? \n "))
+        view_team = input("What is the number of the team you want to view? \n ")
         if view_team in team_dictionary:
             print(team_dictionary[view_team])
         elif view_team not in team_dictionary:
@@ -67,16 +67,16 @@ while True:
     elif user_action == "4":
     #removing a team
         print(team_dictionary)
-        remove_team = int(input("What is the number of the team you want to remove? \n "))
+        remove_team = input("What is the number of the team you want to remove? \n ")
         if remove_team in team_dictionary:
             team_dictionary.pop(remove_team)
             print("Team" +remove_team+ "has been removed from the team dictionary!")
         elif remove_team not in team_dictionary:
                 print("I'm sorry, the team you are looking for does not exist.")
-        user_action = input("""If you want to continue, press 4. \nIf you want to exit the "remove" function, press 0. \n """)
+        user_action = input("""If you want to continue, press 4. \nIf you want to exit the "remove" function, press 0.\n """)
     elif user_action == "5":
     #searching for a team
-        search_team = input("What is the number of the team you want to search for? \n")
+        search_team = input("What is the number or name of the team you want to search for?\n")
         if search_team in team_dictionary:
             print("Yes, the team you are looking for is in the team dictionary")
         else:
@@ -89,11 +89,11 @@ while True:
             if not result:
                 print("""I'm sorry, but the team you are looking for is not in the team dictionary.
                 Please make sure that your input is an integer.""")
-        user_action = input("""If you want to continue, press 5. \n If you want to exit the "search" function, press 0. \n """)
+        user_action = input("""If you want to continue, press 5. \n If you want to exit the "search" function, press 0.\n """)
     elif user_action == "6":
     #listing all teams
         print(team_dictionary)
-        user_action = input("""If you want to continue, press 6. \nIf you want to exit the "list" function, press 0. \n """)
+        user_action = input("""If you want to continue, press 6. \nIf you want to exit the "list" function, press 0.\n """)
     elif user_action not in ["0", "1", "2", "3", "4", "5", "6", "7"]:
     #returning to main menu if user_action is not a known value
         print("I'm sorry, could you please re-enter your command?")
