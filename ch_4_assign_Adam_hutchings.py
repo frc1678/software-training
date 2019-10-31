@@ -4,10 +4,10 @@ class Point():
 		self.x_coord = x_coord
 		self.y_coord = y_coord
 
-	def distance(self):
+	def distance(self): #Distance
 		return math.sqrt((float(self.x_coord) ** 2) + (float(self.y_coord) ** 2)) #Pythagorean calculation
 
-class Point_3D(Point):
+class Point_3D(Point): #Defining it for 3D
 	def __init__(self, x_coord, y_coord ,z_coord):
 		super().__init__(x_coord,y_coord)
 		self.z_coord = z_coord
@@ -28,7 +28,7 @@ def distance_counter(user_x_1,user_y_1,user_x_2,user_y_2,user_z):
 	else:
 		print("Your first point was further away. ")
 
-def is_float(user_input):
+def is_float(user_input): #Idiotproofing!
 	for character in user_input:
 		if character not in '0123456789.':
 			return False
