@@ -103,7 +103,11 @@ view team's information, modify team's information, view all teams and informati
         if team_search == 'quit':
             continue
         elif team_search.isnumeric() == True:
-            print(teams.get(int(team_search)))
+            team_get = teams.get(int(team_search))
+            if team_get == None:
+                print("The team you searched for was not found in the database. ")
+            else:
+                print("The team you searched for was found in the database. ")
         else:
             names = []
             for team_num, team_attributes in teams.items():
@@ -180,12 +184,12 @@ view team's information, modify team's information, view all teams and informati
         check = False
         while check == False:
             new_robot_length = input("What is the robot's new length? ")
-            if robot_length == 'quit':
+            if new_robot_length == 'quit':
                 check = True
             elif new_robot_length == "none":
                 new_robot_length = teams[chng_team_num]["Length"]
                 check = True
-            elif robot_length.isnumeric():
+            elif new_robot_length.isnumeric():
                 new_robot_length = float(new_robot_length)
                 check = True
             else:
