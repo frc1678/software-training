@@ -65,11 +65,24 @@ def add_team():
 	all_team_dict.update( {input_num : team_dict} )
 	print("Successfully added team " + input_num + "!") 
 
+def search_team():
+	input_searchteam = input("Please enter a team number to check if it exists or 0 to exit.\n==>")
+	if input_searchteam == '0':
+		print("Exiting...")
+		return
+	elif input_searchteam in all_team_dict.keys():
+		print("Yes, team " + input_searchteam + " does exist.")
+	elif input_searchteam == team_dict["name"]:
+		print("Yes, team " + input_searchteam + " does exist.")
+	else:
+		print("Team " + input_searchteam + " does not exist!")
+
 def view_team():
 	input_viewteam = input("Please enter a team number to view or 0 to exit.\n==>")
 	if input_viewteam == '0': 
 		print("Exiting...")
 		return 
+
 	elif input_viewteam in all_team_dict.keys():
 		team_dict = all_team_dict.get(input_viewteam)
 		print("     Number = " + team_dict ["number"] + '\n' +
@@ -80,19 +93,20 @@ def view_team():
 			  "     Camera Vision System = " + team_dict ["cam_vision"] + '\n' + 
 			  "     Number of drivetrain motors = " + team_dict ["motors"] + '\n' 
 		)
+
 	else:
 		print("Team " + input_viewteam + " not found!")
 	
 def remove_team():
-	input_viewteam = input("Please enter a team number to delete or 0 to exit. \n==>")
-	if input_viewteam == '0': 
+	input_removeteam = input("Please enter a team number to delete or 0 to exit. \n==>")
+	if input_removeteam == '0': 
 		print("Exiting...")
 		return
-	elif input_viewteam in all_team_dict.keys():
-		all_team_dict.pop(input_viewteam) 
-		print("Team " + input_viewteam + " removed!")
+	elif input_removeteam in all_team_dict.keys():
+		all_team_dict.pop(input_removeteam) 
+		print("Team " + input_removeteam + " removed!")
 	else:
-		print("Team " + input_viewteam + " not found!")
+		print("Team " + input_removeteam + " not found!")
 
 
 def list_teams():
@@ -114,14 +128,16 @@ def list_teams():
 
 while True:
 	print("MAIN MENU:")
-	selection = input("Press \n     1 to add/update a team,\n     2 to view a team,\n     3 to remove a team,\n     4 to list all teams.\n==>")
+	selection = input("Press \n     1 to add/update a team,\n     2 to search for a team,\n     3 to view a team's information,\n     4 to remove a team,\n     5 to list all teams.\n==>")
 	if selection == '1':
 		add_team()
-	elif selection == '2': 
+	elif selection == '2':
+		search_team()
+	elif selection == '3': 
 		view_team()
-	elif selection == '3':
-		remove_team()
 	elif selection == '4':
+		remove_team()
+	elif selection == '5':
 		list_teams()
 	else:
 		print("I'm sorry, I did not understand that.")
