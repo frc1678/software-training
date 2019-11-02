@@ -51,13 +51,22 @@ def checker():
 		print("The hypotenuses are equal")
 	else:	
 		print("3D-hypotenuse is bigger")
+
 def validation(user_input):
 	if user_input.isdigit():
-		user_input = int(user_input)
-		return user_input
+		int_user_input = int(user_input)
+		return int_user_input
 	else:
-		print("Input wasn't a number, please enter a number.")
-		user_new_input = input("Please enter a value: ")
-		validation(user_new_input)
+		print("User input wasn't a number, please enter a number.")
+		user_new_input = input("Please enter new answer: ")
+		try:
+			user_new_input = int(user_new_input)
+			return user_new_input
+		except ValueError:
+			validation(user_new_input)
+			return user_new_input
+		except TypeError:
+			validation(user_new_input)
+			return user_new_input
 
 checker()
