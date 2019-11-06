@@ -8,11 +8,7 @@ def remove_function():
         removal = input("Which team would you like to remove? This action cannot be undone!")
         if ("statistics" + removal) in master_dictionary:
             master_dictionary[removal] = {}
-            break
-    valid_input_5 = False
-    while valid_input_5 == False:
-        menu_selection = input("""Type 'menu' to go back to the main menu, 'view' to view more, 
-            'remove' to remove more, 'search' to search the teams, or 'modify' to modify the information.""")
+            break;
 
 def view_function():
     while True:
@@ -32,35 +28,30 @@ def view_function():
 
 def search_teams(): #Searching teams
     while True:
-        team_search = input("What team would you like to search for?")
-        if team_search.isdigit() == True: #If the search is all digits
+        team_search = input("What team would you like to search for? ")
+        if team_search.isdigit() == False: #If the search is all digits
+            print("Oops, enter a valid input!")
+            continue;
+        else:
             break;
-        for search in master_dictionary: #Checking every master_dict key to see if it's equal to the search
-            if search == ("statistics" + team_search):
-                print("A match has been found!")
-            else:
-                print("Oops, that isn't a team. ")
-    else:
-        print("A match has not been found.")
-        valid_input_5 = False
-        while valid_input_5 == False:
-            menu_selection = input("""Type 'menu' to go back to the main menu, 'view' to view more, 
-                'remove' to remove data, 'search' to search the teams again, or 'modify' to modify the information.""")
+    for search in master_dictionary: #Checking every master_dict key to see if it's equal to the search
+        if search == ("statistics" + team_search):
+            return ("A match has been found!")
+            break;
+    return ("No matches were found.")
 
 def add_team(): #How to add a new team
-            print("You are adding a new file. The first step is to name your team.")
-            valid_team_name = False
-            while valid_team_name == False:
-                team_name = input("What would you like your team to be named? Make sure it's all numbers! ") #Getting a name for the team
-                if team_name.isdigit() == True: #Checking if a team name is all digits
-                    valid_team_name = True #Breaking the infinite loop
-                    master_dictionary["statistics" + str(team_name)] = {} #Making a dictionary entry for the team
-                    for yeet in statistic_list:
-                        master_dictionary["statistics" + str(team_name)][yeet] = ''
-            valid_input_5 = False
-            while valid_input_5 == False:
-                menu_selection = input("""Type 'menu' to go back to the main menu, 'view' to view more, 
-                    'remove' to remove data, 'search' to search the teams, or 'modify' to modify the information again.""")
+    print("You are adding a new file. The first step is to name your team.")
+    while True:
+        team_name = input("What would you like your team to be named? Make sure it's all numbers! ") #Getting a name for the team
+        if team_name.isdigit() == False: #Checking if a team name is all digits
+            print("Valid input, please!")
+            continue;
+        else:
+            master_dictionary["statistics" + str(team_name)] = {} #Making a dictionary entry for the team
+            for yeet in statistic_list:
+                master_dictionary["statistics" + str(team_name)][yeet] = ''
+            break;
 
 def add_statistic(): #How to add a statistic for a team
     team_name = '' #Setting variables empty
@@ -113,7 +104,7 @@ while True:
             remove_function()
         if menu_selection == 'search':
             valid_input_5 = True
-            search_teams()
+            print(search_teams())
         if menu_selection == 'modify':
             valid_input_5 = True
             modification_function()
