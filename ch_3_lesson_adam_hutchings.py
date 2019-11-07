@@ -72,16 +72,6 @@ def add_statistic(): #How to add a statistic for a team
             datapoint = (input("What would you like to set this team's " + statistic_added + "?")) #What data the user wants to add.
             master_dictionary["statistics" + str(team_name)][statistic_added] = datapoint
 
-def modification_function(): #Modifying data in this program.
-        while True:
-            adding_teams = input("Would you like to add a new team or a new statistic? Please type 'team' or 'statistic'. ") #Whether new team files are still being created
-            if adding_teams == 'team': #Getting other functions to run
-                add_team()
-                break;
-            if adding_teams == 'statistic' and master_dictionary != {}: #Checking if there are any teams for statistics to be added to
-                add_statistic()
-                break;
-
 def menu_function():
     if master_dictionary == {}:
         valid_input = False
@@ -95,16 +85,24 @@ while True:
     valid_input_5 = False
     while valid_input_5 == False:
         menu_selection = input("""Type 'view' to view, 
-            'remove' to remove, 'search' to search the teams, or 'modify' to modify the information. """)
+            'remove' to remove, 'search' to search the teams, 'add' to add a team, or
+            'statistic' to add a statistic to a team's file. """)
         if menu_selection == 'view':
             valid_input_5 = True
             view_function()
-        if menu_selection == 'remove':
+        elif menu_selection == 'remove':
             valid_input_5 = True
             remove_function()
-        if menu_selection == 'search':
+        elif menu_selection == 'search':
             valid_input_5 = True
             print(search_teams())
-        if menu_selection == 'modify':
+        elif menu_selection == 'add':
             valid_input_5 = True
-            modification_function()
+            add_team()
+        elif menu_selection == 'statistic':
+            if master_dictionary != {}:
+                valid_input_5 = True
+                add_statistic()
+            else:
+                print("You don't have any teams! Darn it!")
+                continue;
