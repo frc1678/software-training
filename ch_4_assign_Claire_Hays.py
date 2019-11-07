@@ -23,56 +23,36 @@ class Determine(Point3D):
 			return "3D point is farther from the origin."
 		else:
 			return "2D point is farther from origin."
+def check_if_int(a):
+    while True:
+        if a == 'quit':
+            return None
+        elif a.isdigit() == True:
+            a = int(a)
+            return a
+        else:
+            a = input("Please type value as an integer: ")
 
 
-check = False
-while check == False:
-    x = input("What is the x coordinate of the 2D point? ")
-    if x.isdigit():
-        x = int(x)
-        check = True
-    else:
-        print("Please type value as an integer. ")
+x = input("What is the x coordinate of the 2D point? ")
+x = check_if_int(x)
 
-check = False
-while check == False:
-    y = input("What is the y coordinate of the 2D point? ")
-    if y.isdigit():
-        y = int(y)
-        check = True
-    else:
-        print("Please type value as an integer. ")
+y = input("What is the y coordinate of the 2D point? ")
+y = check_if_int(y)
 
 point_2D = Point(x, y)
 dist_2D = point_2D.dist()
 print(dist_2D)
 
-check = False
-while check == False:
-    x3D = input("What is the x coordinate of the 3D point? ")
-    if x3D.isdigit():
-        x3D = int(x3D)
-        check = True
-    else:
-        print("Please type value as an integer. ")
 
-check = False
-while check == False:
-    y3D = input("What is the y coordinate of the 3D point? ")
-    if y3D.isdigit():
-        y3D = int(y3D)
-        check = True
-    else:
-        print("Please type value as an integer. ")
+x3D = input("What is the x coordinate of the 3D point? ")
+x3D = check_if_int(x3D)
 
-check = False
-while check == False:
-    z = input("What is the z coordinate of the 3D point? ")
-    if z.isdigit():
-        z = int(z)
-        check = True
-    else:
-        print("Please type value as an integer. ")
+y3D = input("What is the y coordinate of the 3D point? ")
+y3D = check_if_int(y3D)
+
+z = input("What is the z coordinate of the 3D point? ")
+z = check_if_int(z)
 
 point_3D = Point3D(x3D, y3D, z)
 dist_3D = point_3D.dist()
