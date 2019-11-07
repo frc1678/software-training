@@ -28,27 +28,35 @@ class Point_3D(Point):
 #print(aPoint.calculateDistance())
 IsInputValid = False
 while IsInputValid == False:
-	pointinput = input('please enter the value of two dimensional point\n')
+	pointinput = input('please enter the value of two dimensional point. put a "," between values\n')
 	coordinate = pointinput.split(',')
-	if not coordinate[0].isnumeric() or not coordinate[1].isnumeric():
-		IsInputValid = False
+	if not len(coordinate) == 2:
+		print("your input is invalid")
 	else:
-		aPoint = Point(float(coordinate[0]), float(coordinate[1]))
-		distance2D = aPoint.calculateDistance()
-		print(distance2D)
-		IsInputValid = True
+		if not coordinate[0].isnumeric() or not coordinate[1].isnumeric():
+			print("your input is incorrect")
+			IsInputValid = False
+		else:
+			aPoint = Point(float(coordinate[0]), float(coordinate[1]))
+			distance2D = aPoint.calculateDistance()
+			print(distance2D)
+			IsInputValid = True
 
 Is3dInputValid = False
 while Is3dInputValid == False:
-	point3Dinput = input('please enter the value of the three dimensional point\n')
+	point3Dinput = input('please enter the value of the three dimensional point. put a "," between values\n')
 	coordinate3D = point3Dinput.split(',')
-	if not coordinate3D[0].isnumeric() or not coordinate3D[1].isnumeric() or not coordinate3D[2].isnumeric():
-		Is3dInputValid = False
+	if not len(coordinate3D) == 3:
+		print("your input is invalid")
 	else:
-		bPoint = Point_3D(float(coordinate3D[0]), float(coordinate3D[1]), float(coordinate3D[2]))
-		distance3D = bPoint.calculateDistance()
-		print(distance3D)
-		Is3dInputValid = True
+		if not coordinate3D[0].isnumeric() or not coordinate3D[1].isnumeric() or not coordinate3D[2].isnumeric:
+			print("your input is incorrect")
+			Is3dInputValid = False
+		else:
+			bPoint = Point_3D(float(coordinate3D[0]), float(coordinate3D[1]), float(coordinate3D[2]))
+			distance3D = bPoint.calculateDistance()
+			print(distance3D)
+			Is3dInputValid = True
 
 if distance2D > distance3D:
 	print('two dimensional point distance is larger')
