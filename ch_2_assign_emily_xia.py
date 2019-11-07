@@ -50,6 +50,9 @@ while True:
                 team_dictionary[modify_team].update({modify_attribute:new_attribute})
                 print(team_dictionary[modify_team])
                 user_action = input("""If you want to continue, press 2. \nIf you want to exit the "modify" function, press 0. \n""")
+                if modify_attribute == "number":
+                    team_dictionary[new_attribute] = team_dictionary[modify_team]
+                    team_dictionary.pop(modify_team)           
             elif modify_team not in team_dictionary[modify_team]:
                 print("I'm sorry, the team you want to modify is not in the dictionary.")
                 user_action = input("""If you want to continue, press 2. \nIf you want to exit the "modify" function, press 0. \n""")
