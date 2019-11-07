@@ -14,13 +14,11 @@ class Distanceorigin:
         print("The distance from the origin is: ")
         print(lastpart)
         return lastpart
-class ThreeD:
-    def __init__ (self, tdx, tdy, tdz):
-        self.tx = tdx
-        self.ty = tdy
-        self.tz = tdz
+class ThreeD(Distanceorigin):
+    def __init__ (self, x, y,z):
+        self.z = tdz
     def distance():
-        partone = tx**2 + ty**2 + tz**2
+        partone =x**2 + y**2 + z**2
         parttwo = math.sqrt(partone)
         print("The distance from the origin is: ")
         print(parttwo)
@@ -42,9 +40,9 @@ while checktwo == False:
     threedy = input("What is the y value of the 3D point? ")
     threedz = input("What is the z value of the 3D point? ")
     if threedx.isdigit() and threedy.isdigit() and threedz.isdigit():
-        tx = int(threedx)
-        ty = int(threedy)
-        tz = int(threedz)
+        x = int(threedx)
+        y = int(threedy)
+        z = int(threedz)
         checktwo = True
 
 b = int(ThreeD.distance())
