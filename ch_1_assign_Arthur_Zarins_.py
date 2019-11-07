@@ -16,7 +16,11 @@ teams = {
     "2942": {'Last Year': 2018,
              'Location': "Seattle, WA",
              'Rookie Year': 2009,
-             'Events': ''}
+             'Events': ''},
+    "3890": {'Last Year': 2015,
+             'Location': "Boulder, Colorado",
+             'Rookie Year': 2003,
+             'Events': 'Colorado Regional'}
 }
 #reference = "is"
 
