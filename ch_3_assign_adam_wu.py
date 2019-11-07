@@ -1,5 +1,5 @@
 def team_add_function():
-    team_number = input('Please enter team number:\n')
+    team_number = input('Please enter team number you would like to add/change:\n')
     if team_number.isnumeric():
         teams.update({team_number:{}})
     else:
@@ -24,7 +24,10 @@ def team_add_function():
         want_to_change = team_menu[key_entered]
 
             #val_change is the variable for new values
-        val_change = input('what is the new value for ' + want_to_change['property']+'\n')
+        if user_input == 4:
+            val_change = input('enter 1 for true and 0 for false\n')
+        else:
+            val_change = input('what is the new value for ' + want_to_change['property']+'\n')
         try:
             if want_to_change['type'] == 'str':
                 try:
@@ -62,15 +65,17 @@ def team_delete_function():
 def team_search_function():
     team_search = input('what team would you like to search? \n')
     #team_search_validation = False
-    for team_number, team_name in teams.items():
-        if team_search == team_number:
-            for sub_team_name, sub_team_value in team_name.items():
-                print(sub_team_name + ' = ' + sub_team_value)
-    for team_number, team_name in teams.items():
-        if team_search == team_name['team_name']:
-            for sub_team_number, sub_team_name in team_name.items():
-                print(str(sub_team_number) + ' = ' + str(sub_team_name))
-        
+    if team_search in teams.keys():
+        print('yes it is in the database')
+     
+    else:
+        for team_number, team_info in teams.items():
+            for key, value in team_info.items():
+                if team_search == value:
+                    print('yes it is in the dictionary')
+                else:
+                    print('this is not in the dictionary')
+                    
 
 def teams_show_function():
     for key, value in teams.items():
