@@ -47,7 +47,7 @@ def checker():
 	print(p2.distance())
 	if p1.distance() > p2.distance():
 		print("2D-hypotenuse is bigger")
-	elif p1 == p2:
+	elif p1.distance() == p2.distance():
 		print("The hypotenuses are equal")
 	else:	
 		print("3D-hypotenuse is bigger")
