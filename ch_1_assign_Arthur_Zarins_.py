@@ -58,3 +58,4 @@ def runContinuous():
 
 #If you want to run the program, uncomment the following line (commented so chapter 3 can work):
 #runContinuous()
+runContinuous()
