@@ -1,28 +1,30 @@
 import math 
 class Point:
-	def __init__ (self, x, y):
-		self.x = x
-		self.y = y
-	def dist(self):
-		return math.sqrt(self.x**2 + self.y**2)
+    def __init__ (self, x, y):
+        self.x = x
+        self.y = y
+    def dist(self):
+        return math.sqrt(self.x**2 + self.y**2)
 
 class Point3D(Point):
-	def __init__ (self, x, y, z):
-		super().__init__ (x, y)
-		self.z = z
-	def dist(self):
-		return math.sqrt((super().dist())**2 + self.z**2)
+    def __init__ (self, x, y, z):
+        super().__init__ (x, y)
+        self.z = z
+    def dist(self):
+        return math.sqrt((super().dist())**2 + self.z**2)
 
 class Determine(Point3D):
-	def __init__(self, x2D, y2D, x, y, z):
-		super().__init__ (x, y, z)
-		self.x2D = x2D
-		self.y2D = y2D
-	def compare_tot_dist(self):
-		if super().dist() > Point(self.x2D, self.y2D).dist():
-			return "3D point is farther from the origin."
-		else:
-			return "2D point is farther from origin."
+    def __init__(self, x2D, y2D, x, y, z):
+        super().__init__ (x, y, z)
+        self.x2D = x2D
+        self.y2D = y2D
+    def compare_tot_dist(self):
+        if super().dist() > Point(self.x2D, self.y2D).dist():
+            return "3D point is farther from the origin."
+        elif super().dist() == Point(self.x2D, self.y2D).dist():
+            return "Points are equidistant from origin."
+        else:
+            return "2D point is farther from origin."
 def check_if_int(a):
     while True:
         if a == 'quit':
