@@ -50,7 +50,7 @@ while True:
         print("They have equal distances")
     if boringPoint2d.distance() > coolPoint.distance():
         print("The 2d point's furthur away from the orgin")
-    else:
+    elif boringPoint2d.distance() < coolPoint.distance():
         print("The 3d point's furthur away from the orgin")
     print("The distance from the 2d point to orgin: " +
           str(boringPoint2d.distance()))
