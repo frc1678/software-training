@@ -89,17 +89,33 @@ view team's information, modify team's information, view all teams and informati
 
 
     elif command == "remove a team":
-        remove_team_num = input("What team number would you like to remove? ")
+        check = False
+        while check == False:
+            remove_team_num = input("What team number would you like to remove? ")
+            if remove_team_num == 'quit':
+                check = True
+            elif remove_team_num.isnumeric():
+                remove_team_num = float(remove_team_num)
+                check = True
+            else:
+                print("Please type your team number as a n integer")
         if remove_team_num == 'quit':
             continue
-        else:
-            remove_team_num = int(remove_team_num)
         teams.pop(remove_team_num)
         print("Team number successfully removed. To view new team list, type 'list all teams'")
 
 
     elif command == "search for a team":
-        team_search = input("What team would you like to search for? ")
+        check = False
+        while check == False:
+            team_search = input("What team would you like to search for? ")
+            if team_search == 'quit':
+                check = True
+            elif team_search.isnumeric():
+                team_search = float(team_search)
+                check = True
+            else:
+                print("Please type your team number as a n integer")
         if team_search == 'quit':
             continue
         elif team_search.isnumeric() == True:
@@ -124,11 +140,18 @@ view team's information, modify team's information, view all teams and informati
 
 
     if command == "view team's information":
-        view_team_num = input("What team's information would you like to view? ")
+        check = False
+        while check == False:
+            view_team_num = input("What team's information would you like to view? ")
+            if view_team_num == 'quit':
+                check = True
+            elif view_team_num.isnumeric():
+                view_team_num = float(view_team_num)
+                check = True
+            else:
+                print("Please type your team number as a n integer")
         if view_team_num == 'quit':
             continue
-        else:
-            view_team_num = int(view_team_num)
         view_team_attribute = str(input("""What attribute would you like to view (Name, 
     Programming Language, Width, Length, Camera Vision, Drivetrain Motors? """))
         if view_team_attribute == 'quit':
