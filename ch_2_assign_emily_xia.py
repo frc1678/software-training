@@ -21,12 +21,26 @@ while True:
     elif user_action == "1":
     #adding a team  
         number = input("What is your team number? \n")
+        while number.isdigit() == False:
+            number = input("Your input is not an integer, please input an integer \n")
         name = input("What is the name of your team? \n")
+        while name.isdigit() == True:
+            name = input("Your input is not a string, please input a string\n")
         programming_language = input("What is the programming language of your team? \n")
+        while programming_language.isdigit() == True:
+            programming_language = input("Your input is not a string, please input a string\n")
         width = input("What is the width of your robot? \n")
+        while width.isdigit() == False:
+            width = input("Your input is not an integer, please input an integer \n")
         length = input("What is the length of your robot? \n")
+        while length.isdigit() == False:
+            length = input("Your input is not an integer, please input an integer \n")
         camera_vision_system = input("True or False, your robot has a camera vision system? \n")
+        while camera_vision_system.isdigit() == True:
+            camera_vision_system = input("Your input is not a boolean, please input a boolean\n")
         number_of_motors = input("How many motors does your robot have? \n")
+        while number_of_motors.isdigit() == False:
+            number_of_motors = input("Your input is not an integer, please input an integer \n")
         added_team_information = {
             "number": number,
             "name": name,
@@ -47,6 +61,27 @@ while True:
             modify_attribute = input("What is the attribute that you want to modify? \n")
             if modify_attribute in team_dictionary[modify_team]:
                 new_attribute = input("What do you want the new "+modify_attribute+" to be? \n")
+                if modify_attribute == "number":
+                    while new_attribute.isdigit() == False:
+                        new_attribute = input("Your input is not an integer, please input a integer\n")
+                elif modify_attribute == "name":
+                    while new_attribute.isdigit() == True:
+                        new_attribute = input("Your input is not a string, please input a string\n")
+                elif modify_attribute == "programming_language":
+                    while new_attribute.isdigit() == True:
+                        new_attribute = input("Your input is not a string, please input a string\n")
+                elif modify_attribute == "width":
+                    while new_attribute.isdigit() == False:
+                        new_attribute = input("Your input is not an integer, please input a integer\n")
+                elif modify_attribute == "length":
+                    while new_attribute.isdigit() == False:
+                        new_attribute = input("Your input is not an integer, please input a integer\n")
+                elif modify_attribute == "camera_vision_system":
+                    while new_attribute.isdigit() == True:
+                        new_attribute = input("Your input is not a boolean, please input a boolean\n")
+                elif modify_attribute == "number_of_motors":
+                    while new_attribute.isdigit() == False:
+                        new_attribute = input("Your input is not an integer, please input a integer\n")
                 team_dictionary[modify_team].update({modify_attribute:new_attribute})
                 print(team_dictionary[modify_team])
                 user_action = input("""If you want to continue, press 2. \nIf you want to exit the "modify" function, press 0. \n""")
@@ -73,7 +108,7 @@ while True:
         remove_team = input("What is the number of the team you want to remove? \n ")
         if remove_team in team_dictionary:
             team_dictionary.pop(remove_team)
-            print("Team" +remove_team+ "has been removed from the team dictionary!")
+            print("Team " +remove_team+ " has been removed from the team dictionary!")
         elif remove_team not in team_dictionary:
                 print("I'm sorry, the team you are looking for does not exist.")
         user_action = input("""If you want to continue, press 4. \nIf you want to exit the "remove" function, press 0.\n """)
