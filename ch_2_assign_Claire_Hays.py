@@ -94,8 +94,8 @@ view team's information, modify team's information, view all teams and informati
             remove_team_num = input("What team number would you like to remove? ")
             if remove_team_num == 'quit':
                 check = True
-            elif remove_team_num.isnumeric():
-                remove_team_num = float(remove_team_num)
+            elif remove_team_num.isdigit():
+                remove_team_num = int(remove_team_num)
                 check = True
             else:
                 print("Please type your team number as a n integer")
@@ -106,19 +106,10 @@ view team's information, modify team's information, view all teams and informati
 
 
     elif command == "search for a team":
-        check = False
-        while check == False:
-            team_search = input("What team would you like to search for? ")
-            if team_search == 'quit':
-                check = True
-            elif team_search.isnumeric():
-                team_search = float(team_search)
-                check = True
-            else:
-                print("Please type your team number as a n integer")
+        team_search = str(input("What team would you like to search for? "))
         if team_search == 'quit':
             continue
-        elif team_search.isnumeric() == True:
+        elif team_search.isdigit() == True:
             team_get = teams.get(int(team_search))
             if team_get == None:
                 print("The team you searched for was not found in the database. ")
@@ -145,8 +136,8 @@ view team's information, modify team's information, view all teams and informati
             view_team_num = input("What team's information would you like to view? ")
             if view_team_num == 'quit':
                 check = True
-            elif view_team_num.isnumeric():
-                view_team_num = float(view_team_num)
+            elif view_team_num.isdigit():
+                view_team_num = int(view_team_num)
                 check = True
             else:
                 print("Please type your team number as a n integer")
