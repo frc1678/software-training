@@ -67,4 +67,6 @@ def runContinuous():
 
 # If you want to run the program, uncomment the following line (commented so chapter 3 can work):
 # runContinuous()
-runContinuous()
+if __name__ == "__main__":
+    #Only runs if assignment 1 is called
+    runContinuous()

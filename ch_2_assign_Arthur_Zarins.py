@@ -86,4 +86,6 @@ def runContinuous():
             a1 = input("What is the team number?\n      ")
             teamStats(a1)
 #Uncomment the following line to run the program:
-#runContinuous()
+if __name__ == "__main__":
+    #only run the program if chapter 2 is called
+    runContinuous()
