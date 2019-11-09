@@ -36,8 +36,18 @@ while True:
         while length.isdigit() == False:
             length = input("Your input is not an integer, please input an integer \n")
         camera_vision_system = input("True or False, your robot has a camera vision system? \n")
-        while camera_vision_system.isdigit() == True:
-            camera_vision_system = input("Your input is not a boolean, please input a boolean\n")
+        while True:
+            if camera_vision_system != "True":
+                if camera_vision_system != "False":
+                    camera_vision_system = input("Your input is not a boolean, please input either 'True' or 'False' \n")
+                    if camera_vision_system == "True":
+                        break 
+                    elif camera_vision_system == "False":
+                        break
+                else:
+                    break
+            else:
+                break
         number_of_motors = input("How many motors does your robot have? \n")
         while number_of_motors.isdigit() == False:
             number_of_motors = input("Your input is not an integer, please input an integer \n")
@@ -77,8 +87,18 @@ while True:
                     while new_attribute.isdigit() == False:
                         new_attribute = input("Your input is not an integer, please input a integer\n")
                 elif modify_attribute == "camera_vision_system":
-                    while new_attribute.isdigit() == True:
-                        new_attribute = input("Your input is not a boolean, please input a boolean\n")
+                    while True:
+                        if new_attribute != "True":
+                            if new_attribute != "False":
+                                new_attribute = input("Your input is not a boolean, please input either 'True' or 'False' \n")
+                                if new_attribute == "True":
+                                    break 
+                                elif new_attribute == "False":
+                                    break
+                            else:
+                                break
+                        else:
+                            break
                 elif modify_attribute == "number_of_motors":
                     while new_attribute.isdigit() == False:
                         new_attribute = input("Your input is not an integer, please input a integer\n")
