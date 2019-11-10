@@ -11,24 +11,40 @@ def remove_function():
             break
 
 def view_function():
+    if master_dictionary == {}:
+        print("You don't have any stored data.")
+        return None
     while True:
-        viewing_selection = input("Which team's statistics would you like to view? ")
+        viewing_selection = input("""Which team's statistics would you like to view?
+            You may also quit at any time by pressing q. """)
         if "statistics" + str(viewing_selection) in master_dictionary:
             break
+        elif viewing_selection == 'q':
+            print("Returning to main menu.")
+            return None
+        else:
+            print("That isn't a team.")
     while True:
         statistic_selection = input("""Which statistic would you like to view? Please type one of
-        tm (team number), n (name), pl (programming language), w or l (width or a length for your robot), 
-        cv (whether or not your robot has a camera vision system),or dt (the number of drivetrain motors on your robot). """)
-        if statistic_selection in statistic_list and master_dictionary["statistics" + viewing_selection][statistic_selection] != '':
+tm (team number), n (name), pl (programming language), w or l (width or a length for your robot), 
+cv (whether or not your robot has a camera vision system),or dt (the number of drivetrain motors on your robot). 
+Again, you can quit with 'q'. """)
+        if statistic_selection == 'q':
+            print("Returning to main menu.")
+            break
+        elif statistic_selection in statistic_list and master_dictionary["statistics" + viewing_selection][statistic_selection] != '':
             print (master_dictionary["statistics" + viewing_selection][statistic_selection])
-            break;
+            break
         elif master_dictionary["statistics" + viewing_selection][statistic_selection] == '':
             print("That hasn't been added yet. Try something else.")
             break
 
 def search_teams(): #Searching teams
     while True:
-        team_search = input("What team would you like to search for? ")
+        team_search = input("What team would you like to search for? You may also quit at any time by pressing q. ")
+        if team_search == 'q':
+            print("Returning to main menu.")
+            return None
         if team_search.isdigit() == False: #If the search is all digits
             print("Oops, enter a valid input!")
             continue
@@ -41,10 +57,13 @@ def search_teams(): #Searching teams
     return ("No matches were found.")
 
 def add_team(): #How to add a new team
-    print("You are adding a new file. The first step is to name your team.")
+    print("You are adding a new file. The first step is to name your team. You may also quit at any time by pressing q. ")
     while True:
         team_name = input("What would you like your team to be named? Make sure it's all numbers! ") #Getting a name for the team
-        if team_name.isdigit() == False: #Checking if a team name is all digits
+        if team_name == 'q':
+            print("Returning to the main menu. ")
+            break
+        elif team_name.isdigit() == False: #Checking if a team name is all digits
             print("Valid input, please!")
             continue
         else:
@@ -57,7 +76,8 @@ def add_statistic(): #How to add a statistic for a team
     team_name = '' #Setting variables empty
     datapoint = ''
     while True:
-        team_name = input("Please select a team whose information you would like to modify.") #Finding the team
+        team_name = input("""Please select a team whose information you would like to modify. 
+You may also quit at any time by pressing q. """) #Finding the team
         if ("statistics" + str(team_name)) in master_dictionary:
             break
     while True:
@@ -72,43 +92,32 @@ def add_statistic(): #How to add a statistic for a team
             datapoint = (input("What would you like to set this team's " + statistic_added + "?")) #What data the user wants to add.
             master_dictionary["statistics" + str(team_name)][statistic_added] = datapoint
 
-def menu_function():
-    if master_dictionary == {}:
-        valid_input = False
-        while valid_input == False:
-            first_input = input("You don't seem to have any data. Enter 'yes' to add some. ")
-            if first_input == 'yes':
-                modification_function()
-                valid_input = True
-
 while True: #Mainloop
-    valid_input_5 = False
-    while valid_input_5 == False:
-        menu_selection = input("""Type 'view' to view, 
-            'remove' to remove, 'search' to search the teams, 'add' to add a team, or
-            'statistic' to add a statistic to a team's file. 
-            Or type 'stop' to end this program. """)
-        if menu_selection == 'view':
+    menu_selection = input("""Type 'view' to view, 
+        'remove' to remove, 'search' to search the teams, 'add' to add a team, or
+        'statistic' to add a statistic to a team's file. 
+        Or type 'stop' to end this program. """)
+    if menu_selection == 'view':
+        valid_input_5 = True
+        view_function()
+    elif menu_selection == 'remove':
+        valid_input_5 = True
+        remove_function()
+    elif menu_selection == 'search':
+        valid_input_5 = True
+        print(search_teams())
+    elif menu_selection == 'add':
+        valid_input_5 = True
+        add_team()
+    elif menu_selection == 'statistic':
+        if master_dictionary != {}:
             valid_input_5 = True
-            view_function()
-        elif menu_selection == 'remove':
-            valid_input_5 = True
-            remove_function()
-        elif menu_selection == 'search':
-            valid_input_5 = True
-            print(search_teams())
-        elif menu_selection == 'add':
-            valid_input_5 = True
-            add_team()
-        elif menu_selection == 'statistic':
-            if master_dictionary != {}:
-                valid_input_5 = True
-                add_statistic()
-            else:
-                print("You don't have any teams! Darn it!")
-                continue
-        elif menu_selection == 'stop':
-            break
+            add_statistic()
         else:
-            print('Enter a valid input! ')
+            print("You don't have any teams! Darn it!")
             continue
+    elif menu_selection == 'stop':
+        break
+    else:
+        print('Enter a valid input! ')
+        continue
