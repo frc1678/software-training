@@ -81,7 +81,7 @@ def menu_function():
                 modification_function()
                 valid_input = True
 
-while True:
+while True: #Mainloop
     valid_input_5 = False
     while valid_input_5 == False:
         menu_selection = input("""Type 'view' to view, 
