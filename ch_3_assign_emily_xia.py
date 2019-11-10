@@ -84,6 +84,14 @@ def defining_team_number():
 	return input("Enter the number of your team \n")
 def get_user_action():
 	return int(input(main_menu))
+def isbool(input_variable):
+	while True:
+		if input_variable == "True":
+			return True
+		elif input_variable == "False":
+			return True
+		else:
+			return False 
 def new_action():
 	return input()
 def not_available():
@@ -107,7 +115,11 @@ while True:
 				Name = input("What is the name of your team?\n")
 				Location = input("What is the location of your team? \n")
 				Rookie_year = input("What is the rookie year of your team? \n")
+				while Rookie_year.isdigit() == False:
+					Rookie_year = input("Your input is not an integer, please ensure that your input is an integer \n")
 				Competition_Status_2019 = input("What is the 2019 competition status of your team? \n")
+				while isbool(Competition_Status_2019) == False:
+					Competition_Status_2019 = input("Your input is not a boolean, please input either 'True' or 'False' \n")
 				Names_of_Competitions = input("What are the names of the competitions of your team? \n")
 				Competition_Awards = input("What are the names of the competition awards of your team? \n")
 				added_team_information = {
@@ -134,9 +146,22 @@ while True:
 				modify_attribute = input("What is the attribute that you want to modify?\n")
 				if modify_attribute in team_dictionary[team_number]:
 					new_attribute = input("What do you want the new " +modify_attribute+ " to be?\n")
-					team_dictionary[team_number].update({modify_attribute:new_attribute})
-					print(team_dictionary[team_number])
-					user_action = get_user_action()
+					if modify_attribute == "Rookie_year":
+						while modify_attribute.isdigit() == False:
+							modify_attribute = input("Your input is not an integer, please ensure that you input an integer\n")
+						team_dictionary[team_number].update({modify_attribute:new_attribute})
+						print(team_dictionary[team_number])
+						user_action = get_user_action()
+					elif modify_attribute == "Competition_Status_2019":
+						while isbool(modify_attribute) == False:
+							modify_attribute = input("Your input is not a boolean, please input either 'True' or 'False' \n")
+						team_dictionary[team_number].update({modify_attribute:new_attribute})
+						print(team_dictionary[team_number])
+						user_action = get_user_action()
+					else:
+						team_dictionary[team_number].update({modify_attribute:new_attribute})
+						print(team_dictionary[team_number])
+						user_action = get_user_action()
 				elif modify_attribute not in team_dictionary[team_number]:
 					not_available()
 					user_action = get_user_action()
