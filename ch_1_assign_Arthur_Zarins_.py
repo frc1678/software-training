@@ -1,32 +1,37 @@
 # Reminder for self: to run python programs in Visual Studio code, use Cntrl + Fn + F5
 teams = {
-    "1678": {'Last Year': 2019,
+    "1678": {'name': "Citrus",
+             'Last Year': 2019,
              'Location': "Davis CA",
              'Rookie Year': 2005,
              'Events': "Sac Regional, Central Valley Regional, AeroSpace Valley Regional, Carver division, Einstein field, RCC Qianjiang International Robotics Invitational, Chezy Champs",
              'Awards': "Capital City Classic 2019, 2018 Madtown Finalist, 2018 Chezy Champs Finalist",
              "Competed At": "Davis CA, Fresno CA, Houston TX, Lancaster CA"
              },
-    "2551": {'Last Year': 2019,
+    "2551": {'name': "Penguins",
+             'Last Year': 2019,
              'Location': "Novato CA",
              'Rookie Year': 2008, 
              'Events': 'Sac Regional, SF Regional, Galileo divison',
              'Awards': "UC Davis highest rookie seed award, 2018 Sac regional innovation in control",
              "Competed At": "San Francisco CA, Sacramento CA, Houston TX, Elk Grove CA"
              },
-    "3421": {'Last Year': 2013,
+    "3421": {'name': "LizzardTech",
+             'Last Year': 2013,
              'Location': "Marysville MI",
              'Rookie Year': 2010,
              'Events': 'MI FRC state championship',
              'Awards': "Liviona district 2012 cooperation award",
              "Competed At": "Flint MI, Livonia MI, Ypsilanti MI"},
-    "2942": {'Last Year': 2018,
+    "2942": {'name': "PandaRobotics",
+             'Last Year': 2018,
              'Location': "Seattle, WA",
              'Rookie Year': 2009,
              'Events': 'Seattle',
              'Awards': "2009 Seattle Imagery award",
              "Competed At": "Auburn WA"},
-    "3890": {'Last Year': 2015,
+    "3890": {'name': "FakeTeamname",
+             'Last Year': 2015,
              'Location': "Boulder, Colorado",
              'Rookie Year': 2003,
              'Events': 'South pacific regional',
@@ -35,14 +40,26 @@ teams = {
 
 }
 #reference = "is"
+def getList(dict): 
+    list = [] 
+    for key in dict.keys(): 
+        list.append(key) 
+          
+    return list
+def nameSweep(teamStrname):
+    teamNums = getList(teams)
+    #print(teamNums)
+    for x in teamNums:
+        if(teams[x]["name"] == teamStrname):
+            return x
+    return 0
 
-
-def teamStats(teamName, attribute):
+def teamStats(teamname, attribute):
     # New variable refernce will handle grammer related to pluralities
     if (attribute == "Events" or attribute == "Rookie Year" or attribute == "Location" or attribute == "Last Year" or attribute == "Awards" or attribute == "Competed At"):
-        if(teamName in teams):
+        if(teamname in teams):
             reference = "is"
-            stringTest = str(teams[teamName][attribute]).split(",")
+            stringTest = str(teams[teamname][attribute]).split(",")
             attributeDisplay = attribute
             if attribute == "Events" and len(stringTest) > 2:
                 reference = "are"
@@ -51,8 +68,22 @@ def teamStats(teamName, attribute):
                     attributeDisplay = "only Event"
                 reference = "is"
 
-            print("Team " + str(teamName) + "'s " + str(attributeDisplay) +
-                  " " + str(reference) + " " + str(teams[teamName][attribute]))
+            print("Team " + str(teamname) + "'s " + str(attributeDisplay) +
+                  " " + str(reference) + " " + str(teams[teamname][attribute]))
+        elif (nameSweep(teamname) in teams):
+            teamname = nameSweep(teamname)
+            reference = "is"
+            stringTest = str(teams[teamname][attribute]).split(",")
+            attributeDisplay = attribute
+            if attribute == "Events" and len(stringTest) > 2:
+                reference = "are"
+            else:
+                if attribute == "Events":
+                    attributeDisplay = "only Event"
+                reference = "is"
+
+            print("Team " + str(teamname) + "'s " + str(attributeDisplay) +
+                  " " + str(reference) + " " + str(teams[teamname][attribute]))
         else:
             print("That team does not exist")
     else:
