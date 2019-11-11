@@ -5,10 +5,14 @@ statistic_list = ['tm', 'n', 'pl', 'w', 'l', 'cv', 'dt']
 
 def remove_function():
     while True: #Idiotproofing code
-        removal = input("Which team would you like to remove? This action cannot be undone!")
-        if ("statistics" + removal) in master_dictionary:
+        removal = input("Which team would you like to remove? This action cannot be undone! You may also quit at any time by pressing q. ")
+        if removal == 'q':
+            break
+        elif ("statistics" + removal) in master_dictionary:
             master_dictionary[removal] = {}
             break
+        else:
+            print("Enter a valid input!")
 
 def view_function():
     if master_dictionary == {}:
@@ -53,7 +57,6 @@ def search_teams(): #Searching teams
     for search in master_dictionary: #Checking every master_dict key to see if it's equal to the search
         if search == ("statistics" + team_search):
             return ("A match has been found!")
-            break
     return ("No matches were found.")
 
 def add_team(): #How to add a new team
