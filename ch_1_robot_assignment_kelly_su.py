@@ -4,3 +4,4 @@ teams = {
 	259: {"weight": 248, "color": "blue", "wheels": 2}
 }
 requested_team_number = input("Team Number: ")
+requested_robot_attribute = input("Robot Attribute: ")

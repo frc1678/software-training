@@ -66,6 +66,9 @@ def add_team():
 	print("Successfully added team " + input_num + "!") 
 
 def search_team():
+	if len(team_dict) == 0:
+		print("No teams found.")
+		return
 	input_searchteam = input("Please enter a team number to check if it exists or 0 to exit.\n==>")
 	if input_searchteam == '0':
 		print("Exiting...")
