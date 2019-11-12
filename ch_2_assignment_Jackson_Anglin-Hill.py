@@ -27,19 +27,19 @@ while on:
 #spacer is used because if break command is used, it cycles back through to where request is reset instead of request remaining as defined in later code.
     while spacer == 'O':
         try:
-            request = str(request.lower())
+            request = request.lower()
         except:
-            print('Please enter a command without numbers.')
-            spacer = 'back to main menu'
-        request = request.lower()
+            print('Enter the command without numbers.')
+            break
         while request == 'add team':
-            requested_team = input('Input team number: ')
-            try:
-                requested_team = int(requested_team)
-            except:
-                print("Enter the team number with no letters.")
-                request = 'add team'
-                break
+            while True:
+                requested_team = input('Input team number: ')
+                try:
+                    requested_team = int(requested_team)
+                except:
+                    print("Enter the team number with no letters.")
+                    request = 'add team'
+                    break
             if requested_team in teams:
                 print('This team is already in the system. Please add a different team, confirm you have entered the team number correctly, or edit the information already existing in this team.')
             else:
@@ -59,7 +59,20 @@ while on:
                         break
                     except:
                         print("Please use numbers.")
-                camera = input('Do they have a camera system?: ')
+                while True:
+                    camera = input('Do they have a camera system?: ')
+                    try:
+                        camera = camera.lower()
+                    except:
+                        print("Please enter 'Yes' or 'No'")
+                    if camera == 'yes':
+                        camera = True
+                        break
+                    elif camera == 'no':
+                        camera == False
+                        break
+                    else:
+                        print("Please enter 'Yes' or 'No'")
                 while True:
                     drivetrain = input('How many drivetrain motors do they have?: ')
                     try:
@@ -92,13 +105,13 @@ while on:
                 break
         while request == 'remove team':
             print(teams.keys())
-            requested_team = input('Input team number: ')
-            try:
-                requested_team = int(requested_team)
-            except:
-                print("Enter the team number with no letters.")
-                request = 'remove team'
-                break
+            while True:
+                requested_team = input('Input team number: ')
+                try:
+                    requested_team = int(requested_team)
+                    break
+                except:
+                    print('Enter team number without letters.')
             if requested_team in teams:
                 teams.pop(requested_team)
             else:
@@ -120,13 +133,14 @@ while on:
                 spacer = 'go back to main'
                 break
         while request == 'view team information':
-            requested_team = input('Input team number: ')
-            try:
-                requested_team = int(requested_team)
-            except:
-                print("Enter the team number with no letters.")
-                request = 'view team information'
-                break
+            while True:
+                try:
+                    requested_team = int(requested_team)
+                    break
+                except:
+                    print("Enter the team number with no letters.")
+                    request = 'view team information'
+                    break
             if requested_team in teams:
                 print(teams[requested_team])
             else:
@@ -149,13 +163,15 @@ while on:
                 break
         while request == 'modify team information':
             print(teams.keys())
-            requested_team = input('Input team number: ')
-            try:
-                requested_team = int(requested_team)
-            except:
-                print("Enter the team number with no letters.")
-                request = 'modify team information'
-                break
+            while True:
+                requested_team = input('Input team number: ')
+                try:
+                    requested_team = int(requested_team)
+                    break
+                except:
+                    print("Enter the team number with no letters.")
+                    request = 'modify team information'
+                    break
             if requested_team in teams:
                 change = input("What would you like to change for this team? Enter 'Name' 'Program' 'Width' 'Length' 'Camera' 'Drivetraincount': ")
                 try:
@@ -189,7 +205,20 @@ while on:
                             print("Please use numbers.")
                     teams[requested_team]['length'] = length
                 elif change == 'camera':
-                    camera = input('Does the robot have a camera system?: ')
+                    while True:
+                        camera = input('Do they have a camera system?: ')
+                        try:
+                            camera = camera.lower()
+                        except:
+                            print("Please enter 'Yes' or 'No'")
+                        if camera == 'yes':
+                            camera = True
+                            break
+                        elif camera == 'no':
+                            camera == False
+                            break
+                        else:
+                            print("Please enter 'Yes' or 'No'")
                     teams[requested_team]['camera'] = camera
                 elif change == 'drivetraincount':
                     while True:

@@ -7,17 +7,50 @@ allowed_actions = [
     'Search for team',
     'List all teams'
     ]
+allowed_actions_2 = [
+    'add team',
+    'remove team',
+    'view team information',
+    'modify team information',
+    'search for team',
+    'list all teams'
+    ]
 running = True
 def mainMenu():
     print(allowed_actions)
 def addTeam():
-    requested_team = input('Input team number: ')
+    while True:
+        requested_team = input('Input team number: ')
+        try:
+            requested_team = int(requested_team)
+            break
+        except:
+            print('Enter the team number without letters.')
     if requested_team in teams:
         print('This team is already in the system. Please add a different team, confirm you have entered the team number correctly, or edit the information already existing in this team.')
     else:
         location = input('What is the location of the team?: ')
-        rookie_year = input('What is their rookie year?: ')
-        competed_in_2019 = input('Did they compete in the 2019 competitions?: ')
+        while True:
+            rookie_year = input('What is their rookie year?: ')
+            try:
+                rookie_year = int(rookie_year)
+                break
+            except:
+                print('Enter rookie year without letters.')
+        while True:
+            competed_in_2019 = input('Did they compete in the 2019 competitions?: ')
+            try:
+                competed_in_2019 = competed_in_2019.lower()
+            except:
+                print("Please enter 'Yes' or 'No'")
+            if competed_in_2019 == 'yes':
+                competed_in_2019 = True
+                break
+            elif competed_in_2019 == 'no':
+                competed_in_2019 == False
+                break
+            else:
+                print("Please enter 'Yes' or 'No'")
         competitions = input('If they did, what are the names of the competitions they participated in?: ')
         locations_of_competitions = input('If they did, what are the locations of the competitions they participated in?: ')
         awards_won = input('If they won any, what awards did they win?: ')
@@ -31,7 +64,13 @@ def addTeam():
 
 def removeTeam():
     print(teams.keys())
-    requested_team = input('Input team number: ')
+    while True:
+        requested_team = input('Input team number: ')
+        try:
+            requested_team = int(requested_team)
+            break
+        except:
+            print('Enter team number without letters.')
     if requested_team in teams:
         teams.pop(requested_team)
     else:
@@ -39,7 +78,13 @@ def removeTeam():
 
 def viewTeam():
     print(teams.keys())
-    requested_team = input('Input team number: ')
+    while True:
+        requested_team = input('Input team number: ')
+        try:
+            requested_team = int(requested_team)
+            break
+        except:
+            print('Enter team number without letters.')
     if requested_team in teams:
         print(teams[requested_team])
     else:
@@ -47,32 +92,69 @@ def viewTeam():
 
 def modifyTeam():
     print(teams.keys())
-    requested_team = input("What team's information would you like to edit?: ")
+    while True:
+        requested_team = input('Input team number: ')
+        try:
+            requested_team = int(requested_team)
+            break
+        except:
+            print('Enter team number without letters.')
     if requested_team in teams:
-        change = input("What would you like to change for this team? Enter 'Location' 'Rookie Year' 'Competed in 2019 Competitions' 'Competition Names' 'Competition Locations' 'Awards Won': ")
-        if change == 'Location':
+        while True:
+            change = input("What would you like to change for this team? Enter 'Location' 'Rookie Year' 'Competed in Competitions' 'Competition Names' 'Competition Locations' 'Awards Won': ")
+            try:
+                change = change.lower()
+                break
+            except:
+                print('Please enter the change without numbers.')
+        if change == 'location':
             location = input('Where is the team located?: ')
             teams[requested_team]['Location'] = location
-        elif change == 'Rookie Year':
-            rookie_year = input('What is their rookie year?: ')
+        elif change == 'rookie year':
+            while True:
+                rookie_year = input('What is their rookie year?: ')
+                try:
+                    rookie_year = int(rookie_year)
+                    break
+                except:
+                    print('Enter rookie year without letters.')
             teams[requested_team]['Rookie Year'] = rookie_year
-        elif change == 'Competed in 2019 Competitions':
-            competed_in_2019 = input('Did they compete in the 2019 Competitions?: ')
+        elif change == 'competed in competitions':
+            while True:
+                competed_in_2019 = input('Did they compete in the 2019 competitions?: ')
+                try:
+                    competed_in_2019 = competed_in_2019.lower()
+                except:
+                    print("Please enter 'Yes' or 'No'")
+                if competed_in_2019 == 'yes':
+                    competed_in_2019 = True
+                    break
+                elif competed_in_2019 == 'no':
+                    competed_in_2019 == False
+                    break
+                else:
+                    print("Please enter 'Yes' or 'No'")
             teams[requested_team]['Competed in 2019 Competitions'] = competed_in_2019
-        elif change == 'Competition Names':
+        elif change == 'competition names':
             competitions = input('What are the names of the competitions they participated in?: ')
             teams[requested_team]['Competition Names'] = competitions
-        elif change == 'Competition Locations':
+        elif change == 'competition locations':
             locations_of_competitions = input('Where were the competitions they participated in?: ')
             teams[requested_team]['Competition Locations'] = locations_of_competitions
-        elif change == 'Awards Won':
+        elif change == 'awards won':
             awards_won = input('What awards did they win?: ')
             teams[requested_team]['Awards Won'] = awards_won
     elif requested_team not in teams:
         print('Team not found. Try another team or make sure you entered the team number correctly.')
 
 def searchTeam():
-    requested_team = input("Which team would you like to confirm is in our database?: ")
+    while True:
+        requested_team = input('Input team number: ')
+        try:
+            requested_team = int(requested_team)
+            break
+        except:
+            print('Enter team number without letters.')
     if requested_team in teams:
         print("Requested team is in database. You can view its information using command 'View team information' and entering the team number again.")
     if requested_team not in teams:
@@ -80,56 +162,107 @@ def searchTeam():
 
 while running:
     mainMenu()
-    request = input('What would you like to do? Please enter exactly as shown: ')
-    while request == 'Add team':
-        addTeam()
-        uncontinue = input("Would you like to add another team? Enter 'Yes' 'No': ")
-        if uncontinue == 'No':
-            break
-        elif uncontinue == 'Yes':
-            request = 'Add team'
-        else:
-            break
-            print('That is not a valid entry.')    
-    while request == 'Remove team':
-        removeTeam()
-        uncontinue = input("Would you like to remove another team? Enter 'Yes' 'No': ")
-        if uncontinue == 'No':
-            break
-        elif uncontinue == 'Yes':
-            request = 'Remove team'
-        else:
-            break
-            print('That is not a valid entry.')
-    while request == 'View team information':
-        viewTeam()
-        uncontinue = input("Would you like to view another team's information? Enter 'Yes' 'No': ")
-        if uncontinue == 'No':
-            break
-        elif uncontinue == 'Yes':
-            request = 'View team information'
-        else:
-            break
-            print('That is not a valid entry.')
-    while request == 'Modify team information':
-        modifyTeam()
-        uncontinue = input("Would you like to modify another team's information? Enter 'Yes' 'No': ")
-        if uncontinue == 'No':
-            break
-        elif uncontinue == 'Yes':
-            request = 'Modify team information'
-        else:
-            break
-            print('That is not a valid entry.')
-    while request == 'Search for team':
-        searchTeam()
-        uncontinue = input("Would you like to search for another team? Enter 'Yes' 'No': ")
-        if uncontinue == 'No':
-            break
-        elif uncontinue == 'Yes':
-            request = 'Search for team'
-        else:
-            break
-            print('That is not a valid entry.')
-    if request == 'List all teams':
-        print(teams.keys())
+    request = input('What would you like to do?: ')
+    spacer = 'O'
+    while spacer == 'O':
+        while True:
+            try:
+                request = request.lower()
+                break
+            except:
+                print('Enter the command without numbers.')
+        while request == 'add team':
+            addTeam()
+            while True:
+                uncontinue = input("Would you like to add another team? Enter 'Yes' 'No': ")
+                try:
+                    uncontinue = uncontinue.lower()
+                    break
+                except:
+                    print("Enter 'Yes' or 'No' with no numbers.")
+            if uncontinue.lower() == 'no':
+                request = 'o'
+                spacer = 'go back to main'
+            elif uncontinue.lower() == 'yes':
+                request = 'add team'
+            else:
+                print('That is not a valid entry. You will be automatically sent back to the main menu.')
+                request = 'o'
+                spacer = 'go back to main'
+        while request == 'remove team':
+            removeTeam()
+            while True:
+                uncontinue = input("Would you like to remove another team? Enter 'Yes' 'No': ")
+                try:
+                    uncontinue = uncontinue.lower()
+                    break
+                except:
+                    print("Enter 'Yes' or 'No' with no numbers.")
+            if uncontinue.lower() == 'no':
+                request = 'o'
+                spacer = 'go back to main'
+            elif uncontinue.lower() == 'yes':
+                request = 'remove team'
+            else:
+                print('That is not a valid entry. You will be automatically sent back to the main menu.')
+                request = 'o'
+                spacer = 'go back to main'
+        while request == 'view team information':
+            viewTeam()
+            while True:
+                uncontinue = input("Would you like to view another team's information? Enter 'Yes' 'No': ")
+                try:
+                    uncontinue = uncontinue.lower()
+                    break
+                except:
+                    print("Enter 'Yes' or 'No' with no numbers.")
+            if uncontinue.lower() == 'no':
+                request = 'o'
+                spacer = 'go back to main'
+            elif uncontinue.lower() == 'yes':
+                request = 'view team information'
+            else:
+                print('That is not a valid entry. You will be automatically sent back to the main menu.')
+                request = 'o'
+                spacer = 'go back to main'
+        while request == 'modify team information':
+            modifyTeam()
+            while True:
+                uncontinue = input("Would you like to modify another team's information? Enter 'Yes' 'No': ")
+                try:
+                    uncontinue = uncontinue.lower()
+                    break
+                except:
+                    print("Enter 'Yes' or 'No' with no numbers.")
+            if uncontinue.lower() == 'no':
+                request = 'o'
+                spacer = 'go back to main'
+            elif uncontinue.lower() == 'yes':
+                request = 'modify team information'
+            else:
+                print('That is not a valid entry. You will be automatically sent back to the main menu.')
+                request = 'o'
+                spacer = 'go back to main'
+        while request == 'search for team':
+            searchTeam()
+            while True:
+                uncontinue = input("Would you like to search for another team? Enter 'Yes' 'No': ")
+                try:
+                    uncontinue = uncontinue.lower()
+                    break
+                except:
+                    print("Enter 'Yes' or 'No' with no numbers.")
+            if uncontinue.lower() == 'no':
+                request = 'o'
+                spacer = 'go back to main'
+            elif uncontinue.lower() == 'yes':
+                request = 'search for team'
+            else:
+                print('That is not a valid entry. You will be automatically sent back to the main menu.')
+                request = 'o'
+                spacer = 'go back to main'
+        if request == 'list all teams':
+            print(teams.keys())
+            spacer = 'go back to main'
+        if request not in allowed_actions_2:
+            spacer = 'back to main'
