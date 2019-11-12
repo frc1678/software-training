@@ -45,10 +45,28 @@ while on:
             else:
                 name = input('What is the team name?: ')
                 program = input('What programming language do they use?: ')
-                width = input('What is the width of the robot?: ')
-                length = input('What is the length of the robot?: ')
+                while True:
+                    width = input('What is the width of the robot in centimeters?: ')
+                    try:
+                        width = int(width)
+                        break
+                    except:
+                        print("Please use numbers.")
+                while True:
+                    length = input('What is the length of the robot in centimeters?: ')
+                    try:
+                        length = int(length)
+                        break
+                    except:
+                        print("Please use numbers.")
                 camera = input('Do they have a camera system?: ')
-                drivetrain = input('How many drivetrain motors do they have?: ')
+                while True:
+                    drivetrain = input('How many drivetrain motors do they have?: ')
+                    try:
+                        drivetrain = int(drivetrain)
+                        break
+                    except:
+                        print("Please use numbers.")
                 teams[requested_team] = {}
                 teams[requested_team]['Name'] = name
                 teams[requested_team]['Program'] = program
@@ -56,9 +74,8 @@ while on:
                 teams[requested_team]['Length'] = length
                 teams[requested_team]['Camera'] = camera
                 teams[requested_team]['Drivetrain#'] = drivetrain
-            uncontinue = input("Would you like to add another team? Enter 'Yes' 'No': ")
-#Returns to main menu
             while True:
+                uncontinue = input("Would you like to add another team? Enter 'Yes' 'No': ")
                 try:
                     uncontinue = uncontinue.lower()
                     break
@@ -70,7 +87,7 @@ while on:
             elif uncontinue.lower() == 'yes':
                 request = 'add team'
             else:
-                print('That is not a valid entry.')
+                print('That is not a valid entry. You will be automatically sent back to the main menu.')
                 spacer = 'go back to main'
                 break
         while request == 'remove team':
@@ -86,8 +103,8 @@ while on:
                 teams.pop(requested_team)
             else:
                 print('Team not found. Try another team or make sure you entered the team number correctly.')
-            uncontinue = input("Would you like to remove another team? Enter 'Yes' 'No': ")
             while True:
+                uncontinue = input("Would you like to remove another team? Enter 'Yes' 'No': ")
                 try:
                     uncontinue = uncontinue.lower()
                     break
@@ -99,7 +116,7 @@ while on:
             elif uncontinue.lower() == 'yes':
                 request = 'remove team'
             else:
-                print('That is not a valid entry.')
+                print('That is not a valid entry. You will be automatically sent back to the main menu.')
                 spacer = 'go back to main'
                 break
         while request == 'view team information':
@@ -114,8 +131,8 @@ while on:
                 print(teams[requested_team])
             else:
                 print('Team not found. Try another team or make sure you entered the team number correctly.')
-            uncontinue = input("Would you like to view another team? Enter 'Yes' 'No': ")
             while True:
+                uncontinue = input("Would you like to view another team? Enter 'Yes' 'No': ")
                 try:
                     uncontinue = uncontinue.lower()
                     break
@@ -127,7 +144,7 @@ while on:
             elif uncontinue.lower() == 'yes':
                 request = 'view team information'
             else:
-                print('That is not a valid entry.')
+                print('That is not a valid entry. You will be automatically sent back to the main menu.')
                 spacer = 'go back to main'
                 break
         while request == 'modify team information':
@@ -154,21 +171,39 @@ while on:
                     program = input('What program is the team using?: ')
                     teams[requested_team]['program'] = program
                 elif change == 'width':
-                    width = input('What width is the robot?: ')
+                    while True:
+                        width = input('What width is the robot in centimeters?: ')
+                        try:
+                            width = int(width)
+                            break
+                        except:
+                            print("Please use numbers.")
                     teams[requested_team]['width'] = width
                 elif change == 'length':
-                    length = input('What length is the robot?: ')
+                    while True:
+                        length = input('What length is the robot in centimeters?: ')
+                        try:
+                            length = int(length)
+                            break
+                        except:
+                            print("Please use numbers.")
                     teams[requested_team]['length'] = length
                 elif change == 'camera':
                     camera = input('Does the robot have a camera system?: ')
                     teams[requested_team]['camera'] = camera
                 elif change == 'drivetraincount':
-                    drivetrain = input('How many drivetrains is the robot using?: ')
+                    while True:
+                        drivetrain = input('How many drivetrains is the robot using?: ')
+                        try:
+                            drivetrain = int(drivetrain)
+                            break
+                        except:
+                            print("Please use numbers.")
                     teams[requested_team]['drivetraincount'] = drivetrain
             elif requested_team not in teams:
                 print('Team not found. Try another team or make sure you entered the team number correctly.')
-            uncontinue = input("Would you like to modify another team? Enter 'Yes' 'No': ")
             while True:
+                uncontinue = input("Would you like to modify another team? Enter 'Yes' 'No': ")
                 try:
                     uncontinue = uncontinue.lower()
                     break
@@ -180,23 +215,24 @@ while on:
             elif uncontinue.lower() == 'yes':
                 request = 'modify team information'
             else:
-                print('That is not a valid entry.')
+                print('That is not a valid entry. You will be automatically sent back to the main menu.')
                 spacer = 'go back to main'
                 break
 
         while request == 'search for team':
-            good = 'bad'
-            requested_team = input("Which team would you like to confirm is in our database?: ")
+            while True:
+                requested_team = input("Which team would you like to confirm is in our database?: ")
+                try:
+                    requested_team = int(requested_team)
+                    break
+                except:
+                    print("Please use numbers.")
             if requested_team in teams:
                 print("Requested team is in database. You can view its information using command 'View team information' and entering the team number again.")
-            for team in teams.values():
-                if team['Name'] == requested_team:
-                    print("Requested team is in database. You can view its information using command 'View team information' and entering the team number again.")
-                    good = 'good'
-            if requested_team not in teams and good != 'good':
+            if requested_team not in teams:
                 print('Requested team is not in our database. Make sure you entered it correctly or search for another team.')
-            uncontinue = input("Would you like to search for another team? Enter 'Yes' 'No': ")
             while True:
+                uncontinue = input("Would you like to search for another team? Enter 'Yes' 'No': ")
                 try:
                     uncontinue = uncontinue.lower()
                     break
@@ -208,7 +244,7 @@ while on:
             elif uncontinue.lower() == 'yes':
                 request = 'search for team'
             else:
-                print('That is not a valid entry.')
+                print('That is not a valid entry. You will be automatically sent back to the main menu.')
                 spacer = 'go back to main'
                 break
         if request == 'list all teams':
