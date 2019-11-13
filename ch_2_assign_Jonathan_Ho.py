@@ -46,7 +46,7 @@ def remove():
 	Player_Delete = input("Let's see. What team do you want to delete? ")
 	if Player_Delete.isalpha and Player_Delete != None:
 		if Player_Delete in teams:
-			teams.remove(Player_Delete)
+			teams.pop(Player_Delete)
 			print(teams)
 		else:
 			print("Sorry. That's not in the database. Try again.")
