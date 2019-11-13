@@ -45,10 +45,7 @@ while on:
                     print("Please use numbers.")
             while True:
                 camera = input('Do they have a camera system?: ')
-                try:
-                    camera = camera.lower()
-                except:
-                    print("Please enter 'Yes' or 'No'")
+                camera = camera.lower()
                 if camera == 'yes':
                     camera = True
                     break
@@ -73,12 +70,8 @@ while on:
             teams[requested_team]['Drivetrain#'] = drivetrain
         while True:
             uncontinue = input("Would you like to add another team? Enter 'Yes' 'No': ")
-            try:
-                uncontinue = uncontinue.lower()
-                break
-            except:
-                print("Enter 'Yes' or 'No' with no numbers.")
-        if uncontinue.lower() == 'no':
+            uncontinue = uncontinue.lower()
+        if uncontinue == 'no':
             request = 'o'
         elif uncontinue.lower() == 'yes':
             request = 'add team'
@@ -100,11 +93,7 @@ while on:
             print('Team not found. Try another team or make sure you entered the team number correctly.')
         while True:
             uncontinue = input("Would you like to remove another team? Enter 'Yes' 'No': ")
-            try:
-                uncontinue = uncontinue.lower()
-                break
-            except:
-                print("Enter 'Yes' or 'No' with no numbers.")
+            uncontinue = uncontinue.lower()
         if uncontinue.lower() == 'no':
             request = 'o'
         elif uncontinue.lower() == 'yes':
@@ -126,11 +115,7 @@ while on:
             print('Team not found. Try another team or make sure you entered the team number correctly.')
         while True:
             uncontinue = input("Would you like to view another team? Enter 'Yes' 'No': ")
-            try:
-                uncontinue = uncontinue.lower()
-                break
-            except:
-                print("Enter 'Yes' or 'No' with no numbers.")
+            uncontinue = uncontinue.lower()
         if uncontinue.lower() == 'no':
             request = 'o'
         elif uncontinue.lower() == 'yes':
@@ -210,11 +195,7 @@ while on:
             print('Team not found. Try another team or make sure you entered the team number correctly.')
         while True:
             uncontinue = input("Would you like to modify another team? Enter 'Yes' 'No': ")
-            try:
-                uncontinue = uncontinue.lower()
-                break
-            except:
-                print("Enter 'Yes' or 'No' with no numbers.")
+            uncontinue = uncontinue.lower()
         if uncontinue.lower() == 'no':
             request = 'o'
         elif uncontinue.lower() == 'yes':
@@ -239,11 +220,7 @@ while on:
                 break
         while True:
             uncontinue = input("Would you like to search for another team? Enter 'Yes' 'No': ")
-            try:
-                uncontinue = uncontinue.lower()
-                break
-            except:
-                print("Enter 'Yes' or 'No' with no numbers.")
+            uncontinue = uncontinue.lower()
         if uncontinue.lower() == 'no':
             request = 'o'
         elif uncontinue.lower() == 'yes':
