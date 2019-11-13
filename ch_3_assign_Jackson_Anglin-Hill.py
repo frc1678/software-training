@@ -93,9 +93,8 @@ def modifyTeam():
         except:
             print('Enter team number without letters.')
     if requested_team in teams:
-        while True:
-            change = input("What would you like to change for this team? Enter 'Location' 'Rookie Year' 'Competed in Competitions' 'Competition Names' 'Competition Locations' 'Awards Won': ")
-            change = change.lower()
+        change = input("What would you like to change for this team? Enter 'Location' 'Rookie Year' 'Competed in Competitions' 'Competition Names' 'Competition Locations' 'Awards Won': ")
+        change = change.lower()
         if change == 'location':
             location = input('Where is the team located?: ')
             teams[requested_team]['Location'] = location
@@ -154,65 +153,45 @@ while running:
     mainMenu()
     request = input('What would you like to do?: ')
     request = request.lower()
+    c = {'True' : 1}
+    def uncontinue():
+        while True:  
+            uncontinue = input("Would you like to repeat this action?: ")  
+            if uncontinue.lower() == 'no':
+                print("You have chosen to return to the main menu.")
+                c['True'] = 0
+                break
+            elif uncontinue.lower() == 'yes':
+                print("You have chosen to repeat this action.")
+                break
+            else:
+                print("You have entered an invalid command and will be returned to the main menu.")
+                c['True'] = 0
+                break
     while request == 'add team':
         addTeam()
-        while True:
-            uncontinue = input("Would you like to add another team? Enter 'Yes' 'No': ")
-            uncontinue = uncontinue.lower()
-        if uncontinue.lower() == 'no':
-            request = 'o'
-        elif uncontinue.lower() == 'yes':
-            request = 'add team'
-        else:
-            print('That is not a valid entry. You will be automatically sent back to the main menu.')
+        uncontinue()
+        if c['True'] == 0:
             request = 'o'
     while request == 'remove team':
         removeTeam()
-        while True:
-            uncontinue = input("Would you like to remove another team? Enter 'Yes' 'No': ")
-            uncontinue = uncontinue.lower()
-        if uncontinue.lower() == 'no':
-            request = 'o'
-        elif uncontinue.lower() == 'yes':
-            request = 'remove team'
-        else:
-            print('That is not a valid entry. You will be automatically sent back to the main menu.')
+        uncontinue()
+        if c['True'] == 0:
             request = 'o'
     while request == 'view team information':
         viewTeam()
-        while True:
-            uncontinue = input("Would you like to view another team's information? Enter 'Yes' 'No': ")
-            uncontinue = uncontinue.lower()
-        if uncontinue.lower() == 'no':
-            request = 'o'
-        elif uncontinue.lower() == 'yes':
-            request = 'view team information'
-        else:
-            print('That is not a valid entry. You will be automatically sent back to the main menu.')
+        uncontinue()
+        if c['True'] == 0:
             request = 'o'
     while request == 'modify team information':
         modifyTeam()
-        while True:
-            uncontinue = input("Would you like to modify another team's information? Enter 'Yes' 'No': ")
-            uncontinue = uncontinue.lower()
-        if uncontinue.lower() == 'no':
-            request = 'o'
-        elif uncontinue.lower() == 'yes':
-            request = 'modify team information'
-        else:
-            print('That is not a valid entry. You will be automatically sent back to the main menu.')
+        uncontinue()
+        if c['True'] == 0:
             request = 'o'
     while request == 'search for team':
         searchTeam()
-        while True:
-            uncontinue = input("Would you like to search for another team? Enter 'Yes' 'No': ")
-            uncontinue = uncontinue.lower()
-        if uncontinue.lower() == 'no':
-            request = 'o'
-        elif uncontinue.lower() == 'yes':
-            request = 'search for team'
-        else:
-            print('That is not a valid entry. You will be automatically sent back to the main menu.')
+        uncontinue()
+        if c['True'] == 0:
             request = 'o'
     if request == 'list all teams':
         print(teams.keys())
