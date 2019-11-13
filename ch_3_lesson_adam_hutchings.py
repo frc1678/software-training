@@ -95,13 +95,16 @@ You may also quit at any time by pressing q. """) #Finding the team
         elif statistic_added in statistic_list:
                 datapoint = (input("What would you like to set this team's " + statistic_added + " to?"))
                 if statistic_added == 'w' or 'l':
-                    if not datapoint.isnum():
+                    if datapoint.isalpha():
+                        print("Invalid input.")
                         continue
                 elif statistic_added == 'cv':
                     if datapoint not in ['yes', 'no', 'True', 'False']:
+                        print("Invalid input.")
                         continue
                 elif statistic_added == 'dt':
-                    if not datapoint.isnum():
+                    print("Invalid input.")
+                    if datapoint.isalpha():
                         continue
                 else:
                     continue
