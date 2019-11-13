@@ -53,7 +53,7 @@ while on:
                     camera = True
                     break
                 elif camera == 'no':
-                    camera == False
+                    camera = False
                     break
                 else:
                     print("Please enter 'Yes' or 'No'")
@@ -113,8 +113,8 @@ while on:
             print('That is not a valid entry. You will be automatically sent back to the main menu.')
             request = 'o'
     while request == 'view team information':
-        requested_team = input('Input team number: ')
         while True:
+            requested_team = input('Input team number: ')
             try:
                 requested_team = int(requested_team)
                 break
@@ -192,7 +192,7 @@ while on:
                         camera = True
                         break
                     elif camera == 'no':
-                        camera == False
+                        camera = False
                         break
                     else:
                         print("Please enter 'Yes' or 'No'")
