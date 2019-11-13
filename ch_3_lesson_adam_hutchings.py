@@ -1,6 +1,6 @@
 master_dictionary = {} #Setting up the master el dictionario
 input_list = ['menu', 'view', 'remove', 'search', 'modify']
-statistic_list = ['tm', 'n', 'pl', 'w', 'l', 'cv', 'dt']
+statistic_list = ['nm', 'tm', 'pl', 'w', 'l', 'cv', 'dt']
 #Translating user inputs into functions
 
 def remove_function():
@@ -21,7 +21,7 @@ def view_function():
     while True:
         viewing_selection = input("""Which team's statistics would you like to view?
             You may also quit at any time by pressing q. """)
-        if "statistics" + str(viewing_selection) in master_dictionary:
+        if ("statistics" + str(viewing_selection)) in master_dictionary:
             break
         elif viewing_selection == 'q':
             print("Returning to main menu.")
@@ -30,7 +30,7 @@ def view_function():
             print("That isn't a team.")
     while True:
         statistic_selection = input("""Which statistic would you like to view? Please type one of
-tm (team number), n (name), pl (programming language), w or l (width or a length for your robot), 
+tm (team number), nm (name), pl (programming language), w or l (width or a length for your robot), 
 cv (whether or not your robot has a camera vision system),or dt (the number of drivetrain motors on your robot). 
 Again, you can quit with 'q'. """)
         if statistic_selection == 'q':
@@ -62,17 +62,19 @@ def search_teams(): #Searching teams
 def add_team(): #How to add a new team
     print("You are adding a new file. The first step is to name your team. You may also quit at any time by pressing q. ")
     while True:
-        team_name = input("What would you like your team to be named? Make sure it's all numbers! ") #Getting a name for the team
-        if team_name == 'q':
+        team_number = input("What would you like your team to be named? Make sure it's all numbers! ") #Getting a name for the team
+        team_name = input("How about your team's name? ")
+        if team_number == 'q' or team_name == 'q':
             print("Returning to the main menu. ")
             break
-        elif team_name.isdigit() == False: #Checking if a team name is all digits
+        elif team_number.isdigit() == False: #Checking if a team name is all digits
             print("Valid input, please!")
             continue
         else:
-            master_dictionary["statistics" + str(team_name)] = {} #Making a dictionary entry for the team
+            master_dictionary["statistics" + str(team_number)] = {} #Making a dictionary entry for the team
             for yeet in statistic_list:
-                master_dictionary["statistics" + str(team_name)][yeet] = ''
+                master_dictionary["statistics" + str(team_number)][yeet] = ''
+            master_dictionary["statistics" + str(team_number)]['nm'] = team_name
             break
 
 def add_statistic(): #How to add a statistic for a team
@@ -84,7 +86,7 @@ You may also quit at any time by pressing q. """) #Finding the team
         if ("statistics" + str(team_name)) in master_dictionary:
             break
     while True:
-        statistic_added = input("""You may add a team number (tm), a name (n), a programming language (pl),
+        statistic_added = input("""You may add a team number (tm), change the name (nm), add a programming language (pl),
         a width or a length for your robot (w or l), whether or not your robot has a camera vision system (cv),
         and the number of drivetrain motors on your robot (dt). Which one of these options would you like
         to edit? Enter your options as the parenthetical after the option you have selected. """) #Note the shorthands like 'pl' here.
@@ -93,8 +95,8 @@ You may also quit at any time by pressing q. """) #Finding the team
         elif statistic_added in statistic_list:
                 datapoint = (input("What would you like to set this team's " + statistic_added + " to?"))
                 if statistic_added == 'w' or 'l':
-                    if not datapoint.isnum()
-                    continue
+                    if not datapoint.isnum():
+                        continue
                 elif statistic_added == 'cv':
                     if datapoint not in ['yes', 'no', 'True', 'False']:
                         continue
