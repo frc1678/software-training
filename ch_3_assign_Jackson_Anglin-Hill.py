@@ -95,11 +95,7 @@ def modifyTeam():
     if requested_team in teams:
         while True:
             change = input("What would you like to change for this team? Enter 'Location' 'Rookie Year' 'Competed in Competitions' 'Competition Names' 'Competition Locations' 'Awards Won': ")
-            try:
-                change = change.lower()
-                break
-            except:
-                print('Please enter the change without numbers.')
+            change = change.lower()
         if change == 'location':
             location = input('Where is the team located?: ')
             teams[requested_team]['Location'] = location
