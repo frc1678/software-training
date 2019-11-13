@@ -49,7 +49,7 @@ def search_teams(): #Searching teams
         if team_search == 'q':
             print("Returning to main menu.")
             return None
-        if team_search.isdigit() == False: #If the search is all digits
+        if not team_search.isdigit(): #If the search is all digits
             print("Oops, enter a valid input!")
             continue
         else:
@@ -88,12 +88,25 @@ You may also quit at any time by pressing q. """) #Finding the team
         a width or a length for your robot (w or l), whether or not your robot has a camera vision system (cv),
         and the number of drivetrain motors on your robot (dt). Which one of these options would you like
         to edit? Enter your options as the parenthetical after the option you have selected. """) #Note the shorthands like 'pl' here.
-        if statistic_added in statistic_list:
-            break
-    for statistic_name in statistic_list: #For all possible statistic names
-        if statistic_added == statistic_name: #If the statistic selected has been found:
-            datapoint = (input("What would you like to set this team's " + statistic_added + "?")) #What data the user wants to add.
-            master_dictionary["statistics" + str(team_name)][statistic_added] = datapoint
+        if statistic_added == 'q':
+            return None
+        elif statistic_added in statistic_list:
+                datapoint = (input("What would you like to set this team's " + statistic_added + " to?"))
+                if statistic_added == 'w' or 'l':
+                    if not datapoint.isnum()
+                    continue
+                elif statistic_added == 'cv':
+                    if datapoint not in ['yes', 'no', 'True', 'False']:
+                        continue
+                elif statistic_added == 'dt':
+                    if not datapoint.isnum():
+                        continue
+                else:
+                    continue
+                master_dictionary["statistics" + str(team_name)][statistic_added] = datapoint
+                return None
+        else:
+            continue
 
 while True: #Mainloop
     menu_selection = input("""Type 'view' to view, 
