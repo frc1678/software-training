@@ -149,49 +149,38 @@ def searchTeam():
                 if team['Name'] == requested_team:
                     print("Requested team is in database. You can view its information using command 'View team information' and entering the team number again.")
             break
+def uncontinue():
+        while True:  
+            uncontinue = input("Would you like to repeat this action?: ")  
+            if uncontinue.lower() == 'no':
+                return True
+            elif uncontinue.lower() == 'yes':
+                return False
+            else:
+                return True
 while running:
     mainMenu()
     request = input('What would you like to do?: ')
     request = request.lower()
-    c = {'True' : 1}
-    def uncontinue():
-        while True:  
-            uncontinue = input("Would you like to repeat this action?: ")  
-            if uncontinue.lower() == 'no':
-                print("You have chosen to return to the main menu.")
-                c['True'] = 0
-                break
-            elif uncontinue.lower() == 'yes':
-                print("You have chosen to repeat this action.")
-                break
-            else:
-                print("You have entered an invalid command and will be returned to the main menu.")
-                c['True'] = 0
-                break
     while request == 'add team':
         addTeam()
-        uncontinue()
-        if c['True'] == 0:
+        if uncontinue():
             request = 'o'
     while request == 'remove team':
         removeTeam()
-        uncontinue()
-        if c['True'] == 0:
+        if uncontinue():
             request = 'o'
     while request == 'view team information':
         viewTeam()
-        uncontinue()
-        if c['True'] == 0:
+        if uncontinue():
             request = 'o'
     while request == 'modify team information':
         modifyTeam()
-        uncontinue()
-        if c['True'] == 0:
+        if uncontinue():
             request = 'o'
     while request == 'search for team':
         searchTeam()
-        uncontinue()
-        if c['True'] == 0:
+        if uncontinue():
             request = 'o'
     if request == 'list all teams':
         print(teams.keys())
