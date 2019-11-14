@@ -19,19 +19,19 @@ def view_function():
         print("You don't have any stored data.")
         return None
     else:
-    x = True
-    while x == True:
-        viewing_selection = input("""Which team's statistics would you like to view?
-            You may also quit at any time by pressing q. """)
-        for team in master_dictionary:
-            if viewing_selection.isalpha() == False:
-                if team == ("statistics" + str(viewing_selection)):
+        x = True
+        while x == True:
+            viewing_selection = input("""Which team's statistics would you like to view?
+                You may also quit at any time by pressing q. """)
+            for team in master_dictionary:
+                if viewing_selection.isalpha() == False:
+                    if team == ("statistics" + str(viewing_selection)):
+                        x = False
+                elif viewing_selection == (master_dictionary[team])['nm']:
                     x = False
-            elif viewing_selection == (master_dictionary[team])['nm']:
-                x = False
-            elif viewing_selection == 'q':
-                print("Returning to main menu.")
-                return None
+                elif viewing_selection == 'q':
+                    print("Returning to main menu.")
+                    return None
     while True:
         statistic_selection = input("""Which statistic would you like to view? Please type one of
 tm (team number), nm (name), pl (programming language), w or l (width or a length for your robot), 
