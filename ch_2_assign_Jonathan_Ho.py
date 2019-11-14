@@ -14,7 +14,7 @@ def list_teams(list_of_teams):
 
 def add():
 	Player_Add = input("Let's add a team! Choose any team. ")
-	if Player_Add.isalpha and Player_Add != None:
+	if Player_Add != None:
 		teams[Player_Add] = {}
 		# Add Number 
 		num_question = input("Insert team Number ")
@@ -31,20 +31,21 @@ def add():
 		# Add Drivetrain Motor Number
 		drive_question = input("Insert Number of Drivetrain Motors on robot ")
 		if num_question.isdigit() and wide_question.isdigit() and long_question.isdigit() and drive_question.isdigit() and (cam_question == "Yes" or cam_question == "No"):
-			teams[Player_Add]["Number"] = str(num_question)
+			teams[Player_Add]["Number"] = num_question
 			teams[Player_Add]["Name"] = name_question
 			teams[Player_Add]["Prog. Language"] = lang_question
-			teams[Player_Add]["Width"] = str(wide_question)
-			teams[Player_Add]["Length"] = str(long_question)
+			teams[Player_Add]["Width"] = wide_question
+			teams[Player_Add]["Length"] = long_question
 			teams[Player_Add]["Camera Vision?"] = cam_question
-			teams[Player_Add]["Number of Drivetrain Motors"] = str(drive_question)
+			teams[Player_Add]["Number of Drivetrain Motors"] = drive_question
 			print(teams)
 		else:
 			print("Uh oh! One of your inputs was invalid. Make sure that the questions involving numbers are actually numbers, 'kay?")
+			teams.pop(Player_Add)
 
 def remove():
 	Player_Delete = input("Let's see. What team do you want to delete? ")
-	if Player_Delete.isalpha and Player_Delete != None:
+	if Player_Delete != None:
 		if Player_Delete in teams:
 			teams.pop(Player_Delete)
 			print(teams)
