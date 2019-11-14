@@ -67,7 +67,7 @@ while True:
 			if point.Distance() > calc_3D_point.Distance():
 				print("The point farthest from the origin is: (" + str(x) + ", " + str(y) + ").")
 			elif point.Distance() < calc_3D_point.Distance():
-				print("The point farthest from the origin is: (" + str(x2) + ", " + str(y2) + ", " + str(z2) ").")
+				print("The point farthest from the origin is: (" + str(x2) + ", " + str(y2) + ", " + str(z2) + ").")
 			elif point.Distance() == calc_3D_point.Distance():
 				print("My, my. The distance from the origin between those two coordinates are equal. How coincidential!")
 			else: 
