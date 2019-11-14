@@ -18,16 +18,20 @@ def view_function():
     if master_dictionary == {}:
         print("You don't have any stored data.")
         return None
-    while True:
+    else:
+    x = True
+    while x == True:
         viewing_selection = input("""Which team's statistics would you like to view?
             You may also quit at any time by pressing q. """)
-        if ("statistics" + str(viewing_selection)) in master_dictionary:
-            break
-        elif viewing_selection == 'q':
-            print("Returning to main menu.")
-            return None
-        else:
-            print("That isn't a team.")
+        for team in master_dictionary:
+            if viewing_selection.isalpha() == False:
+                if team == ("statistics" + str(viewing_selection)):
+                    x = False
+            elif viewing_selection == (master_dictionary[team])['nm']:
+                x = False
+            elif viewing_selection == 'q':
+                print("Returning to main menu.")
+                return None
     while True:
         statistic_selection = input("""Which statistic would you like to view? Please type one of
 tm (team number), nm (name), pl (programming language), w or l (width or a length for your robot), 
@@ -49,14 +53,12 @@ def search_teams(): #Searching teams
         if team_search == 'q':
             print("Returning to main menu.")
             return None
-        if not team_search.isdigit(): #If the search is all digits
-            print("Oops, enter a valid input!")
             continue
         else:
             break
     for search in master_dictionary: #Checking every master_dict key to see if it's equal to the search
-        if search == ("statistics" + team_search):
-            return ("A match has been found!")
+        if search == ("statistics" + team_search) or search == ("statistics" + team_search)['nm']:
+            return ("A match has been found! Team " + search + '.')
     return ("No matches were found.")
 
 def add_team(): #How to add a new team
@@ -108,6 +110,10 @@ You may also quit at any time by pressing q. """) #Finding the team
                         continue
                 else:
                     continue
+                if statistic_added == 'w' or 'l' or 'dt':
+                    statistic_added = int(statistic_added)
+                elif statistic_added == 'cv':
+                    statistic_added = True if statistic_added ==  'yes' or 'True' else False
                 master_dictionary["statistics" + str(team_name)][statistic_added] = datapoint
                 return None
         else:
