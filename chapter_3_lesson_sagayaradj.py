@@ -2,7 +2,7 @@
 from chapter_1_lesson_sagayaradj import robotics_teams
 # chapter_2_lesson_sagayaradj.py
 from chapter_2_lesson_sagayaradj import viewDictionary
-from chapter_2_lesson_sagayaradj import addDictionaries
+from chapter_2_lesson_sagayaradj import addDictionary
 from chapter_2_lesson_sagayaradj import removeDictionary
 from chapter_2_lesson_sagayaradj import editDictionary
 robotics_teams = {}
@@ -27,7 +27,7 @@ while starting_sequence == False:
 			if activity_choice == 'add':
 				activity_choice = True;
 				state_variable = 'modify'
-				addDictionaries()
+				addDictionary()
 			if activity_choice == 'view':
 				activity_choice = True;
 				state_variable = 'view'
