@@ -32,7 +32,8 @@ def add():
                               "Competed last year" : competed_in_2019,
                               "Competition names" : competition_names }
         teamsnew = {number: attributes_of_team}
-        teams.update(teamsnew)                        
+        teams.update(teamsnew)
+        check = True
 def remove():
     print(teams)
     int_remove = int(input("What team number do you want to remove? "))
