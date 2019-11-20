@@ -31,7 +31,7 @@ def add():
                               "Rookie year" : rookie_year,
                               "Competed last year" : competed_in_2019,
                               "Competition names" : competition_names }
-        teamsnew = {number: attributes_of_team}
+        teamsnew = {int(number): attributes_of_team}
         teams.update(teamsnew)
         check = True
 def remove():
